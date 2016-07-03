@@ -2,6 +2,7 @@
 layout: page
 title: Contact
 permalink: /contact/
+js: contact
 ---
 
 You can contact me via mail at <script>mail("befelix", "inf.ethz.ch")</script>.
