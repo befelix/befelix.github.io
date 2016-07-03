@@ -25,7 +25,7 @@ karmdown:
   input: GFM
 
 scholar:
-  style: apa
+  style: assets/bibliography/bibstyle.csl
   locale: en
 
   sort_by: none
@@ -36,7 +36,7 @@ scholar:
 
   source: assets/bibliography
   bibliography: bibliography.bib
-  bibliography_template: "{{reference}}"
+  bibliography_template: bibtemplate
 
   replace_strings: true
   join_strings:    true
