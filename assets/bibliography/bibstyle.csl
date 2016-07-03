@@ -205,6 +205,11 @@
     </group>
   </macro>
 
+  <!-- Custom fields -->
+  <macro name="note">
+    <text variable="note" font-style="italic"/>
+  </macro>
+
   <!-- Citation -->
   <citation collapse="citation-number">
     <sort>
