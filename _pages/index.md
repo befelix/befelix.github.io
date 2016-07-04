@@ -36,7 +36,6 @@ I completed my BS and MS in mechanical engineering at ETH Zürich and completed 
     
 </div>
     
-
     
 <div class="news">
     <h2>Recent news:</h2>
@@ -44,21 +43,16 @@ I completed my BS and MS in mechanical engineering at ETH Zürich and completed 
     <div class="newsdate">04.09.2015</div>
     <div class="newsitem">
         New video for the IROS/ICRA papers "<a href="http://arxiv.org/abs/1509.01066" target="_blank">Safe Controller Optimization for Quadrotors with Gaussian Processes</a>".
-        <div class="video">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/GiqNQdzc5TI" frameborder="0" allowfullscreen></iframe>
-        </div>
+            <div class="youtube" id="GiqNQdzc5TI" style="width:560px; height:315px;"></div>
+            <!--iframe width="560" height="315" src="https://www.youtube.com/embed/GiqNQdzc5TI" frameborder="0" allowfullscreen></iframe-->
     </div>
     
     <div class="newsdate">01.12.2014</div>
     <div class="newsitem">
         New video for the ECC paper "<a href="publications/2015/ecc/berkenkamp-ecc15.pdf" target="_blank">Safe and robust learning control with Gaussian processes</a>"
-        <div class="video">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/YqhLnCm0KXY" frameborder="0" allowfullscreen></iframe>
-        </div>
+            <div class="youtube" id="YqhLnCm0KXY" style="width:560px; height:315px;"></div>
     </div>
 </div>
     
-<script>
-    // Scale videos according to zoom
-    $(".video").fitVids();
-</script>
+<script src="https://labnol.googlecode.com/files/youtube.js"></script>
+
