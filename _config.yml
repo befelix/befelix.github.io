@@ -45,7 +45,7 @@ scholar:
   bibtex_filters:
   - superscript
   - latex
-  bibtex_skip_fields: [abstract,month_numeric,month,file,comment,pitch,video]
+  bibtex_skip_fields: [abstract,month_numeric,month,file,comment,pitch,video,code]
 
   details_dir:    bibliography
   details_layout: bibtex.html

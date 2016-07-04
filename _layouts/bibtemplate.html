@@ -30,6 +30,12 @@
       </li>
     {% endif %}
 
+    {% if entry.code %}
+      <li>
+        <a href="{{ entry.code }}" target="_blank">Code</a>
+      </li>
+    {% endif %}
+
     {% if entry.video %}
       <li>
         <a href="{{ entry.video }}" target="_blank">Video</a>
