@@ -1,7 +1,14 @@
 ---
 layout: page
 permalink: /
+js:
+  - jquery
+  - jquery.fitvids
+css:
+  - about
 ---
+
+<div class="about">
 
 <div style="float:left;">
     <img class="portrait" src="/assets/img/portrait.jpg" alt="Felix Berkenkamp">
@@ -19,10 +26,12 @@ My main research interest lies at the intersection of machine learning, control 
 I completed my BS and MS in mechanical engineering at ETH Zürich and completed the research for my master thesis at the University of Toronto.
 
 <br><br>
-<table><tr>
+<table>
+<tr>
     <td> <b>Students:&nbsp;</b> </td>
-    <td>If you're interested in doing a master thesis related to learning and control at ETH or in Toronto please <a href="contact.php">contact me</a>.
-</tr></table> 
+    <td>If you're interested in doing a master thesis related to learning and control at ETH or in Toronto please <a href="contact.php">contact me</a>.</td>
+</tr>
+</table> 
 </div>
     
 </div>
@@ -33,7 +42,7 @@ I completed my BS and MS in mechanical engineering at ETH Zürich and completed 
     <h2>Recent news:</h2>
     
     <div class="newsdate">04.09.2015</div>
-    <div class=newsitem>
+    <div class="newsitem">
         New video for the IROS/ICRA papers "<a href="http://arxiv.org/abs/1509.01066" target="_blank">Safe Controller Optimization for Quadrotors with Gaussian Processes</a>".
         <div class="video">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/GiqNQdzc5TI" frameborder="0" allowfullscreen></iframe>
@@ -41,7 +50,7 @@ I completed my BS and MS in mechanical engineering at ETH Zürich and completed 
     </div>
     
     <div class="newsdate">01.12.2014</div>
-    <div class=newsitem>
+    <div class="newsitem">
         New video for the ECC paper "<a href="publications/2015/ecc/berkenkamp-ecc15.pdf" target="_blank">Safe and robust learning control with Gaussian processes</a>"
         <div class="video">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/YqhLnCm0KXY" frameborder="0" allowfullscreen></iframe>

@@ -1,0 +1,42 @@
+
+/* About */
+.portrait {
+    width: 277.16px;
+    height: 416px;
+    
+    margin-right: 1.3em;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+.about {
+    float: left;
+    margin-bottom: 1.5em;
+}
+
+.about td {
+    vertical-align: top;
+}
+
+.news{
+    width: 100%;
+    clear: both;
+}
+
+.news .newsdate {
+    margin-left: 2.5%;
+    font-size: 1.25em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+}
+
+.news .newsitem {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 1.5em;
+}
+
+.video{
+    margin-top: 0.5em;
+}
+
