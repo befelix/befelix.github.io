@@ -17,6 +17,7 @@
   Url = {\href{http://arxiv.org/abs/1602.04450}{arXiv:1602.04450 [cs.RO]}},
   abstract = {Robotics algorithms typically depend on various parameters, the choice of which significantly affects the robot's performance. While an initial guess for the parameters may be obtained from dynamic models of the robot, parameters are usually tuned manually on the real system to achieve the best performance. Optimization algorithms, such as Bayesian optimization, have been used to automate this process. However, these methods may evaluate parameters during the optimization process that lead to safety-critical system failures. Recently, a safe Bayesian optimization algorithm, called SafeOpt, has been developed and applied in robotics, which guarantees that the performance of the system never falls below a critical value; that is, safety is defined based on the performance function. However, coupling performance and safety is not desirable in most cases. In this paper, we define separate functions for performance and safety. We present a generalized SafeOpt algorithm that, given an initial safe guess for the parameters, maximizes performance but only evaluates parameters that satisfy all safety constraints with high probability. It achieves this by modeling the underlying and unknown performance and constraint functions as Gaussian processes. We provide a theoretical analysis and demonstrate in experiments on a quadrotor vehicle that the proposed algorithm enables fast, automatic, and safe optimization of tuning parameters. Moreover, we show an extension to context- or environment-dependent, safe optimization in the experiments.},
   file = {http://arxiv.org/pdf/1602.04450},
+  code = {https://github.com/befelix/SafeOpt},
 }
 
 @techreport{Berkenkamp2016ROA,
@@ -26,7 +27,8 @@
   year = {2016},
   Url = {\href{http://arxiv.org/abs/1603.04915}{arXiv:1603.04915 [cs.SY]}},
   abstract = {Control theory can provide useful insights into the properties of controlled, dynamic systems. One important property of nonlinear systems is the region of attraction (ROA), which is a safe subset of the state space in which a given controller renders an equilibrium point asymptotically stable. The ROA is typically estimated based on a model of the system. However, since models are only an approximation of the real world, the resulting estimated safe region can contain states outside the ROA of the real system. This is not acceptable in safety-critical applications. In this paper, we consider an approach that learns the ROA from experiments on a real system, without ever leaving the ROA of the real system. This approach enables us to find an estimate of the real ROA, without risking safety-critical failures. Based on regularity assumptions on the model errors in terms of a Gaussian process prior, we determine a region in which an equilibrium point is asymptotically stable with high probability, according to an underlying Lyapunov function. Moreover, we actively select areas of the state space to evaluate in order to expand the ROA. We demonstrate the effectiveness of this method in simulated experiments.},
-  file = {http://arxiv.org/pdf/1603.04915}
+  file = {http://arxiv.org/pdf/1603.04915},
+  code = {https://github.com/befelix/lyapunov-learning},
 }
 
 @techreport{Turchetta2016SafeMDP,
@@ -50,6 +52,7 @@
   file = {http://arxiv.org/pdf/1509.01066},
   pitch = {https://www.youtube.com/watch?v=IYi8qMnt0yU},
   video = {https://www.youtube.com/watch?v=GiqNQdzc5TI},
+  code = {https://github.com/befelix/SafeOpt},
 }
 
 @inproceedings{Berkenkamp2015SafeTuning,
