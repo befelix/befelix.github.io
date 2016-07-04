@@ -28,9 +28,13 @@ ul {
 
 .reference-materials p {
     background-color: #f2f2f2;
+    padding: 1em;
 }
 
 .reference-materials pre {
     background-color: #f2f2f2;
+    padding: 1em;
+    padding-bottom: 0;
+    display: block;
 }
 
