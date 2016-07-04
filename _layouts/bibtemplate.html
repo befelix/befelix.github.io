@@ -5,8 +5,8 @@
 
 <br>
 <!-- Add clickable toggles for bonus material -->
-<div id="{{key}}-materials">
-  <ul class="nav nav-pills">
+<div class="materials">
+  <ul>
     {% if entry.abstract %}
       <li>
         <a href="javascript:toggleElement('#{{key}}-abstract')">Abstract</a>
@@ -18,7 +18,7 @@
 </div>
 
 <!-- Add bonus material -->
-<div id="reference-materials">
+<div class="reference-materials">
   {% if entry.abstract %}
     <p id="{{key}}-abstract" style="display:none;">{{entry.abstract}}</p>
   {% endif %}

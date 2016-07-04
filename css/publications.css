@@ -1,0 +1,25 @@
+/* Publications*/
+
+li {
+    display: inline;
+}
+
+.materials ul {
+    padding: 0px;
+    margin-left: 0em;
+    margin-right: 1em;
+}
+        
+.materials li {
+    display: inline;
+    padding-right: 1em;
+}
+
+.reference-materials p {
+    background-color: #f2f2f2;
+}
+
+.reference-materials pre {
+    background-color: #f2f2f2;
+}
+
