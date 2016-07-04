@@ -7,11 +7,10 @@ js:
 css:
   - about
 ---
-
 <div class="about">
 
 <div style="float:left;">
-    <img class="portrait" src="/assets/img/portrait.jpg" alt="Felix Berkenkamp">
+    <img class="portrait" src="{{ site.baseurl }}/assets/img/portrait.jpg" alt="Felix Berkenkamp">
 </div>
     
 <div>
@@ -29,7 +28,7 @@ I completed my BS and MS in mechanical engineering at ETH Zürich and completed 
 <table>
 <tr>
     <td> <b>Students:&nbsp;</b> </td>
-    <td>If you're interested in doing a master thesis related to learning and control at ETH or in Toronto please <a href="contact.php">contact me</a>.</td>
+    <td>If you're interested in doing a master thesis related to learning and control at ETH or in Toronto please <a href="{{ site.baseurl }}/contact">contact me</a>.</td>
 </tr>
 </table> 
 </div>
