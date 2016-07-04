@@ -2,16 +2,27 @@
 
 li {
     display: inline;
+    margin-left: 0em;
+}
+
+ul {
+    list-style: none;
+    margin: 0:
+}
+
+.comment ul {
+    margin: 0;
+}
+
+.comment li {
+    color: gray;
 }
 
 .materials ul {
-    padding: 0px;
-    margin-left: 0em;
-    margin-right: 1em;
+    margin-left: 0;
 }
         
 .materials li {
-    display: inline;
     padding-right: 1em;
 }
 

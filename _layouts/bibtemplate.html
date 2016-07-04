@@ -4,6 +4,13 @@
 {{ reference }}
 
 <br>
+
+{{ if entry.comment }}
+<div class="comment">
+<ul><li><b>{{ entry.comment }}</b></li></ul>
+</div>
+{{ endif }}
+
 <!-- Add clickable toggles for bonus material -->
 <div class="materials">
   <ul>
