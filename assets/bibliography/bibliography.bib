@@ -1,35 +1,82 @@
-@inproceedings{Berkenkamp2016SafeOpt,
-  title = {Safe controller optimization for quadrotors with {{Gaussian}} processes},
-  timestamp = {2016-03-14T11:03:57Z},
-  booktitle = {Proc. of the {{IEEE International Conference}} on {{Robotics}} and {{Automation}} ({{ICRA}})},
-  author = {Berkenkamp, Felix and Schoellig, Angela P. and Krause, Andreas},
+@inproceedings{Abdelrahman16Bayesian,
+  Author = {Hany Abdelrahman and Felix Berkenkamp and Jan Poland and Andreas Krause},
+  Booktitle = {Proc. of the European Control Conference (ECC)},
+  Month = {June},
+  Title = {Bayesian Optimization for Maximum Power Point Tracking in Photovoltaic Power Plants},
+  Year = {2016},
+  abstract = {The amount of power that a photovoltaic (PV) power plant generates depends on the DC voltage that is applied to the PV panels. The relationship between this control input and the generated power is non-convex and has multiple local maxima. Moreover, since the generated power depends on time-varying environmental conditions, such as solar irradiation, the location of the global maximum changes over time. Maximizing the amount of energy that is generated over time is known as the maximum power point tracking (MPPT) problem. Traditional approaches to solve the MPPT problem rely on heuristics and data-based gradient estimates. These methods typically converge to local optima and thus waste energy. Our approach formalizes the MPPT problem as a Bayesian optimization problem. This formalization admits algorithms that can find the maximum power point after only a few evaluations at different input voltages. Specifically, we model the power-voltage curve as a Gaussian process (GP) and use the predictive uncertainty information in this model to choose control inputs that are informative about the location of the maximum. We extend the basic approach by including operational constraints and making it computationally tractable so that the method can be used on real systems. We evaluate our method together with two standard baselines in experiments, which show that our approach outperforms both.},
+  file = {https://las.inf.ethz.ch/files/abdelrahman2016mppt.pdf},
+  comment = {Best Application Paper Award},
+}
+
+@techreport{Berkenkamp2016BayesianSafety,
+  title = {Bayesian optimization with safety constraints: safe and automatic parameter tuning in robotics},
+  publisher = {ArXiv},
+  author = {Berkenkamp, Felix and Krause, Andreas and Angela P. Schoellig},
   year = {2016},
-  note = {(to appear), \href{http://arxiv.org/abs/1509.01066}{ 	arXiv:1509.01066 [cs.RO]}}
+  Url = {\href{http://arxiv.org/abs/1602.04450}{arXiv:1602.04450 [cs.RO]}},
+  abstract = {Robotics algorithms typically depend on various parameters, the choice of which significantly affects the robot's performance. While an initial guess for the parameters may be obtained from dynamic models of the robot, parameters are usually tuned manually on the real system to achieve the best performance. Optimization algorithms, such as Bayesian optimization, have been used to automate this process. However, these methods may evaluate parameters during the optimization process that lead to safety-critical system failures. Recently, a safe Bayesian optimization algorithm, called SafeOpt, has been developed and applied in robotics, which guarantees that the performance of the system never falls below a critical value; that is, safety is defined based on the performance function. However, coupling performance and safety is not desirable in most cases. In this paper, we define separate functions for performance and safety. We present a generalized SafeOpt algorithm that, given an initial safe guess for the parameters, maximizes performance but only evaluates parameters that satisfy all safety constraints with high probability. It achieves this by modeling the underlying and unknown performance and constraint functions as Gaussian processes. We provide a theoretical analysis and demonstrate in experiments on a quadrotor vehicle that the proposed algorithm enables fast, automatic, and safe optimization of tuning parameters. Moreover, we show an extension to context- or environment-dependent, safe optimization in the experiments.},
+  file = {http://arxiv.org/pdf/1602.04450},
 }
 
-@inproceedings{Berkenkamp2014LearningBased,
-  title = {Learning-based robust control: guaranteeing stability while improving performance},
-  timestamp = {2015-09-09T09:03:52Z},
-  booktitle = {Workshop on {{Machine Learning}} in {{Planning}} and {{Control}} of {{Robot Motion}}, {{Proc}}. of the {{IEEE}}/{{RSJ International Conference}} on {{Intelligent Robots}} and {{Systems}} ({{IROS}})},
-  author = {Berkenkamp, Felix and Schoellig, Angela P.},
-  year = {2014}
+@techreport{Berkenkamp2016ROA,
+  title = {Safe learning of regions of attraction in nonlinear systems with {G}aussian processes},
+  publisher = {ArXiv},
+  author = {Felix Berkenkamp and Riccardo Moriconi and Angela P. Schoellig and Andreas Krause},
+  year = {2016},
+  Url = {\href{http://arxiv.org/abs/1603.04915}{arXiv:1603.04915 [cs.SY]}},
+  abstract = {Control theory can provide useful insights into the properties of controlled, dynamic systems. One important property of nonlinear systems is the region of attraction (ROA), which is a safe subset of the state space in which a given controller renders an equilibrium point asymptotically stable. The ROA is typically estimated based on a model of the system. However, since models are only an approximation of the real world, the resulting estimated safe region can contain states outside the ROA of the real system. This is not acceptable in safety-critical applications. In this paper, we consider an approach that learns the ROA from experiments on a real system, without ever leaving the ROA of the real system. This approach enables us to find an estimate of the real ROA, without risking safety-critical failures. Based on regularity assumptions on the model errors in terms of a Gaussian process prior, we determine a region in which an equilibrium point is asymptotically stable with high probability, according to an underlying Lyapunov function. Moreover, we actively select areas of the state space to evaluate in order to expand the ROA. We demonstrate the effectiveness of this method in simulated experiments.},
+  file = {http://arxiv.org/pdf/1603.04915}
 }
 
-@inproceedings{Berkenkamp2015Robust,
-  title = {Safe and robust learning control with {{Gaussian}} processes},
-  timestamp = {2016-02-14T11:05:27Z},
-  booktitle = {Proc. of the {{European Control Conference}} ({{ECC}})},
-  author = {Berkenkamp, Felix and Schoellig, Angela P.},
-  year = {2015},
-  pages = {2501--2506}
+@techreport{Turchetta2016SafeMDP,
+  title = {Safe exploration in finite {M}arkov {D}ecision {P}rocesses with {G}aussian processes},
+  publisher = {ArXiv},
+  author = {Matteo Turchetta and Felix Berkenkamp and Andreas Krause},
+  year = {2016},
+  Url = {\href{http://arxiv.org/abs/1606.04753}{arXiv:1606.04753 [cs.LG]}},
+  abstract = {In classical reinforcement learning, when exploring an environment, agents accept arbitrary short term loss for long term gain. This is infeasible for safety critical applications, such as robotics, where even a single unsafe action may cause system failure. In this paper, we address the problem of safely exploring finite Markov decision processes (MDP). We define safety in terms of an, a priori unknown, safety constraint that depends on states and actions. We aim to explore the MDP under this constraint, assuming that the unknown function satisfies regularity conditions expressed via a Gaussian process prior. We develop a novel algorithm for this task and prove that it is able to completely explore the safely reachable part of the MDP without violating the safety constraint. To achieve this, it cautiously explores safe states and actions in order to gain statistical confidence about the safety of unvisited state-action pairs from noisy observations collected while navigating the environment. Moreover, the algorithm explicitly considers reachability when exploring the MDP, ensuring that it does not get stuck in any state with no safe way out. We demonstrate our method on digital terrain models for the task of exploring an unknown map with a rover.},
+  file = {http://arxiv.org/pdf/1606.04753},
+}
+
+@inproceedings{Berkenkamp2016SafeOpt,
+  title = {Safe controller optimization for quadrotors with {G}aussian processes},
+  booktitle = {Proc. of the IEEE International Conference on Robotics and Automation (ICRA)},
+  author = {Felix Berkenkamp and Angela P. Schoellig and Andreas Krause},
+  year = {2016},
+  month = {May},
+  Url = {\href{http://arxiv.org/abs/1509.01066}{arXiv:1509.01066 [cs.RO]}},
+  abstract = {One of the most fundamental problems when designing controllers for dynamic systems is the tuning of the controller parameters. Typically, a model of the system is used to obtain an initial controller, but ultimately the controller parameters must be tuned manually on the real system to achieve the best performance. To avoid this manual tuning step, methods from machine learning, such as Bayesian optimization, have been used. However, as these methods evaluate different controller parameters on the real system, safety-critical system failures may happen. In this paper, we overcome this problem by applying, for the first time, a recently developed safe optimization algorithm, SafeOpt, to the problem of automatic controller parameter tuning. Given an initial, low-performance controller, SafeOpt automatically optimizes the parameters of a control law while guaranteeing safety. It models the underlying performance measure as a Gaussian process and only explores new controller parameters whose performance lies above a safe performance threshold with high probability. Experimental results on a quadrotor vehicle indicate that the proposed method enables fast, automatic, and safe optimization of controller parameters without human intervention.},
+  file = {http://arxiv.org/pdf/1509.01066},
+  pitch = {https://www.youtube.com/watch?v=IYi8qMnt0yU},
+  video = {https://www.youtube.com/watch?v=GiqNQdzc5TI},
 }
 
 @inproceedings{Berkenkamp2015SafeTuning,
   title = {Safe and automatic controller tuning with {{Gaussian}} processes},
-  timestamp = {2016-02-15T09:56:21Z},
-  booktitle = {Proc. of the {{Workshop}} on {{Machine Learning}} in {{Planning}} and {{Control}} of {{Robot Motion}}, {{IEEE}}/{{RSJ International Conference}} on {{Intelligent Robots}} and {{Systems}} ({{IROS}})},
+  booktitle = {Proc. of the Workshop on Machine Learning in Planning and Control of Robot Motion, IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
   author = {Berkenkamp, Felix and Schoellig, Angela P. and Krause, Andreas},
-  year = {2015}
+  year = {2015},
+  abstract = {One of the most fundamental problems when designing controllers for dynamic systems is the tuning of the controller parameters. Typically, a model of the system is used to design an initial controller, but ultimately, the controller parameters must be tuned manually on the real system to achieve the best performance. To avoid this manual tuning, methods from machine learning, such as Bayesian optimization, have been used. However, as these methods evaluate different controller parameters, safety-critical system failures may happen. We overcome this problem by applying, for the first time, a recently developed safe optimization algorithm, \textsc{SafeOpt}, to the problem of automatic controller parameter tuning. Given an initial, low-performance controller, \textsc{SafeOpt} automatically optimizes the parameters of a control law while guaranteeing system safety and stability. It achieves this by modeling the underlying performance measure as a Gaussian process and only exploring new controller parameters whose performance lies above a safe performance threshold with high probability. Experimental results on a quadrotor vehicle indicate that the proposed method enables fast, automatic, and safe optimization of controller parameters without human intervention.},
+}
+
+@inproceedings{Berkenkamp2015Robust,
+  title = {Safe and robust learning control with {{Gaussian}} processes},
+  booktitle = {Proc. of the European Control Conference (ECC)},
+  author = {Berkenkamp, Felix and Schoellig, Angela P.},
+  year = {2015},
+  pages = {2501--2506},
+  abstract = {This paper introduces a learning-based robust control algorithm that provides robust stability and performance guarantees during learning. The approach uses Gaussian process~(GP) regression based on data gathered during operation to update an initial model of the system and to gradually decrease the uncertainty related to this model. Embedding this data-based update scheme in a robust control framework guarantees stability during the learning process. Traditional robust control approaches have not considered online adaptation of the model and its uncertainty before. As a result, their controllers do not improve performance during operation. Typical machine learning algorithms that have achieved similar high-performance behavior by adapting the model and controller online do not provide the guarantees presented in this paper. In particular, this paper considers a stabilization task, linearizes the nonlinear, GP-based model around a desired operating point, and solves a convex optimization problem to obtain a linear robust controller. The resulting performance improvements due to the learning-based controller are demonstrated in experiments on a quadrotor vehicle.},
+  file = {http://www.dynsyslab.org/wp-content/papercite-data/pdf/berkenkamp-ecc15.pdf},
+  video = {https://www.youtube.com/watch?v=YqhLnCm0KXY},
+}
+
+@inproceedings{Berkenkamp2014LearningBased,
+  title = {Learning-based robust control: guaranteeing stability while improving performance},
+  booktitle = {Proc. of the Workshop on Machine Learning in Planning and Control of Robot Motion, IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  author = {Berkenkamp, Felix and Schoellig, Angela P.},
+  year = {2014},
+  abstract = {To control dynamic systems, modern control theory relies on accurate mathematical models that describe the system behavior. Machine learning methods have proven to be an effective method to compensate for initial errors in these models and to achieve high-performance maneuvers by adapting the system model and control online. However, these methods usually do not guarantee stability during the learning process. On the other hand, the control community has traditionally accounted for model uncertainties by designing robust controllers. Robust controllers use a mathematical description of the uncertainty in the dynamic system derived {prior} to operation and guarantee robust stability for all uncertainties. Unlike machine learning methods, robust control does not improve the control performance  by adapting the model online. This paper combines machine learning and robust control theory for the first time with the goal of improving control performance while guaranteeing stability. Data gathered during operation is used to reduce the  uncertainty in the model and to learn systematic errors. Specifically, a nonlinear, nonparametric model of the unknown dynamics is learned with a Gaussian Process. This model is used for the computation of a linear robust controller, which guarantees stability around an operating point for all uncertainties. As a result, the robust controller improves its performance online while guaranteeing robust stability. A simulation example illustrates the performance improvements due to the learning-based robust controller.},
 }
 
 @article{Berkenkamp2014Hybrid,
@@ -41,32 +88,7 @@
   journal = {Energy and Buildings},
   author = {Berkenkamp, Felix and Gwerder, Markus},
   year = {2014},
-  pages = {233--240}
+  pages = {233--240},
+  file = {http://www.sciencedirect.com/science/article/pii/S0378778814005921},
 }
-
-@techreport{Berkenkamp2016BayesianSafety,
-  title = {Bayesian optimization with safety constraints: safe and automatic parameter tuning in robotics},
-  timestamp = {2016-03-14T11:02:40Z},
-  publisher = {ar{X}iv},
-  author = {Berkenkamp, Felix and Krause, Andreas and {Angela P. Schoellig}},
-  year = {2016},
-  note = {\href{http://arxiv.org/abs/1602.04450}{arXiv:1602.04450 [cs.RO]}}
-}
-
-@inproceedings{Berkenkamp2016ROA,
-  title = {Safe learning of regions of attraction in nonlinear systems with {G}aussian processes},
-  booktitle = {Proc. of the Conference on Decision and Control (CDC)},
-  author = {Felix Berkenkamp and Riccardo Moriconi and Angela P. Schoellig and Andreas Krause},
-  year = {2016},
-  note = {(submitted)}
-}
-
-@inproceedings{Turchetta2016SafeMDP,
-  title = {Safe exploration in finite {M}arkov {D}ecision {P}rocesses with {G}aussian processes},
-  booktitle = {Proc. of the International Conference on Machine Learning (ICML)},
-  author = {Matteo Turchetta and Felix Berkenkamp and Andreas Krause},
-  year = {2016},
-  note = {(submitted)}
-}
-
 
