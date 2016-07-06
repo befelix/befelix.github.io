@@ -54,7 +54,9 @@
 <div class="reference-materials {{key}}-materials">
 
   {% if entry.abstract %}
-    <p class="{{key}}-abstract" style="display:none;">{{entry.abstract}}</p>
+    <p class="{{key}}-abstract" style="display:none;">{{entry.abstract}}
+    <br>
+    <a href="javascript:toggleMaterial('{{key}}', 'abstract')" id="mobile-only">close</a></p>
   {% endif %}
 
   <pre class="{{key}}-bibtex" style="display:none; white-space: pre-line;">

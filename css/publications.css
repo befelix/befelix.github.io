@@ -42,3 +42,7 @@ ul {
     padding-bottom: 0;
     display: block;
 }
+
+@media screen and (min-width: 700px) {
+  #mobile-only { display: none; }
+}
