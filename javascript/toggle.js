@@ -9,27 +9,31 @@ function toggleMaterial (key, element) {
 
   // If current one is visible it needs to go away
   if ($(new_element).is(":visible")){
-    $("." + key + "-" + element).slideToggle('fast')
+    $(new_element).slideToggle('fast')
+    $("#" + key + "-" + element + "-toggle").toggleClass("active")
   }
   else{
-    var active_element = ""
+    var old_element = ""
 
     // Get the element that is currently visible
     $("." + key + "-materials").children().each(function (index) {
       if ($(this).is(":visible")){
-        active_element += $(this).attr("class");
+        old_element += $(this).attr("class");
         return false;
       }
     })
 
     // if it exists, hide current one and show new one
-    if (active_element){
-      $("." + active_element).hide()
+    if (old_element){
+      $("." + old_element).hide()
+      $("#" + key + "-" + old_element.split('-')[1] + "-toggle").toggleClass("active")
       $(new_element).show()
+      $("#" + key + "-" + element + "-toggle").toggleClass("active")
     }
     else{
       // None are visible. show new one
-      $(new_element).slideToggle('fast')
+      $(new_element).slideToggle("fast")
+      $("#" + key + "-" + element + "-toggle").toggleClass("active")
     }
   }
 }

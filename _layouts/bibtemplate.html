@@ -15,12 +15,12 @@
 <div class="materials">
   <ul>
     {% if entry.abstract %}
-      <li>
+      <li id="{{key}}-abstract-toggle">
         <a href="javascript:toggleMaterial('{{key}}', 'abstract')">Abstract</a>
       </li>
     {% endif %}
 
-    <li>
+    <li id="{{key}}-bibtex-toggle">
       <a href="javascript:toggleMaterial('{{key}}', 'bibtex')">BibTex</a>
     </li>
 

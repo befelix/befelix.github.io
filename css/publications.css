@@ -21,9 +21,14 @@ ul {
 .materials ul {
     margin-left: 0;
 }
-        
+
 .materials li {
-    padding-right: 1em;
+    margin-right: 1em;
+}
+
+.materials li.active a{
+    background-color: #99ccff;
+    color: #0066ff;
 }
 
 .reference-materials p {
@@ -37,4 +42,3 @@ ul {
     padding-bottom: 0;
     display: block;
 }
-
