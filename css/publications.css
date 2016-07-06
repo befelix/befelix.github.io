@@ -44,5 +44,5 @@ ul {
 }
 
 @media screen and (min-width: 700px) {
-  #mobile-only { display: none; }
+  .mobile-only { display: none; }
 }
