@@ -40,9 +40,9 @@ function toggleMaterial (key, element) {
 
 // Scroll up after click (only if reference no longer visible)
 $(document).ready(function (){
-  $(".mobile-only").click(function (){
+  $(".abstract-mobile-close").click(function (){
     // Hide abstract
-    var key = $(this).attr('id').split('-')[0];
+    var key = $(this).attr('key');
     toggleMaterial(key, 'abstract');
 
     // Scroll up

@@ -56,9 +56,10 @@
   <div class="reference-materials {{key}}-materials">
 
     {% if entry.abstract %}
-      <p class="{{key}}-abstract" style="display:none;">{{entry.abstract}}
-      <br>
-      <a class="mobile-only" id="{{key}}-link">Close</a>
+      <p class="{{key}}-abstract" style="display:none;">
+        {{entry.abstract}}
+        <br>
+        <a class="abstract-mobile-close" key="{{key}}">Close</a>
       </p>
     {% endif %}
 
