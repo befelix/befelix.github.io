@@ -22,6 +22,9 @@
     {% endfor %}
   {% endif %}
 
+  <!-- Always include email stuff -->
+  <script src="{{ site.baseurl }}/javascript/contact.js"></script>
+
   {% if page.css %}
     {% for css in page.css %}
       <link rel="stylesheet" href="{{ site.baseurl }}/css/{{ css }}.css">
