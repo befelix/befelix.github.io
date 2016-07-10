@@ -37,3 +37,18 @@ function toggleMaterial (key, element) {
     }
   }
 }
+
+// Scroll up after click (only if reference no longer visible)
+$(document).ready(function (){
+  $(".mobile-only").click(function (){
+    // Hide abstract
+    var key = $(this).attr('id').split('-')[0];
+    toggleMaterial(key, 'abstract');
+
+    // Scroll up
+    var offset = $("." + key + "-reference").offset().top
+    if ($('html, body').scrollTop() >= offset) {
+      $('html, body').scrollTop(offset);
+    }
+  });
+});

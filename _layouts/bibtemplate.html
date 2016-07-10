@@ -65,22 +65,5 @@
     <pre class="{{key}}-bibtex" style="display:none; white-space: pre-line;">
       {{entry.bibtex}}
     </pre>
-
   </div>
-
-  <script>
-    // Scroll up after click (only if reference no longer visible)
-    $(document).ready(function (){
-      $("#{{key}}-link").click(function (){
-          // Hide abstract
-          toggleMaterial('{{key}}', 'abstract')
-          // Scroll up
-          var offset = $(".{{key}}-reference").offset().top
-          if ($('html, body').scrollTop() >= offset) {
-            $('html, body').scrollTop(offset);
-          }
-      });
-    });
-  </script>
-
 </div>
