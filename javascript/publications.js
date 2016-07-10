@@ -5,18 +5,18 @@ function toggleElement(element) {
 
 function toggleMaterial (key, element) {
 
-  var new_element = "." + key + "-" + element
+  var new_element = $("." + key + "-" + element)
 
   // If current one is visible it needs to go away
-  if ($(new_element).is(":visible")){
-    $(new_element).slideToggle('fast')
-    $("#" + key + "-" + element + "-toggle").toggleClass("active")
+  if (new_element.is(":visible")){
+    new_element.slideToggle('fast');
+    $("#" + key + "-" + element + "-toggle").toggleClass("active");
   }
   else{
     var old_element = ""
 
     // Get the element that is currently visible
-    $("." + key + "-materials").children().each(function (index) {
+    $(".materials[key=" + key + "]").children().each(function (index) {
       if ($(this).is(":visible")){
         old_element += $(this).attr("class");
         return false;
@@ -45,8 +45,10 @@ $(document).ready(function (){
     var key = $(this).attr('key');
     toggleMaterial(key, 'abstract');
 
-    // Scroll up
-    var offset = $("." + key + "-reference").offset().top
+    // Traverse to the base class reference
+    var offset = $(this).closest('.reference').offset().top
+
+    // Scroll further if we've scrolled past it
     if ($('html, body').scrollTop() >= offset) {
       $('html, body').scrollTop(offset);
     }

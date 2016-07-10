@@ -1,7 +1,7 @@
 ---
 ---
 
-<div class="{{key}}-reference">
+<div class="reference" key="{{key}}">
 
   {{ reference }}
 
@@ -9,12 +9,12 @@
 
   {{ if entry.comment }}
   <div class="comment">
-  <ul><li><b>{{ entry.comment }}</b></li></ul>
+    <ul><li><b>{{ entry.comment }}</b></li></ul>
   </div>
   {{ endif }}
 
   <!-- Add clickable toggles for bonus material -->
-  <div class="materials">
+  <div class="links">
     <ul>
       {% if entry.abstract %}
         <li id="{{key}}-abstract-toggle">
@@ -28,7 +28,7 @@
 
       {% if entry.file %}
         <li>
-          <a href="{{ entry.file }}" target="_blank">Download</a>
+          <a href="{{ entry.file }}" target="_blank">PDF</a>
         </li>
       {% endif %}
 
@@ -53,7 +53,7 @@
   </div>
 
   <!-- Add bonus material -->
-  <div class="reference-materials {{key}}-materials">
+  <div class="materials" key="{{key}}">
 
     {% if entry.abstract %}
       <p class="{{key}}-abstract" style="display:none;">
