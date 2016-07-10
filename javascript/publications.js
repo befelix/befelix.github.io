@@ -29,12 +29,6 @@ function toggleMaterial (key, element) {
   }
 }
 
-// Hide all abstracts/bibtexs initially
-$(document).ready(function (){
-  $(".abstract").hide();
-  $(".bibtex").hide();
-});
-
 // Make bibtex/abstract toggles clickable
 $(document).ready(function (){
   $(".toggle").click(function () {
