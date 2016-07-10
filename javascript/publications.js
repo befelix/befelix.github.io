@@ -1,8 +1,4 @@
 
-function toggleElement(element) {
-     $(document).ready($(element).slideToggle("fast"));
-}
-
 function toggleMaterial (key, element) {
 
   var parent = $(".reference[key=" + key + "]");
@@ -33,25 +29,37 @@ function toggleMaterial (key, element) {
   }
 }
 
-// Scroll up after click (only if reference no longer visible)
+// Hide all abstracts/bibtexs initially
 $(document).ready(function (){
-  $(".abstract-mobile-close").click(function (){
-    // Hide abstract
-    var key = $(this).attr('key');
-    toggleMaterial(key, 'abstract');
+  $(".abstract").hide();
+  $(".bibtex").hide();
+});
 
-    // Traverse to the base class reference
-    var offset = $(this).closest('.reference').offset().top;
+// Make bibtex/abstract toggles clickable
+$(document).ready(function (){
+  $(".toggle").click(function () {
+    var element = $(this).closest("li").attr("content");
+    var key = $(this).closest(".reference").attr("key");
+    toggleMaterial(key, element);
+  });
+});
+
+// Mobile: Scroll up after click (only if reference no longer visible)
+$(document).ready(function (){
+  $(".mobile-close").click(function (){
+    // Hide abstract
+    var parent = $(this).closest('.reference')
+    var element = $(this).parent().attr("class");
+
+    // Hide current element
+    toggleMaterial(parent.attr("key"), element);
+
+    // Get offset
+    var offset = parent.offset().top;
 
     // Scroll further if we've scrolled past it
     if ($('html, body').scrollTop() >= offset) {
       $('html, body').scrollTop(offset);
     }
   });
-});
-
-// Hide all abstracts/bibtexs initially
-$(document).ready(function (){
-  $(".abstract").hide();
-  $(".bibtex").hide();
 });

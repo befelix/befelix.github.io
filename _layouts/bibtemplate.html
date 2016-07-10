@@ -18,12 +18,12 @@
     <ul>
       {% if entry.abstract %}
         <li class="toggle" content="abstract">
-          <a href="javascript:toggleMaterial('{{key}}', 'abstract')">Abstract</a>
+          <a>Abstract</a>
         </li>
       {% endif %}
 
       <li class="toggle" content="bibtex">
-        <a href="javascript:toggleMaterial('{{key}}', 'bibtex')">BibTex</a>
+        <a>BibTex</a>
       </li>
 
       {% if entry.file %}
@@ -59,12 +59,14 @@
       <p class="abstract">
         {{entry.abstract}}
         <br>
-        <a class="abstract-mobile-close" key="{{key}}">Close</a>
+        <a class="mobile-close">Close</a>
       </p>
     {% endif %}
 
-    <pre class="bibtex" style="white-space: pre-line;">
-      {{entry.bibtex}}
-    </pre>
+    {% if entry.bibtex %}
+      <pre class="bibtex">
+        {{entry.bibtex}}
+      </pre>
+    {% endif %}
   </div>
 </div>
