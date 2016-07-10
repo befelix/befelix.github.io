@@ -5,36 +5,31 @@ function toggleElement(element) {
 
 function toggleMaterial (key, element) {
 
-  var new_element = $("." + key + "-" + element)
+  var parent = $(".reference[key=" + key + "]");
+  var new_element = parent.find("." + element);
+  var new_toggle = parent.find("[content=" + element + "]");
 
   // If current one is visible it needs to go away
-  if (new_element.is(":visible")){
+  if (new_toggle.is(".active")) {
     new_element.slideToggle('fast');
-    $("#" + key + "-" + element + "-toggle").toggleClass("active");
+    new_toggle.removeClass("active");
   }
   else{
-    var old_element = ""
 
-    // Get the element that is currently visible
-    $(".materials[key=" + key + "]").children().each(function (index) {
-      if ($(this).is(":visible")){
-        old_element += $(this).attr("class");
-        return false;
-      }
-    })
+    var old_toggle = parent.find(".toggle.active")
 
     // if it exists, hide current one and show new one
-    if (old_element){
-      $("." + old_element).hide()
-      $("#" + key + "-" + old_element.split('-')[1] + "-toggle").toggleClass("active")
-      $(new_element).show()
-      $("#" + key + "-" + element + "-toggle").toggleClass("active")
+    if (old_toggle.length) {
+      $("." + old_toggle.attr("content")).hide()
+      old_toggle.removeClass("active")
+      new_element.show();
     }
     else{
       // None are visible. show new one
-      $(new_element).slideToggle("fast")
-      $("#" + key + "-" + element + "-toggle").toggleClass("active")
+      new_element.slideToggle("fast");
     }
+    // Mark new toggle as active
+    new_toggle.addClass("active");
   }
 }
 
@@ -46,11 +41,17 @@ $(document).ready(function (){
     toggleMaterial(key, 'abstract');
 
     // Traverse to the base class reference
-    var offset = $(this).closest('.reference').offset().top
+    var offset = $(this).closest('.reference').offset().top;
 
     // Scroll further if we've scrolled past it
     if ($('html, body').scrollTop() >= offset) {
       $('html, body').scrollTop(offset);
     }
   });
+});
+
+// Hide all abstracts/bibtexs initially
+$(document).ready(function (){
+  $(".abstract").hide();
+  $(".bibtex").hide();
 });
