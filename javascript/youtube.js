@@ -60,10 +60,13 @@ $(document).ready(function () {
       video_frame.setAttribute("src", "https://www.youtube.com/embed/" + this.id + "?autoplay=1");
       video_frame.setAttribute("frameborder", "0");
       video_frame.setAttribute("allowfullscreen", "1");
-      // video_frame.style.width = this.style.width;
-      // video_frame.style.height = this.style.height;
+      video_frame.setAttribute("width", this.style.width)
+      video_frame.setAttribute("height", this.style.height)
+
       // Replace div with video
       this.parentNode.replaceChild(video_frame, this)
+
+      // Fit the video to the surrounding div
       $(".video").fitVids();
     }
     };
