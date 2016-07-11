@@ -3,7 +3,7 @@
 .portrait {
     width: 277.16px;
     height: 416px;
-    
+
     margin-right: 1.3em;
     margin-top: 0.2em;
     margin-bottom: 0.2em;
@@ -32,7 +32,5 @@
 
 .news .newsitem {
     margin-left: 5%;
-    margin-right: 5%;
     margin-bottom: 1.5em;
 }
-
