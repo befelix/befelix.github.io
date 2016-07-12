@@ -14,26 +14,16 @@ $(document).ready(function () {
 
     // Set css for element
     $(this).css({"width": new_width + 'px', "height": new_height + 'px'});
-  });
 
-  // Replace div with thumbs
-  for (var n = 0; n < videos.length; n++){
-    // Create image for youtube video
-    var video_div = videos[n];
-    // var video_div = $(this)
-    var video_img = document.createElement("img");
-    video_img.setAttribute("src", "http://i.ytimg.com/vi/" + video_div.id + "/hqdefault.jpg");
-    video_img.setAttribute("class", "thumb");
-    video_div.appendChild(video_img);
+    // Replace div with thumbs
+    $(this).append('<img class="thumb" src="http://i.ytimg.com/vi/' + $(this).attr("id") + '/hqdefault.jpg"></img>');
 
     // Add play button overlay
-    var play_button = document.createElement("div");
-    play_button.setAttribute("class", "play");
-    video_div.appendChild(play_button);
-  };
+    $(this).append('<div class="play"></div>');
+  });
 
   // Add click to the video im
-  videos.click(function(){
+  videos.click(function () {
 
     var parent = $(this).parent()
 
