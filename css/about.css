@@ -1,15 +1,12 @@
 
 /* About */
 .portrait {
-    width: 250px;
-    margin-right: 1.3em;
-    margin-top: 0.2em;
-    margin-bottom: 0.2em;
-}
-
-.about {
-    float: left;
-    margin-bottom: 1.5em;
+  float: right;
+  width: 220px;
+  max-width: 50%;
+  margin-left: 1em;
+  margin-top: 0.4em;
+  margin-bottom: 0.2em;
 }
 
 .about td {
@@ -17,21 +14,22 @@
 }
 
 .news{
-    /*width: 100%;*/
     clear: both;
+    margin-top: 2em;
 }
 
-.news .newsdate {
-    margin-left: 2.5%;
-    font-size: 1.25em;
-    font-weight: 600;
-    margin-bottom: 0.5em;
+.newsitem {
+  margin-left: 2.5%;
+  margin-bottom: 3em;
 }
 
-.news .newsitem {
-    /*width: 95%;*/
-    margin-left: 5%;
-    margin-bottom: 1.5em;
+/*Don't indent bib on phone */
+@media screen and (max-width: 700px) {
+  .newsitem { margin-left: 0; }
+}
+
+.newsitem p {
+  margin-bottom: 1em;
 }
 
 
