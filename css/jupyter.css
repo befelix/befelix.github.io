@@ -27,3 +27,8 @@ div.jupyter iframe {
   width: 100%;
   scrolling: no;
 }
+
+/*Hide notebook entry from bib*/
+li .notebook {
+  display: none;
+}

@@ -38,6 +38,12 @@
         </li>
       {% endif %}
 
+      {% if entry.jupyter %}
+      <li class="notebook">
+        <a href="{{site.baseurl}}/jupyter/{{entry.jupyter}}">Notebooks</a>
+      </li>
+      {% endif %}
+
       {% if entry.video %}
         <li>
           <a href="{{ entry.video }}" target="_blank">Video</a>

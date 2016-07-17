@@ -255,7 +255,7 @@
           </else-if>
           <else-if type="report">
             <group delimiter=", ">
-              
+
               <text macro="publisher" prefix="Technical report, "/>
               <group delimiter=" ">
                 <text variable="genre"/>
