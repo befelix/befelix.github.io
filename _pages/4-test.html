@@ -1,0 +1,60 @@
+---
+layout: page
+permalink: /test
+js:
+  - jquery
+---
+
+
+<a class="jupyter" target="nb1">nb1</a>
+<a class="jupyter" target="nb2">nb2</a>
+
+<script>
+</script>
+
+
+<div class="jupyter" content="cdc-2016/1d_example.html" target="nb1" style="display:none;"></div>
+<div class="jupyter" content="cdc-2016/inverted_pendulum.html" target="nb2" style="display:none;"></div>
+
+
+<script>
+  // Resize automatically according to content
+  function resizeIframe(iframe) {
+   $(iframe).height($(iframe).contents().height() + 30)
+  }
+
+  // Adaptive size of notebook
+  $(window).resize(function () {
+    $("iframe.jupyter").each(function() {
+      resizeIframe(this)
+    });
+  });
+
+  $(document).ready(function () {
+
+    // Only load iframes on click
+    $("a.jupyter").one("click", function (event) {
+
+      // div corresponding to the
+      var div = $("div.jupyter[target=" + $(this).attr("target") + "]")
+
+      div.append('<iframe class="jupyter" src="{{site.baseurl}}/assets/jupyter/' +
+                 div.attr("content") +
+                 '" width="100%" onload="resizeIframe(this)" style="border:none"></iframe>');
+    })
+
+    // Toggle visibility
+    $("a.jupyter").on("click", function (event) {
+
+      // Highlight current link
+      $("a.toggle.active").removeClass("active")
+      $(this).addClass("active")
+
+      // Show current div
+      $("div.jupyter").hide()
+      $("div.jupyter[target=" + $(this).attr("target") + "]").show()
+
+      resizeIframe(iframe_div.children("iframe.jupyter"))
+    });
+  })
+</script>
