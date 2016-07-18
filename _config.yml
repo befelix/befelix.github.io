@@ -13,8 +13,8 @@ description: > # this means to ignore newlines until "baseurl:"
   group at ETH Zurich. His research focuses on safe learning, with the
   goal of making robots learn without risking unsafe behavior during
   the learning process.
-baseurl: "/befelix" # the subpath of your site, e.g. /blog
-url: "http://people.inf.ethz.ch" # the base hostname & protocol for your site
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://befelix.github.io" # the base hostname & protocol for your site
 github_username:  befelix
 
 # Build settings
