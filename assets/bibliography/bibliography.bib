@@ -15,6 +15,7 @@
   publisher = {ArXiv},
   author = {Berkenkamp, Felix and Krause, Andreas and Angela P. Schoellig},
   year = {2016},
+  month = {February},
   url = {\href{http://arxiv.org/abs/1602.04450}{arXiv:1602.04450 [cs.RO]}},
   abstract = {Robotics algorithms typically depend on various parameters, the choice of which significantly affects the robot's performance. While an initial guess for the parameters may be obtained from dynamic models of the robot, parameters are usually tuned manually on the real system to achieve the best performance. Optimization algorithms, such as Bayesian optimization, have been used to automate this process. However, these methods may evaluate parameters during the optimization process that lead to safety-critical system failures. Recently, a safe Bayesian optimization algorithm, called SafeOpt, has been developed and applied in robotics, which guarantees that the performance of the system never falls below a critical value; that is, safety is defined based on the performance function. However, coupling performance and safety is not desirable in most cases. In this paper, we define separate functions for performance and safety. We present a generalized SafeOpt algorithm that, given an initial safe guess for the parameters, maximizes performance but only evaluates parameters that satisfy all safety constraints with high probability. It achieves this by modeling the underlying and unknown performance and constraint functions as Gaussian processes. We provide a theoretical analysis and demonstrate in experiments on a quadrotor vehicle that the proposed algorithm enables fast, automatic, and safe optimization of tuning parameters. Moreover, we show an extension to context- or environment-dependent, safe optimization in the experiments.},
   file = {http://arxiv.org/pdf/1602.04450},
@@ -73,7 +74,7 @@
   booktitle = {Proc. of the European Control Conference (ECC)},
   author = {Berkenkamp, Felix and Schoellig, Angela P.},
   year = {2015},
-  month = {june},
+  month = {June},
   pages = {2501--2506},
   abstract = {This paper introduces a learning-based robust control algorithm that provides robust stability and performance guarantees during learning. The approach uses Gaussian process~(GP) regression based on data gathered during operation to update an initial model of the system and to gradually decrease the uncertainty related to this model. Embedding this data-based update scheme in a robust control framework guarantees stability during the learning process. Traditional robust control approaches have not considered online adaptation of the model and its uncertainty before. As a result, their controllers do not improve performance during operation. Typical machine learning algorithms that have achieved similar high-performance behavior by adapting the model and controller online do not provide the guarantees presented in this paper. In particular, this paper considers a stabilization task, linearizes the nonlinear, GP-based model around a desired operating point, and solves a convex optimization problem to obtain a linear robust controller. The resulting performance improvements due to the learning-based controller are demonstrated in experiments on a quadrotor vehicle.},
   file = {http://www.dynsyslab.org/wp-content/papercite-data/pdf/berkenkamp-ecc15.pdf},
@@ -85,6 +86,7 @@
   booktitle = {Proc. of the Workshop on Machine Learning in Planning and Control of Robot Motion, IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
   author = {Berkenkamp, Felix and Schoellig, Angela P.},
   year = {2014},
+  month = {September},
   abstract = {To control dynamic systems, modern control theory relies on accurate mathematical models that describe the system behavior. Machine learning methods have proven to be an effective method to compensate for initial errors in these models and to achieve high-performance maneuvers by adapting the system model and control online. However, these methods usually do not guarantee stability during the learning process. On the other hand, the control community has traditionally accounted for model uncertainties by designing robust controllers. Robust controllers use a mathematical description of the uncertainty in the dynamic system derived {prior} to operation and guarantee robust stability for all uncertainties. Unlike machine learning methods, robust control does not improve the control performance  by adapting the model online. This paper combines machine learning and robust control theory for the first time with the goal of improving control performance while guaranteeing stability. Data gathered during operation is used to reduce the  uncertainty in the model and to learn systematic errors. Specifically, a nonlinear, nonparametric model of the unknown dynamics is learned with a Gaussian Process. This model is used for the computation of a linear robust controller, which guarantees stability around an operating point for all uncertainties. As a result, the robust controller improves its performance online while guaranteeing robust stability. A simulation example illustrates the performance improvements due to the learning-based robust controller.},
 }
 
@@ -97,6 +99,7 @@
   journal = {Energy and Buildings},
   author = {Berkenkamp, Felix and Gwerder, Markus},
   year = {2014},
+  month = {July},
   pages = {233--240},
   file = {http://www.sciencedirect.com/science/article/pii/S0378778814005921},
 }

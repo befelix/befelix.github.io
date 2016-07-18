@@ -10,12 +10,12 @@ title: Felix Berkenkamp
 email: befelix@inf.ethz.ch
 description: > # this means to ignore newlines until "baseurl:"
   Felix Berkenkamp is a PhD student at the Learning and Adaptive Systems
-  group at ETH Zurich. His research focuses on safe learning, with the 
+  group at ETH Zurich. His research focuses on safe learning, with the
   goal of making robots learn without risking unsafe behavior during
   the learning process.
 baseurl: "/befelix" # the subpath of your site, e.g. /blog
 url: "http://people.inf.ethz.ch" # the base hostname & protocol for your site
-github_username:  befelix 
+github_username:  befelix
 
 # Build settings
 sass:
@@ -28,8 +28,8 @@ scholar:
   style: assets/bibliography/bibstyle.csl
   locale: en
 
-  sort_by: none
-  order: ascending
+  sort_by: year,month
+  order: descending
 
   group_by: none
   group_order: ascending
@@ -52,4 +52,3 @@ scholar:
   details_link:   Details
 
   query: "@*"
-
