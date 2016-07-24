@@ -22,14 +22,15 @@
   code = {https://github.com/befelix/SafeOpt},
 }
 
-@techreport{Berkenkamp2016ROA,
+@inproceedings{Berkenkamp2016ROA,
   title = {Safe learning of regions of attraction in nonlinear systems with {G}aussian processes},
-  publisher = {ArXiv},
+  Booktitle = {Proc. of the IEEE Conference on Decision and Control},
   author = {Felix Berkenkamp and Riccardo Moriconi and Angela P. Schoellig and Andreas Krause},
   year = {2016},
-  month = {March},
+  month = {December},
   url = {\href{http://arxiv.org/abs/1603.04915}{arXiv:1603.04915 [cs.SY]}},
   abstract = {Control theory can provide useful insights into the properties of controlled, dynamic systems. One important property of nonlinear systems is the region of attraction (ROA), which is a safe subset of the state space in which a given controller renders an equilibrium point asymptotically stable. The ROA is typically estimated based on a model of the system. However, since models are only an approximation of the real world, the resulting estimated safe region can contain states outside the ROA of the real system. This is not acceptable in safety-critical applications. In this paper, we consider an approach that learns the ROA from experiments on a real system, without ever leaving the ROA of the real system. This approach enables us to find an estimate of the real ROA, without risking safety-critical failures. Based on regularity assumptions on the model errors in terms of a Gaussian process prior, we determine a region in which an equilibrium point is asymptotically stable with high probability, according to an underlying Lyapunov function. Moreover, we actively select areas of the state space to evaluate in order to expand the ROA. We demonstrate the effectiveness of this method in simulated experiments.},
+  note = {(to appear)},
   file = {http://arxiv.org/pdf/1603.04915},
   code = {https://github.com/befelix/lyapunov-learning},
   jupyter = {lyapunov}

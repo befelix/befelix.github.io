@@ -4,7 +4,9 @@
 <div class="reference" key="{{key}}">
 
   {{ reference }}
-
+  {{ if entry.note }}  
+    {{entry.note}}
+  {{ endif }}
   <br>
 
   {{ if entry.comment }}
