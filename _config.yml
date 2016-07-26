@@ -24,6 +24,10 @@ include: ['_pages']
 karmdown:
   input: GFM
 
+gems:
+  - jekyll-sitemap
+
+
 scholar:
   style: assets/bibliography/bibstyle.csl
   locale: en
