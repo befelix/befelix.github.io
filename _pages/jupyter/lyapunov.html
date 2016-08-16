@@ -9,7 +9,6 @@ css:
   - publications
   - jupyter
 ---
-<noscript><b style="color:blue;">I'm sorry, but for working tabs you need javascript :(</b><br><br></noscript>
 
 {% bibliography --query @*[key=Berkenkamp2016ROA] %}
 
@@ -17,12 +16,17 @@ css:
 
 <ul class="jupyter">
   <li>
-    <a class="jupyter" target="nb1">1D example</a>
+    <a class="jupyter" target="nb1" href="/assets/jupyter/lyapunov/1d_example.html">1D example</a>
   </li>
   <li>
-    <a class="jupyter" target="nb2">Inverted pendulum</a>
+    <a class="jupyter" target="nb2" href="/assets/jupyter/lyapunov/inverted_pendulum.html">Inverted pendulum</a>
   </li>
 </ul>
+
+<!-- Remove links if we have javascript  -->
+<script>
+$("a.jupyter").removeAttr("href");
+</script>
 
 <div class="jupyter" id="1d_example" content="lyapunov/1d_example.html" target="nb1"></div>
 <div class="jupyter" id="inverted_pendulum" content="lyapunov/inverted_pendulum.html" target="nb2"></div>
