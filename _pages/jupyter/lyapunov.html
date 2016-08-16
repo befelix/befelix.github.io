@@ -24,7 +24,21 @@ css:
   </li>
 </ul>
 
-<div class="jupyter active" content="lyapunov/1d_example.html" target="nb1"></div>
-<div class="jupyter" content="lyapunov/inverted_pendulum.html" target="nb2"></div>
+<div class="jupyter" id="1d_example" content="lyapunov/1d_example.html" target="nb1"></div>
+<div class="jupyter" id="inverted_pendulum" content="lyapunov/inverted_pendulum.html" target="nb2"></div>
 
 <a href="#">Back to top</a>
+
+<!-- Activate the current element -->
+<script>
+var hash = window.location.hash;
+
+// Default value for hash
+if ($(hash).length == 0) {
+  hash = "#1d_example";
+  window.location.hash = "";
+}
+
+// Expand the wanted element
+$(hash).addClass("active");
+</script>
