@@ -4,7 +4,6 @@ permalink: /
 js:
   - jquery
   - jquery.fitvids
-  - youtube
 css:
   - about
 ---
@@ -40,20 +39,67 @@ css:
   <div class="newsitem">
     <p>Safe parameter optimization: ICRA paper "<a href="{{ site.baseurl }}/publications#Berkenkamp2016SafeOpt">Safe Controller Optimization for Quadrotors with Gaussian Processes</a>".</p>
 
-    <div class="youtube" id="GiqNQdzc5TI" style="width:560px; height:315px;">
-      <noscript>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/GiqNQdzc5TI" frameborder="0" allowfullscreen></iframe>
-      </noscript>
-    </div>
+    <a class="videolink" href="https://www.youtube.com/watch?v=GiqNQdzc5TI" target="_blank">
+      <div class="youtube" id="GiqNQdzc5TI" style="width:560px; height:315px;">
+        <img class="thumb" src="http://i.ytimg.com/vi/GiqNQdzc5TI/hqdefault.jpg"></img>
+        <div class="play"></div>
+      </div>
+    </a>
   </div>
 
   <div class="newsitem">
     <p>Robust learning control: ECC paper "<a href="{{ site.baseurl }}/publications#Berkenkamp2015Robust">Safe and robust learning control with Gaussian processes</a>"</p>
 
-    <div class="youtube" id="YqhLnCm0KXY" style="width:560px; height:315px;">
-      <noscript>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/YqhLnCm0KXY" frameborder="0" allowfullscreen></iframe>
-      </noscript>
-    </div>
+    <a class="videolink" href="https://www.youtube.com/watch?v=YqhLnCm0KXY" target="_blank">
+      <div class="youtube" id="YqhLnCm0KXY" style="width:560px; height:315px;">
+        <img class="thumb" src="http://i.ytimg.com/vi/YqhLnCm0KXY/hqdefault.jpg"></img>
+        <div class="play"></div>
+      </div>
+    </a>
   </div>
 </div>
+
+<script>
+  function resize(element) {
+
+    var height = element.height();
+    var width = element.width();
+
+    // Scale down/up div size to fit surrounding container
+    var new_width = element.parents('div').width();
+    var new_height = height * new_width / width;
+
+    // Set css for element
+    element.css({"width": new_width, "height": new_height});
+  }
+
+  var videos = $("div.youtube");
+
+  // Rescale youtubes to fit page width
+  videos.each(function() {
+    resize($(this))
+  });
+
+  // Disable video link
+  $("a.videolink").click(function() { return false; });
+
+  // Add click to the video
+  videos.click(function () {
+
+    var parent = $(this).parent()
+
+    $(this).replaceWith("<iframe width='560' height='315'         src='https://www.youtube.com/embed/" +
+                        this.id +
+                        "?autoplay=1' frameborder='0' allowfullscreen></iframe>")
+
+    // Fit the video to the surrounding element (div)
+    parent.fitVids();
+  });
+
+  // Make sure elements stay correct size afte resizing
+  $(window).resize(function () {
+    $("div.youtube").each(function() {
+      resize($(this))
+    });
+  });
+</script>
