@@ -15,18 +15,22 @@
 
     {% include footer.html %}
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script>
-     (function defer() {
-          if (window.jQuery) {
-                // [INSERT CODE HERE
-                {% for script in page.inline %}
-                  {% include js/{{ script }}.js %}
-                {% endfor %}
-                {% include js/contact.js %}
-          } else {
-               setTimeout(function() { defer() }, 50);
-          }
-     })();
+      // Fallback to local version of jQuery if CDN is down
+      if (!window.jQuery) {
+        document.write('<script src="{{ site.baseurl }}/javascript/jquery-3.0.0.min.js"><\/script>');
+      }
+    </script>
+    {% if page.js %}
+      <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.js"></script>
+    {% endif %}
+
+    <script>
+      {% for script in page.inline %}
+        {% include js/{{ script }}.js %}
+      {% endfor %}
+      {% include js/contact.js %}
     </script>
 
     {% include analytics.html %}
