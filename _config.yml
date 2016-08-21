@@ -20,6 +20,8 @@ github_username:  befelix
 # Build settings
 sass:
   sass_dir: _sass
+  style: compressed
+
 include: ['_pages']
 karmdown:
   input: GFM
