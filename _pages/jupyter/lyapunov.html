@@ -3,10 +3,14 @@ layout: page
 permalink: /jupyter/lyapunov
 js:
   - jquery
+inline:
+  - jupyter
+  - publications
 css:
   - publications
   - jupyter
 ---
+
 
 {% bibliography --query @*[key=Berkenkamp2016ROA] %}
 
@@ -21,28 +25,7 @@ css:
   </li>
 </ul>
 
-<!-- Remove links if we have javascript  -->
-<script>
-$("a.jupyter").removeAttr("href");
-</script>
-
 <div class="jupyter" id="1d_example" content="lyapunov/1d_example.html" target="nb1"></div>
 <div class="jupyter" id="inverted_pendulum" content="lyapunov/inverted_pendulum.html" target="nb2"></div>
 
 <a href="#">Back to top</a>
-
-<!-- Activate the current element -->
-<script>
-var hash = window.location.hash;
-
-// Default value for hash
-if ($(hash).length == 0) {
-  hash = "#1d_example";
-}
-
-// Expand the wanted element
-$(hash).addClass("active");
-
-{% include js/jupyter.js %}
-{% include js/publications.js %}
-</script>

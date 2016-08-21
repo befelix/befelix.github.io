@@ -1,4 +1,17 @@
+var hash = window.location.hash;
 
+// Default value for hash
+if ($(hash).length == 0) {
+  hash = "#1d_example";
+}
+
+// Expand the wanted element
+$(hash).addClass("active");
+
+// Activate the current link
+$("a.jupyter").removeAttr("href");
+
+// Add funcitonality for switching
 function toggleMaterial (key, element) {
 
   var parent = $(".reference[data-key=" + key + "]");
