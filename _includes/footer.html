@@ -6,8 +6,8 @@
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
           <li>{{ site.title }}</li>
-          <li><script>mail("befelix", "inf.ethz.ch")</script></li>
-          <li><script>skype('felix.ber', 'Skype')</script></li>
+          <li><a href="mailto:be&lt;my first name&gt;@inf.ethz.ch" class="email">be&lt;my first name&gt;@inf.ethz.ch</a></li>
+          <li><a href="" class="skype">Skype at &lt;my first name&gt;.ber</a></li>
         </ul>
       </div>
 
@@ -26,4 +26,7 @@
 
   </div>
 
+  <script>
+    {% include js/contact.js %}
+  </script>
 </footer>
