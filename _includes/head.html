@@ -28,8 +28,10 @@
   <script src="{{ site.baseurl }}/javascript/contact.js"></script>
 
   {% if page.css %}
-    {% for css in page.css %}
-      <link rel="stylesheet" href="{{ site.baseurl }}/css/{{ css }}.css">
+    {% for stylesheet in page.css %}
+      <style type="text/css">
+        {% include css/{{ stylesheet }}.css %}
+      </style>
     {% endfor %}
   {% endif %}
 </head>
