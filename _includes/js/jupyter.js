@@ -1,6 +1,3 @@
----
----
-
 // Resize automatically according to content
 function resizeIframe(iframe) {
  $(iframe).height($(iframe).contents().height() + 30)

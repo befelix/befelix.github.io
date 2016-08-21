@@ -3,8 +3,6 @@ layout: page
 permalink: /jupyter/lyapunov
 js:
   - jquery
-  - publications
-  - jupyter
 css:
   - publications
   - jupyter
@@ -44,4 +42,7 @@ if ($(hash).length == 0) {
 
 // Expand the wanted element
 $(hash).addClass("active");
+
+{% include js/jupyter.js %}
+{% include js/publications.js %}
 </script>
