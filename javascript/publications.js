@@ -1,7 +1,7 @@
 
 function toggleMaterial (key, element) {
 
-  var parent = $(".reference[key=" + key + "]");
+  var parent = $(".reference[data-key=" + key + "]");
   var new_element = parent.find("." + element);
   var new_toggle = parent.find("[content=" + element + "]");
 
@@ -33,7 +33,7 @@ function toggleMaterial (key, element) {
 $(document).ready(function (){
   $(".toggle").click(function () {
     var element = $(this).closest("li").attr("content");
-    var key = $(this).closest(".reference").attr("key");
+    var key = $(this).closest(".reference").attr("data-key");
     toggleMaterial(key, element);
   });
 });

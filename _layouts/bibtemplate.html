@@ -1,19 +1,19 @@
 ---
 ---
 
-<div class="reference" key="{{key}}">
+<div class="reference" data-key="{{key}}">
 
   {{ reference }}
-  {{ if entry.note }}  
+  {% if entry.note %}
     {{entry.note}}
-  {{ endif }}
+  {% endif %}
   <br>
 
-  {{ if entry.comment }}
+  {% if entry.comment %}
   <div class="comment">
     <ul><li><b>{{ entry.comment }}</b></li></ul>
   </div>
-  {{ endif }}
+  {% endif %}
 
   <!-- Add clickable toggles for bonus material -->
   <div class="links">
