@@ -32,16 +32,14 @@
   margin-bottom: 1em;
 }
 
-
 /*Video replacement*/
-
 .youtube {
   background-color: #000;
   overflow: hidden;
   position: relative;
-  cursor: hand;
-  cursor: pointer
+  cursor: pointer;
 }
+
 .youtube .thumb {
   bottom: 0;
   display: block;
@@ -54,8 +52,8 @@
   width: 100%;
   height: auto
 }
+
 .youtube .play {
-  filter: alpha(opacity=80);
   opacity: .8;
   height: 77px;
   left: 50%;
