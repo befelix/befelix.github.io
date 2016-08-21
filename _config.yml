@@ -29,7 +29,7 @@ gems:
 
 
 scholar:
-  style: assets/bibliography/bibstyle.csl
+  style: _assets/bibliography/bibstyle.csl
   locale: en
 
   sort_by: year,month
@@ -38,7 +38,7 @@ scholar:
   group_by: none
   group_order: ascending
 
-  source: assets/bibliography
+  source: _assets/bibliography
   bibliography: bibliography.bib
   bibliography_template: bibtemplate
 
