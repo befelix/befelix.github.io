@@ -57,6 +57,18 @@
           <a href="{{ entry.pitch }}" target="_blank">Pitch</a>
         </li>
       {% endif %}
+
+      {% if entry.talk %}
+        <li>
+          <a href="{{ entry.talk }}" target="_blank">Talk</a>
+        </li>
+      {% endif %}
+
+      {% if entry.slides %}
+      <li>
+        <a href="{{ entry.slides }}" target="_blank">Slides</a>
+      </li>
+      {% endif %}
     </ul>
   </div>
 
