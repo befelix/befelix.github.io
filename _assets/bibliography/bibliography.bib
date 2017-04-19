@@ -1,8 +1,19 @@
+@inproceedings{Duivenvoorden2017SafeOptSwarm,
+	author = {Rikky R.P.R. Duivenvoorden and Felix Berkenkamp and Nicolas Carion and Andreas Krause and Angela P. Schoellig},
+	booktitle = {Proc. of the IFAC (International Federation of Automatic Control) World Congress},
+	month = {July},
+	title = {Constrained {B}ayesian optimization with particle Swarms for Safe Adaptive Controller Tuning},
+	year = 2017,
+  abstract = {Tuning controller parameters is a recurring and time-consuming problem in control. This is especially true in the field of adaptive control, where good performance is typically only achieved after significant tuning. Recently, it has been shown that constrained Bayesian optimization is a promising approach to automate the tuning process without risking system failures during the optimization process. However, this approach is computationally too expensive for tuning more than a couple of parameters. In this paper, we provide a heuristic in order to efficiently perform constrained Bayesian optimization in high-dimensional parameter spaces by using an adaptive discretization based on particle swarms. We apply the method to the tuning problem of an L1 adaptive controller on a quadrotor vehicle and show that we can reliably and automatically tune parameters in experiments.},
+  file = {http://www.dynsyslab.org/wp-content/papercite-data/pdf/duivenvoorden-ifac17.pdf},
+  code = {https://github.com/befelix/SafeOpt},
+}
+
 @inproceedings{Marco17VirtualvsReal,
 	author = {Alonso Marco and Felix Berkenkamp and Philipp Hennig and Angela P. Schoellig and Andreas Krause and Stefan Schaal and Sebastian Trimpe},
 	booktitle = {Proc. of the International Conference on Robotics and Automation (ICRA)},
 	month = {May},
-	title = {Virtual vs. Real: Trading Off Simulations and Physical Experiments in Reinforcement Learning with Bayesian Optimization},
+	title = {Virtual vs. Real: Trading Off Simulations and Physical Experiments in Reinforcement Learning with {B}ayesian Optimization},
 	year = 2017,
   abstract = {In practice, the parameters of control policies are often tuned manually. This is time-consuming and frustrating. Reinforcement learning is a promising alternative that aims to automate this process, yet often requires too many experiments to be practical. In this paper, we propose a solution to this problem by exploiting prior knowledge from simulations, which are readily available for most robotic platforms. Specifically, we extend Entropy Search, a Bayesian optimization algorithm that maximizes information gain from each experiment, to the case of multiple information sources. The result is a principled way to automatically combine cheap, but inaccurate information from simulations with expensive and accurate physical experiments in a cost-effective manner. We apply the resulting method to a cart-pole system, which confirms that the algorithm can find good control policies with fewer experiments than standard Bayesian optimization on the physical system only.},
   file = {https://las.inf.ethz.ch/files/marco17virtualvsreal.pdf}}
@@ -20,7 +31,7 @@
 }
 
 @techreport{Berkenkamp2016BayesianSafety,
-  title = {Bayesian optimization with safety constraints: safe and automatic parameter tuning in robotics},
+  title = {Bayesian Optimization with Safety Constraints: Safe and Automatic Parameter Tuning in Robotics},
   publisher = {ArXiv},
   author = {Berkenkamp, Felix and Krause, Andreas and Angela P. Schoellig},
   year = {2016},
@@ -32,7 +43,7 @@
 }
 
 @inproceedings{Berkenkamp2016ROA,
-  title = {Safe learning of regions of attraction for uncertain, nonlinear systems with {G}aussian processes},
+  title = {Safe Learning of Regions of Attraction for Uncertain, Nonlinear Systems with {G}aussian Processes},
   Booktitle = {Proc. of the IEEE Conference on Decision and Control},
   author = {Felix Berkenkamp and Riccardo Moriconi and Angela P. Schoellig and Andreas Krause},
   year = {2016},
@@ -48,7 +59,7 @@
 }
 
 @inproceedings{Turchetta2016SafeMDP,
-  title = {Safe exploration in finite {M}arkov {D}ecision {P}rocesses with {G}aussian processes},
+  title = {Safe Exploration in Finite {M}arkov {D}ecision {P}rocesses with {G}aussian Processes},
   Booktitle = {Proc. of the Conference on Neural Information Processing Systems (NIPS)},
   author = {Matteo Turchetta and Felix Berkenkamp and Andreas Krause},
   year = {2016},
@@ -62,7 +73,7 @@
 }
 
 @inproceedings{Berkenkamp2016SafeOpt,
-  title = {Safe controller optimization for quadrotors with {G}aussian processes},
+  title = {Safe Controller Optimization for Quadrotors with {G}aussian Processes},
   booktitle = {Proc. of the IEEE International Conference on Robotics and Automation (ICRA)},
   author = {Felix Berkenkamp and Angela P. Schoellig and Andreas Krause},
   year = {2016},
@@ -77,7 +88,7 @@
 }
 
 @inproceedings{Berkenkamp2015SafeTuning,
-  title = {Safe and automatic controller tuning with {{Gaussian}} processes},
+  title = {Safe and Automatic Controller Tuning with {{Gaussian}} Processes},
   booktitle = {Proc. of the Workshop on Machine Learning in Planning and Control of Robot Motion, IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
   author = {Berkenkamp, Felix and Schoellig, Angela P. and Krause, Andreas},
   year = {2015},
@@ -85,7 +96,7 @@
 }
 
 @inproceedings{Berkenkamp2015Robust,
-  title = {Safe and robust learning control with {{Gaussian}} processes},
+  title = {Safe and Robust Learning Control with {{Gaussian}} Processes},
   booktitle = {Proc. of the European Control Conference (ECC)},
   author = {Berkenkamp, Felix and Schoellig, Angela P.},
   year = {2015},
@@ -97,7 +108,7 @@
 }
 
 @inproceedings{Berkenkamp2014LearningBased,
-  title = {Learning-based robust control: guaranteeing stability while improving performance},
+  title = {Learning-based Robust Control: Guaranteeing Stability while Improving Performance},
   booktitle = {Proc. of the Workshop on Machine Learning in Planning and Control of Robot Motion, IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
   author = {Berkenkamp, Felix and Schoellig, Angela P.},
   year = {2014},
@@ -106,7 +117,7 @@
 }
 
 @article{Berkenkamp2014Hybrid,
-  title = {Hybrid model predictive control of stratified thermal storages in buildings},
+  title = {Hybrid Model Predictive Control of Stratified Thermal Storages in Buildings},
   volume = {84},
   issn = {0378-7788},
   abstract = {In this paper a generic model predictive control (MPC) algorithm for the management of stratified thermal storage tanks in buildings is proposed that can be used independently of the building's heat/cold generation, consumption and consumption control. The main components of the considered storage management are the short term load forecasting (STLF) of the heat/cold consumer(s) using weather forecast, the MPC algorithm using a bilinear dynamic model of the stratified storage and operating modes of the heat/cold generator(s), modeled as static operating points. The MPC algorithm chooses between these operating modes to satisfy the predicted cold demand with minimal costs. By considering the generator(s) in terms of operating modes the bilinearity in the storage model is resolved which leads to a hybrid MPC problem. For computational efficiency this problem is approximated by an iterative algorithm that converges to a close to optimal solution. Simulation results suggest that the approach is well suited for the use in buildings with a limited number of heat/cold generators. Additionally, the approach is promising for practical use because of its independence from the heat/cold consumer's control and because it requires limited information and instrumentation on the plant, i.e. low costs for control equipment.},
