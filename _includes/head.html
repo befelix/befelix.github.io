@@ -7,6 +7,8 @@
   <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
   <style type="text/css">
     {% capture include_to_scssify %}
       {% include css/main.scss %}
@@ -14,11 +16,11 @@
     {{ include_to_scssify | scssify }}
   </style>
 
-  {% if page.css %}
+  <!-- {% if page.css %}
     {% for stylesheet in page.css %}
       <style type="text/css">
         {% include css/{{ stylesheet }}.css %}
       </style>
     {% endfor %}
-  {% endif %}
+  {% endif %} -->
 </head>
