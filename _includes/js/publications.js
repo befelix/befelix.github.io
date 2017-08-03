@@ -70,3 +70,7 @@ $("a.jupyter").removeAttr("href");
 //     }
 //   });
 // });
+
+// Highlight the element that we've nacigated too
+var hash = window.location.hash;
+$(hash).parent().css("background-color", "#e6e6ff");
