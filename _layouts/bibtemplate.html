@@ -19,13 +19,13 @@
   <div class="links">
     <ul>
       {% if entry.abstract %}
-        <li class="toggle" content="abstract">
-          <a>Abstract</a>
+        <li>
+          <a data-toggle="collapse" data-parent="#{{key}}-material" href="#{{key}}-abstract">Abstract</a>
         </li>
       {% endif %}
 
-      <li class="toggle" content="bibtex">
-        <a>BibTex</a>
+      <li>
+        <a data-toggle="collapse" data-parent="#{{key}}-material" href="#{{key}}-bibtex">BibTex</a>
       </li>
 
       {% if entry.file %}
@@ -73,18 +73,20 @@
   </div>
 
   <!-- Add bonus material -->
-  <div class="materials">
+  <div class="materials" id="{{key}}-material">
 
     {% if entry.abstract %}
-      <p class="abstract">
+    <div class="collapse" id="{{key}}-abstract">
+      <p class="abstract p-2">
         {{entry.abstract}}
         <br>
-        <a class="mobile-close">Close</a>
+        <a class="hidden-md-up" data-toggle="collapse" href="#{{key}}-abstract">Close</a>
       </p>
+    </div>
     {% endif %}
 
     {% if entry.bibtex %}
-      <pre class="bibtex">
+      <pre class="collapse" id="{{key}}-bibtex">
 {{      entry.bibtex }}
       </pre>
     {% endif %}
