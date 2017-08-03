@@ -40,11 +40,13 @@ $on-laptop:        800px;
     }
 }
 
-
+div.container {
+  max-width: $content-width;
+  width: 100%;
+}
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
         "base",
-        "layout",
-        "syntax-highlighting"
+        "layout"
 ;
