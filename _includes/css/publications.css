@@ -40,10 +40,9 @@ li {
     /*padding: 1em;*/
     /*padding-bottom: 0;*/
 }
-
 /* Only show close button on phone */
 @media screen and (min-width: 700px) {
-  .mobile-close { display: none; }
+  .mobile-only { display: none; }
 }
 
 /*Don't indent bib on phone */
