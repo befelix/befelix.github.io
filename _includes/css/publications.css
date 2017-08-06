@@ -1,38 +1,34 @@
 /* Publications*/
-
-li {
+ol.bibliography li {
     display: inline;
 }
 
-.comment ul {
-    margin: 0;
-}
-
-.comment li {
+/* Color of the comment atribute */
+.comment {
     color: gray;
 }
 
-.links li {
-    margin-right: 1em;
+.flex-wrap a.nav-link {
+  padding: 0.5em;
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
 }
 
-.links li.active a{
-    background-color: #99ccff;
-    color: #0066ff;
+@media screen and (max-width: 700px) {
+  .flex-wrap a.nav-link {
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+  }
 }
 
 /* Abstract */
 .materials p {
-    /*background-color: #f2f2f2;*/
+    background-color: #f2f2f2;
 }
 
 /* Bibtex */
 .materials pre {
-    /*background-color: #f2f2f2;*/
-    /*display: none;*/
-    /*overflow-x: scroll;*/
-    /*padding: 1em;*/
-    /*padding-bottom: 0;*/
+    background-color: #f2f2f2;
 }
 
 /*Don't indent bib on phone */

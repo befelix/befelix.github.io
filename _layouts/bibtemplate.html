@@ -1,7 +1,7 @@
 ---
 ---
 
-<div class="reference" data-key="{{key}}">
+<div class="reference" data-key="{{key}}" id='reference-{{key}}'>
 
   {{ reference }}
   {% if entry.note %}
@@ -11,82 +11,82 @@
 
   {% if entry.comment %}
   <div class="comment">
-    <ul><li><b>{{ entry.comment }}</b></li></ul>
+      <b>{{ entry.comment }}</b>
   </div>
   {% endif %}
 
   <!-- Add clickable toggles for bonus material -->
   <div class="links mb-2">
-    <ul class="pl-0">
+    <ul class="nav nav-pills flex-wrap" role="tablist">
       {% if entry.abstract %}
-        <li>
-          <a data-toggle="collapse" data-parent="#{{key}}-material" href="#{{key}}-abstract">Abstract</a>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#{{key}}-abstract" id="button-{{key}}-abstract">Abstract</a>
         </li>
       {% endif %}
 
-      <li>
-        <a data-toggle="collapse" data-parent="#{{key}}-material" href="#{{key}}-bibtex">BibTex</a>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#{{key}}-bibtex">BibTex</a>
       </li>
 
       {% if entry.file %}
-        <li>
-          <a href="{{ entry.file }}" target="_blank">PDF</a>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ entry.file }}" target="_blank">PDF</a>
         </li>
       {% endif %}
 
       {% if entry.code %}
-        <li>
-          <a href="{{ entry.code }}" target="_blank">Code</a>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ entry.code }}" target="_blank">Code</a>
         </li>
       {% endif %}
 
       {% if entry.jupyter %}
-      <li class="notebook">
-        <a href="{{site.baseurl}}/jupyter/{{entry.jupyter}}">Notebooks</a>
+      <li class="nav-item notebook">
+        <a class="nav-link" href="{{site.baseurl}}/jupyter/{{entry.jupyter}}">Notebooks</a>
       </li>
       {% endif %}
 
       {% if entry.video %}
-        <li>
-          <a href="{{ entry.video }}" target="_blank">Video</a>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ entry.video }}" target="_blank">Video</a>
         </li>
       {% endif %}
 
       {% if entry.pitch %}
-        <li>
-          <a href="{{ entry.pitch }}" target="_blank">Pitch</a>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ entry.pitch }}" target="_blank">Pitch</a>
         </li>
       {% endif %}
 
       {% if entry.talk %}
-        <li>
-          <a href="{{ entry.talk }}" target="_blank">Talk</a>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ entry.talk }}" target="_blank">Talk</a>
         </li>
       {% endif %}
 
       {% if entry.slides %}
-      <li>
-        <a href="{{ entry.slides }}" target="_blank">Slides</a>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ entry.slides }}" target="_blank">Slides</a>
       </li>
       {% endif %}
     </ul>
   </div>
 
   <!-- Add bonus material -->
-  <div class="materials" id="{{key}}-material">
+  <div class="materials tab-content" id="{{key}}-material">
 
     {% if entry.abstract %}
-    <div class="collapse" id="{{key}}-abstract">
+    <div class="tab-pane" role="tabpanel" id="{{key}}-abstract">
       <p class="abstract p-2">
         {{entry.abstract}}
         <br>
-        <a class="hidden-md-up" data-toggle="collapse" href="#{{key}}-abstract">Close</a>
+        <a class="hidden-md-up duplicate" dublicate-target="#button-{{key}}-abstract" href="#reference-{{key}}">Close</a>
       </p>
     </div>
     {% endif %}
 
     {% if entry.bibtex %}
-      <pre class="collapse" id="{{key}}-bibtex">
+      <pre class="tab-pane" role="tabpanel" id="{{key}}-bibtex">
 {{      entry.bibtex }}
       </pre>
     {% endif %}
