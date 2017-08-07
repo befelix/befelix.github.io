@@ -11,14 +11,15 @@
 
   <style type="text/css">
     {% capture include_to_scssify %}
-      {% include css/main.scss %}
+      {% if page.css %}
+        {% for stylesheet in page.css %}
+          {% include css/{{ stylesheet }}.scss %}
+        {% endfor %}
+      {% else %}
+        {% include css/default.scss %}
+      {% endif %}
     {% endcapture %}
-    {{ include_to_scssify | scssify }}
 
-    {% if page.css %}
-      {% for stylesheet in page.css %}
-          {% include css/{{ stylesheet }}.css %}
-      {% endfor %}
-    {% endif %}
+    {{ include_to_scssify | scssify }}
   </style>
 </head>

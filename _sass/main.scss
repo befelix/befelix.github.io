@@ -1,7 +1,5 @@
 @charset "utf-8";
 
-
-
 // Our variables
 $base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $base-font-size:   16px;
@@ -51,6 +49,4 @@ header nav{
 }
 
 // Import partials from `sass_dir` (defaults to `_sass`)
-@import
-        "base"
-;
+@import "base";
