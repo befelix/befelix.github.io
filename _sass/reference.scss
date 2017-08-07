@@ -22,13 +22,16 @@ ol.bibliography li {
 }
 
 /* Abstract */
-.materials p {
-    background-color: #f2f2f2;
+div.materials {
+background-color: #f2f2f2;
 }
 
-/* Bibtex */
+.materials div {
+  padding: 0.5em;
+}
+
 .materials pre {
-    background-color: #f2f2f2;
+  padding: 0.5em;
 }
 
 /*Don't indent bib on phone */
