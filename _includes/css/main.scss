@@ -45,6 +45,11 @@ div.container {
   width: 100%;
 }
 
+header nav{
+  max-width: $content-width;
+  width: 100%;
+}
+
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
         "base",

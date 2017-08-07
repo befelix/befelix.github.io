@@ -14,13 +14,11 @@
       {% include css/main.scss %}
     {% endcapture %}
     {{ include_to_scssify | scssify }}
-  </style>
 
-  {% if page.css %}
-    {% for stylesheet in page.css %}
-      <style type="text/css">
-        {% include css/{{ stylesheet }}.css %}
-      </style>
-    {% endfor %}
-  {% endif %}
+    {% if page.css %}
+      {% for stylesheet in page.css %}
+          {% include css/{{ stylesheet }}.css %}
+      {% endfor %}
+    {% endif %}
+  </style>
 </head>

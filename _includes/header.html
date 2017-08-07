@@ -1,24 +1,26 @@
 <header>
+  <div class="container">
+    <nav class="navbar navbar-toggleable navbar-light pl-0">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand mr-5 pr-5" href="{{ site.baseurl }}/">{{ site.title }}</a>
 
-  <nav class="navbar navbar-toggleable navbar-light bg-faded">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand mr-5 pr-5" href="{{ site.baseurl }}/">{{ site.title }}</a>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
-          {% for page in site.pages %}
-            {% if page.title %}
-              <li class="nav-item active">
-                <a class="nav-link pr-5" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-              </li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-    </div>
-  </nav>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            {% for page in site.pages %}
+              {% if page.title %}
+                <li class="nav-item active">
+                  <a class="nav-link pr-5" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+      </div>
+    </nav>
+  </div>
+  <hr class="mt-0 pt-0">
 
 
 </header>

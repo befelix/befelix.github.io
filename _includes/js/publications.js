@@ -17,17 +17,15 @@ $(hash).parent().css("background-color", "#e6e6ff");
 
 $(document).ready(function(){
   $('div.reference a.nav-link').click(function (e) {
-      var tab = $(this);
-      if(tab.hasClass('active')){
-          window.setTimeout(function(){
-            $(tab.attr('href')).removeClass('active')
-            tab.removeClass('active')
-        }, 1);
-      }
+    var tab = $(this);
+    if(tab.hasClass('active')){
+      window.setTimeout(function(){
+        $(tab.attr('href')).removeClass('active')
+        tab.removeClass('active')
+      }, 1);
+    }
   });
-});
 
-$(document).ready(function(){
   $('a.duplicate').click(function () {
     var parent = $(this).attr('dublicate-target')
     $(parent).trigger('click')
