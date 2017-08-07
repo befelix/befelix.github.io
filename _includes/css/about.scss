@@ -12,21 +12,6 @@
     vertical-align: top;
 }
 
-.news{
-    clear: both;
-    margin-top: 2em;
-}
-
-.newsitem {
-  margin-left: 2.5%;
-  margin-bottom: 3em;
-}
-
-/*Don't indent bib on phone */
-@media screen and (max-width: 700px) {
-  .newsitem { margin-left: 0; }
-}
-
-.newsitem p {
-  margin-bottom: 1em;
+div.video-list > div {
+  margin-bottom: 2em;
 }
