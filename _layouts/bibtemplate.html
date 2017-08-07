@@ -76,7 +76,7 @@
   <div class="materials tab-content" id="{{key}}-material">
 
     {% if entry.abstract %}
-    <div class="tab-pane" role="tabpanel" id="{{key}}-abstract">
+    <div class="tab-pane tab-abstract" role="tabpanel" id="{{key}}-abstract">
       <p class="abstract p-2">
         {{entry.abstract}}
         <br>
@@ -86,9 +86,11 @@
     {% endif %}
 
     {% if entry.bibtex %}
-      <pre class="tab-pane" role="tabpanel" id="{{key}}-bibtex">
+    <div class="tab-pane tab-bibtex" role="tabpanel" id="{{key}}-bibtex">
+      <pre>
 {{      entry.bibtex }}
       </pre>
+    </div>
     {% endif %}
   </div>
 </div>
