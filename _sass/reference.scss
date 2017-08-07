@@ -23,7 +23,8 @@ ol.bibliography li {
 
 /* Abstract */
 div.materials {
-background-color: #f2f2f2;
+  background-color: #f2f2f2;
+  max-width: $text-width;
 }
 
 .materials div {
