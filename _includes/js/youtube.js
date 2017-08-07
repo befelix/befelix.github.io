@@ -24,14 +24,14 @@ $("a.videolink").click(function() { return false; });
 // Add click to the video
 videos.click(function () {
 
-  var parent = $(this).parent()
+  var placeholder = $(this)
+  var div = placeholder.parent()
 
-  $(this).replaceWith("<iframe width='560' height='315'         src='https://www.youtube.com/embed/" +
-                      this.id +
-                      "?autoplay=1' frameborder='0' allowfullscreen></iframe>")
+  placeholder.replaceWith("<iframe class='embed-responsive-item' width='560' height='315' src='https://www.youtube.com/embed/"
+                      + this.id
+                      + "?autoplay=1' frameborder='0' allowfullscreen></iframe>")
 
-  // Fit the video to the surrounding element (div)
-  parent.fitVids();
+  div.addClass('embed-responsive embed-responsive-16by9')
 });
 
 // Make sure elements stay correct size afte resizing

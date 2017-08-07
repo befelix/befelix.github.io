@@ -23,16 +23,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script> -->
-    <!-- <script> -->
+    <script>
       <!-- // Fallback to local version of jQuery if CDN is down -->
-      <!-- if (!window.jQuery) { -->
-        <!-- document.write('<script src="{{ site.baseurl }}/javascript/jquery-3.0.0.min.js"><\/script>'); -->
-      <!-- } -->
+      if (!window.jQuery) {
+        document.write('<script src="{{ site.baseurl }}/javascript/jquery-3.0.0.min.js"><\/script>');
+      }
     </script>
-    {% if page.js %}
-      <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.js"></script>
-    {% endif %}
     {% include analytics.html %}
 
   </body>
