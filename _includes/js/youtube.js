@@ -28,8 +28,8 @@ videos.click(function () {
   var div = placeholder.parent()
 
   placeholder.replaceWith("<iframe class='embed-responsive-item' width='560' height='315' src='https://www.youtube.com/embed/"
-                      + this.id
-                      + "?autoplay=1' frameborder='0' allowfullscreen></iframe>")
+                          + this.id
+                          + "?autoplay=1' frameborder='0' allowfullscreen></iframe>")
 
   div.addClass('embed-responsive embed-responsive-16by9')
 });

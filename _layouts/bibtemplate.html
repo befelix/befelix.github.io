@@ -48,7 +48,7 @@
 
       {% if entry.video %}
         <li class="nav-item">
-          <a class="nav-link" href="{{ entry.video }}" target="_blank">Video</a>
+          <a class="nav-link video-tab" href="{{ entry.video }}" target="_blank">Video</a>
         </li>
       {% endif %}
 
@@ -90,6 +90,12 @@
       <pre>
 {{      entry.bibtex }}
       </pre>
+    </div>
+    {% endif %}
+
+    {% if entry.video %}
+    <div class="tab-pane embed-responsive embed-responsive-16by9" role="tabpanel" id="{{key}}-video">
+      hallo
     </div>
     {% endif %}
   </div>

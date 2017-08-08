@@ -16,6 +16,7 @@ var hash = window.location.hash;
 $(hash).parent().css("background-color", "#e6e6ff");
 
 $(document).ready(function(){
+  // code for closing tabs
   $('div.reference a.nav-link').click(function (e) {
     var tab = $(this);
     if(tab.hasClass('active')){
@@ -26,8 +27,34 @@ $(document).ready(function(){
     }
   });
 
+  // add code for close button on mobile
   $('a.duplicate').click(function () {
     var parent = $(this).attr('dublicate-target')
     $(parent).trigger('click')
   })
-})
+
+  // Make video point to tab instead
+  $('a.video-tab').each(function () {
+    var link = $(this);
+    var video_url = link.attr('href');
+    var video_id = video_url.split('?v=')[1];
+
+    var key = link.closest('div.reference').attr('data-key');
+    var target = '#' + key + '-video';
+
+    link.attr('data-toggle', 'tab');
+    link.attr('href', target);
+
+    // load / unload video as desired
+    link.click(function() {
+      var iframe = $(target).children('iframe');
+      if (link.hasClass('active')) {
+        iframe.remove();
+      } else {
+        $(target).append("<iframe class='embed-responsive-item' width='560' height='315' src='https://www.youtube.com/embed/"
+                         + video_id
+                         + "?autoplay=1' frameborder='0' allowfullscreen></iframe>");
+      };
+    });
+  });
+});
