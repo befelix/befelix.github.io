@@ -21,18 +21,21 @@ ol.bibliography li {
   }
 }
 
+div.materials {
+  max-width: $text-width;
+}
+
 div.tab-abstract {
   background-color: #f2f2f2;
   padding: 0.5em;
-  max-width: $text-width;
   margin-bottom: 1em;
 }
 
 .materials pre {
   background-color: #f2f2f2;
   display: inline-block !important;
-  max-width: 100%;
   padding: 0.5em;
+  max-width: 100%;
 }
 
 /*Don't indent bib on phone */
