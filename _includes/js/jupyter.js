@@ -1,53 +1,34 @@
 // Resize automatically according to content
 function resizeIframe(iframe) {
- $(iframe).height($(iframe).contents().height() + 30)
+ $(iframe).height($(iframe).contents().height() + 50);
 }
 
-// Adaptive size of notebook
-$(window).resize(function () {
-  $("div.jupyter.active").children("iframe").each(function() {
-    resizeIframe(this)
-  });
-});
-
-function load_notebook (div) {
+function load_notebook (div, content) {
   // Append notebook iframe to corresponding div
-  div.append('<iframe src="{{site.baseurl}}/assets/jupyter/' +
-             div.attr("content") +
-             '" scrolling="no"></iframe>');
+  $(div).append('<iframe src="{{site.baseurl}}'
+                + content
+                + '" scrolling="no"></iframe>');
 
-  div.children("iframe").on("load", function() {
-    resizeIframe(div.children("iframe"))
+  $(div).children("iframe").on("load", function() {
+    resizeIframe($(div).children("iframe"));
   });
-}
-
+};
 
 $(document).ready(function () {
+  $('a.jupyter.nav-link').each(function() {
+    var link = $(this);
 
-  // Load active notebook
-  var default_notebook = $("div.jupyter.active");
-  load_notebook(default_notebook)
-  $("a.jupyter[target=" + default_notebook.attr("target") + "]").addClass("active")
+    var div = link.attr('tab-target');
+    var content = link.attr('href');
+    link.attr('href', div);
+    link.attr('data-toggle', 'tab');
 
-  // Load iframes on click (except the default, active one)
-  $("a.jupyter:not('.active')").one("click", function (event) {
-    // div corresponding to the
-    var div = $("div.jupyter[target=" + $(this).attr("target") + "]");
-    load_notebook(div);
-  })
-
-  // Switch between notebooks
-  $("a.jupyter").on("click", function (event) {
-
-    // Highlight current link, unhighlight previous
-    $("a.jupyter.active").removeClass("active")
-    $(this).addClass("active")
-
-    // Show current div, hide previous
-    $("div.jupyter.active").removeClass("active")
-    $("div.jupyter[target=" + $(this).attr("target") + "]").addClass("active")
-
-    // Resize current iframe
-    resizeIframe($("div.jupyter.active").children("iframe"))
+    link.one('click', function() {
+      load_notebook(div, content);
+    });
   });
-})
+
+  // Activate the first element
+  $('div.container').append('<a href="#">Back to top</a>');
+  $('a.jupyter.activate').trigger('click');
+});

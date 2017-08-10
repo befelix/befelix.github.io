@@ -3,8 +3,8 @@ layout: page
 permalink: /jupyter/lyapunov
 css: jupyter
 inline:
+  - references
   - jupyter
-  - publications
 ---
 
 
@@ -12,16 +12,16 @@ inline:
 
 <br>
 
-<ul class="jupyter">
-  <li>
-    <a class="jupyter" target="nb1" href="/assets/jupyter/lyapunov/1d_example.html">1D example</a>
+<ul class="nav nav-pills flex-wrap" role="tablist">
+  <li class="nav-item">
+    <a class="jupyter nav-link activate" data-toggle="tab" tab-target="#simple_example" href="/assets/jupyter/lyapunov/1d_example.html">1D example</a>
   </li>
-  <li>
-    <a class="jupyter" target="nb2" href="/assets/jupyter/lyapunov/inverted_pendulum.html">Inverted pendulum</a>
+  <li class="nav-item">
+    <a class="jupyter nav-link" data-toggle="tab" tab-target="#inverted_pendulum" href="/assets/jupyter/lyapunov/inverted_pendulum.html">Inverted pendulum</a>
   </li>
 </ul>
 
-<div class="jupyter" id="1d_example" content="lyapunov/1d_example.html" target="nb1"></div>
-<div class="jupyter" id="inverted_pendulum" content="lyapunov/inverted_pendulum.html" target="nb2"></div>
-
-<a href="#">Back to top</a>
+<div class="tab-content">
+  <div class="tab-pane jupyter" role="tabpanel" id="simple_example"></div>
+  <div class="tab-pane jupyter" role="tabpanel" id="inverted_pendulum"></div>
+</div>

@@ -2,30 +2,6 @@
 @import "main";
 @import "reference";
 
-ul.jupyter li{
-  display: inline;
-}
-
-ul.jupyter li a {
-  padding: 0.5em;
-  background-color: #e7e7e7;
-}
-
-ul.jupyter li a.active {
-  background-color: #99ccff;
-  color: #0066ff;
-}
-
-/*Hide notebook divs by default*/
-div.jupyter {
-  display: none;
-}
-
-/*Only show active notebook*/
-div.jupyter.active {
-  display: block;
-}
-
 div.jupyter iframe {
   border: none;
   width: 100%;
@@ -33,6 +9,6 @@ div.jupyter iframe {
 }
 
 /*Hide notebook entry from bib*/
-li .notebook {
+li.notebook a {
   display: none;
 }
