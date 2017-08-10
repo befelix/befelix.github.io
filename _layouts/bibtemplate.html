@@ -2,74 +2,75 @@
 ---
 
 <div class="reference" data-key="{{key}}" id='reference-{{key}}'>
+  <div class='reference-header'>
+    {{ reference }}
+    {% if entry.note %}
+      {{entry.note}}
+    {% endif %}
+    <br>
 
-  {{ reference }}
-  {% if entry.note %}
-    {{entry.note}}
-  {% endif %}
-  <br>
+    {% if entry.comment %}
+    <div class="comment">
+        <b>{{ entry.comment }}</b>
+    </div>
+    {% endif %}
 
-  {% if entry.comment %}
-  <div class="comment">
-      <b>{{ entry.comment }}</b>
-  </div>
-  {% endif %}
+    <!-- Add clickable toggles for bonus material -->
+    <div class="links mb-2">
+      <ul class="nav nav-pills flex-wrap" role="tablist">
+        {% if entry.abstract %}
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#{{key}}-abstract" id="button-{{key}}-abstract">Abstract</a>
+          </li>
+        {% endif %}
 
-  <!-- Add clickable toggles for bonus material -->
-  <div class="links mb-2">
-    <ul class="nav nav-pills flex-wrap" role="tablist">
-      {% if entry.abstract %}
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#{{key}}-abstract" id="button-{{key}}-abstract">Abstract</a>
+          <a class="nav-link" data-toggle="tab" href="#{{key}}-bibtex">BibTex</a>
         </li>
-      {% endif %}
 
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#{{key}}-bibtex">BibTex</a>
-      </li>
+        {% if entry.file %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ entry.file }}">PDF</a>
+          </li>
+        {% endif %}
 
-      {% if entry.file %}
+        {% if entry.code %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ entry.code }}" target="_blank">Code</a>
+          </li>
+        {% endif %}
+
+        {% if entry.jupyter %}
+        <li class="nav-item notebook">
+          <a class="nav-link" href="{{site.baseurl}}/jupyter/{{entry.jupyter}}">Notebooks</a>
+        </li>
+        {% endif %}
+
+        {% if entry.video %}
+          <li class="nav-item">
+            <a class="nav-link video-tab" href="{{ entry.video }}" target="_blank">Video</a>
+          </li>
+        {% endif %}
+
+        {% if entry.pitch %}
+          <li class="nav-item">
+            <a class="nav-link video-tab" href="{{ entry.pitch }}" target="_blank">Pitch</a>
+          </li>
+        {% endif %}
+
+        {% if entry.talk %}
+          <li class="nav-item">
+            <a class="nav-link video-tab" href="{{ entry.talk }}" target="_blank">Talk</a>
+          </li>
+        {% endif %}
+
+        {% if entry.slides %}
         <li class="nav-item">
-          <a class="nav-link" href="{{ entry.file }}">PDF</a>
+          <a class="nav-link" href="{{ entry.slides }}" target="_blank">Slides</a>
         </li>
-      {% endif %}
-
-      {% if entry.code %}
-        <li class="nav-item">
-          <a class="nav-link" href="{{ entry.code }}" target="_blank">Code</a>
-        </li>
-      {% endif %}
-
-      {% if entry.jupyter %}
-      <li class="nav-item notebook">
-        <a class="nav-link" href="{{site.baseurl}}/jupyter/{{entry.jupyter}}">Notebooks</a>
-      </li>
-      {% endif %}
-
-      {% if entry.video %}
-        <li class="nav-item">
-          <a class="nav-link video-tab" href="{{ entry.video }}" target="_blank">Video</a>
-        </li>
-      {% endif %}
-
-      {% if entry.pitch %}
-        <li class="nav-item">
-          <a class="nav-link video-tab" href="{{ entry.pitch }}" target="_blank">Pitch</a>
-        </li>
-      {% endif %}
-
-      {% if entry.talk %}
-        <li class="nav-item">
-          <a class="nav-link video-tab" href="{{ entry.talk }}" target="_blank">Talk</a>
-        </li>
-      {% endif %}
-
-      {% if entry.slides %}
-      <li class="nav-item">
-        <a class="nav-link" href="{{ entry.slides }}" target="_blank">Slides</a>
-      </li>
-      {% endif %}
-    </ul>
+        {% endif %}
+      </ul>
+    </div>
   </div>
 
   <!-- Add bonus material -->
