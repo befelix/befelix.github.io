@@ -14,6 +14,15 @@ $("a.jupyter").removeAttr("href");
 // Highlight the element that we've nacigated too
 $(hash).parent().css("background-color", "#e6e6ff");
 
+// A function to add videos to divs
+function add_video(target, video_id, autoplay = 1) {
+  $(target).append("<iframe class='embed-responsive-item' width='560' height='315' src='https://www.youtube.com/embed/"
+                   + video_id
+                   + "?autoplay="
+                   + autoplay
+                   + "' frameborder='0' allowfullscreen></iframe>");
+};
+
 $(document).ready(function(){
 
   // Make video point to tab instead and add information
@@ -39,10 +48,15 @@ $(document).ready(function(){
       // if we're switching to another tab -- remove the video.
       link.closest('div.reference').find('iframe').remove();
     } else if (link.is('[target]')) {
-      // if we're going to an external website, let's untoggle any
-      // active video tab
-      // TODO: Pausing or reloading without autoplay would be better
-      link.closest('div.reference').find('a.active.video-tab').trigger('click');
+      // if we're going to an external website, let's reload video
+      // Get the active video tab
+      var video_link = link.closest('div.reference').find('a.active.video-tab'); //.trigger('click');
+      var target = video_link.attr('href');
+      // Remove the current iframe
+      $(target).find('iframe').remove();
+      // Readd the video without autoplay
+      var video_id = video_link.attr('video-id');
+      add_video(target, video_id, 0)
     }
 
     // Remove the active field (allow closing of open tabs)
@@ -56,9 +70,7 @@ $(document).ready(function(){
       // Add the current video
       var target = link.attr('href');
       var video_id = link.attr('video-id');
-      $(target).append("<iframe class='embed-responsive-item' width='560' height='315' src='https://www.youtube.com/embed/"
-                       + video_id
-                       + "?autoplay=1' frameborder='0' allowfullscreen></iframe>");
+      add_video(target, video_id)
     };
   });
 
