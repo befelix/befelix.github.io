@@ -25,10 +25,13 @@ div.materials {
   max-width: $text-width;
 }
 
+.materials div.active {
+  margin-top: 0.5em;
+}
+
 div.tab-abstract {
   background-color: #f2f2f2;
   padding: 0.5em;
-  margin-bottom: 1em;
 }
 
 .materials pre {
