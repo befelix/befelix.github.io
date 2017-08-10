@@ -12,3 +12,8 @@ div.jupyter iframe {
 li.notebook a {
   display: none;
 }
+
+// Don't indent single references
+ol.bibliography {
+  padding-left: 0;
+}
