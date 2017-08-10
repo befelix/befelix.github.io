@@ -30,7 +30,7 @@
 
       {% if entry.file %}
         <li class="nav-item">
-          <a class="nav-link" href="{{ entry.file }}" target="_blank">PDF</a>
+          <a class="nav-link" href="{{ entry.file }}">PDF</a>
         </li>
       {% endif %}
 
@@ -54,13 +54,13 @@
 
       {% if entry.pitch %}
         <li class="nav-item">
-          <a class="nav-link" href="{{ entry.pitch }}" target="_blank">Pitch</a>
+          <a class="nav-link video-tab" href="{{ entry.pitch }}" target="_blank">Pitch</a>
         </li>
       {% endif %}
 
       {% if entry.talk %}
         <li class="nav-item">
-          <a class="nav-link" href="{{ entry.talk }}" target="_blank">Talk</a>
+          <a class="nav-link video-tab" href="{{ entry.talk }}" target="_blank">Talk</a>
         </li>
       {% endif %}
 
@@ -93,7 +93,7 @@
     </div>
     {% endif %}
 
-    {% if entry.video %}
+    {% if entry.video or entry.pitch or entry.talk %}
     <div class="tab-pane embed-responsive embed-responsive-16by9" role="tabpanel" id="{{key}}-video">
       hallo
     </div>
