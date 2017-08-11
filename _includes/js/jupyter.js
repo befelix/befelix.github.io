@@ -29,6 +29,6 @@ $(document).ready(function () {
   });
 
   // Activate the first element
-  $('div.container').append('<a href="#">Back to top</a>');
+  $('div.jupyter.tab-content').append('<a href="#">Back to top</a>');
   $('a.jupyter.activate').trigger('click');
 });
