@@ -2,3 +2,8 @@
 #notebook-container {
   width: 100%;
 }
+
+.prompt {
+  min-width: 5em;
+  text-align: left;
+}
