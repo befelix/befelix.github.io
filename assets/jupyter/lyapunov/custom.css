@@ -1,0 +1,4 @@
+/* Make notebooks full-width */
+#notebook-container {
+  width: 100%;
+}
