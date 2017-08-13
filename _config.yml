@@ -27,7 +27,7 @@ include: ['_pages']
 karmdown:
   input: GFM
 
-gems:
+plugins:
   - jekyll-sitemap
 
 
