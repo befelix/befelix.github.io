@@ -1,13 +1,14 @@
 @inproceedings{Berkenkamp2017SafeRL,
   title = {Safe Model-based Reinforcement Learning with Stability Guarantees},
-  Booktitle = {Proc. of the Conference on Neural Information Processing Systems (NIPS)},
+  Booktitle = {Proc. of Neural Information Processing Systems (NIPS)},
   author = {Felix Berkenkamp and Matteo Turchetta and Angela P. Schoellig and Andreas Krause},
   year = {2017},
   month = {December},
   url = {\href{https://arxiv.org/abs/1705.08551}{arXiv:1705.08551 [stat.ML]}},
-  abstract = {Reinforcement learning is a powerful paradigm for learning optimal policies from experimental data. However, to find optimal policies, most reinforcement learning algorithms explore all possible actions, which may be harmful for real-world systems. As a consequence, learning algorithms are rarely applied on safety-critical systems in the real world. In this paper, we present a learning algorithm that explicitly considers safety in terms of stability guarantees. Specifically, we extend control theoretic results on Lyapunov stability verification and show how to use statistical models of the dynamics to obtain high-performance control policies with provable stability certificates. Moreover, under additional regularity assumptions in terms of a Gaussian process prior, we prove that one can effectively and safely collect data in order to learn about the dynamics and thus both improve control performance and expand the safe region of the state space. In our experiments, we show how the resulting algorithm can safely optimize a neural network policy on a simulated inverted pendulum, without the pendulum ever falling down.},
+  abstract = {Reinforcement learning is a powerful paradigm for learning optimal policies from experimental data. However, to find optimal policies, most reinforcement learning algorithms explore all possible actions, which may be harmful for real-world systems. As a consequence, learning algorithms are rarely applied on safety-critical systems in the real world. In this paper, we present a learning algorithm that explicitly considers safety, defined in terms of stability guarantees. Specifically, we extend control-theoretic results on Lyapunov stability verification and show how to use statistical models of the dynamics to obtain high-performance control policies with provable stability certificates. Moreover, under additional regularity assumptions in terms of a Gaussian process prior, we prove that one can effectively and safely collect data in order to learn about the dynamics and thus both improve control performance and expand the safe region of the state space. In our experiments, we show how the resulting algorithm can safely optimize a neural network policy on a simulated inverted pendulum, without the pendulum ever falling down.},
   file = {https://arxiv.org/pdf/1705.08551},
   comment = {Full talk at CoRL 2017},
+  code = {https://github.com/befelix/safe_learning},
 }
 
 @inproceedings{Duivenvoorden2017SafeOptSwarm,
@@ -74,7 +75,7 @@
 
 @inproceedings{Turchetta2016SafeMDP,
   title = {Safe Exploration in Finite {M}arkov {D}ecision {P}rocesses with {G}aussian Processes},
-  Booktitle = {Proc. of the Conference on Neural Information Processing Systems (NIPS)},
+  Booktitle = {Proc. of Neural Information Processing Systems (NIPS)},
   author = {Matteo Turchetta and Felix Berkenkamp and Andreas Krause},
   year = {2016},
   month = {December},
