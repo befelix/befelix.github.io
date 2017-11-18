@@ -35,7 +35,7 @@ videos.click(function () {
       url += "&start=" + starttime;
   }
 
-  placeholder.replaceWith("<iframe class='embed-responsive-item' width='560' height='315' src=" + url + " frameborder='0' allowfullscreen></iframe>");
+  placeholder.replaceWith("<iframe class='embed-responsive-item' width='560' height='315' src='" + url + "' frameborder='0' allowfullscreen></iframe>");
 
   div.addClass('embed-responsive embed-responsive-16by9');
 });
