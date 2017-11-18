@@ -24,14 +24,20 @@ $("a.videolink").click(function() { return false; });
 // Add click to the video
 videos.click(function () {
 
-  var placeholder = $(this)
-  var div = placeholder.parent()
+  var placeholder = $(this);
+  var div = placeholder.parent();
 
-  placeholder.replaceWith("<iframe class='embed-responsive-item' width='560' height='315' src='https://www.youtube.com/embed/"
-                          + this.id
-                          + "?autoplay=1' frameborder='0' allowfullscreen></iframe>")
+  var url = "https://www.youtube.com/embed/" + this.id + "?autoplay=1";
 
-  div.addClass('embed-responsive embed-responsive-16by9')
+  // Add starttime if defined
+  var starttime = placeholder.attr('start');
+  if (typeof starttime !== 'undefined') {
+      url += "&start=" + starttime;
+  }
+
+  placeholder.replaceWith("<iframe class='embed-responsive-item' width='560' height='315' src=" + url + " frameborder='0' allowfullscreen></iframe>");
+
+  div.addClass('embed-responsive embed-responsive-16by9');
 });
 
 // Make sure elements stay correct size afte resizing
