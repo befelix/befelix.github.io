@@ -1,3 +1,15 @@
+@inproceedings{Ghosh2018Verifying,
+  title = {Verifying Controllers Against Adversarial Examples with Bayesian Optimization},
+  Booktitle = {Proc. of the International Conference on Robotics and Automation (ICRA)},
+  author = {Shromona Ghosh and Felix Berkenkamp and Gireeja Ranade and Shaz Qadeer and Ashish Kapoor},
+  year = {2018},
+  month = {May},
+  url = {\href{https://arxiv.org/abs/1802.08678}{arXiv:1802.08678 [cs.SY]}},
+  abstract = {Recent successes in reinforcement learning have lead to the development of complex controllers for real-world robots. As these robots are deployed in safety-critical applications and interact with humans, it becomes critical to ensure safety in order to avoid causing harm. A first step in this direction is to test the controllers in simulation. To be able to do this, we need to capture what we mean by safety and then efficiently search the space of all behaviors to see if they are safe. In this paper, we present an active-testing framework based on Bayesian Optimization. We specify safety constraints using logic and exploit structure in the problem in order to test the system for adversarial counter examples that violate the safety specifications. These specifications are defined as complex boolean combinations of smooth functions on the trajectories and, unlike reward functions in reinforcement learning, are expressive and impose hard constraints on the system. In our framework, we exploit regularity assumptions on individual functions in form of a Gaussian Process (GP) prior. We combine these into a coherent optimization framework using problem structure. The resulting algorithm is able to provably verify complex safety specifications or alternatively find counter examples. Experimental results indicate that the proposed method is able to find adversarial examples quickly.},
+  file = {https://arxiv.org/abs/1802.08678},
+  code = {https://github.com/shromonag/adversarial_testing},
+ }
+
 @inproceedings{Berkenkamp2017SafeRL,
   title = {Safe Model-based Reinforcement Learning with Stability Guarantees},
   Booktitle = {Proc. of Neural Information Processing Systems (NIPS)},
