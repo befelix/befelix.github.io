@@ -81,7 +81,9 @@
       <p class="abstract p-2">
         {{entry.abstract}}
         <br>
-        <a class="hidden-md-up duplicate" dublicate-target="#button-{{key}}-abstract" href="#reference-{{key}}">Close</a>
+        <div class="d-sm-none">
+          <a class="duplicate" dublicate-target="#button-{{key}}-abstract" href="#reference-{{key}}">Close</a>
+        </div>
       </p>
     </div>
     {% endif %}
