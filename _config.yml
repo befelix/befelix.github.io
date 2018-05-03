@@ -14,7 +14,7 @@ description: > # this means to ignore newlines until "baseurl:"
   goal of making robots learn without risking unsafe behavior during
   the learning process.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://berkenkamp.me" # the base hostname & protocol for your site
+url: "https://berkenkamp.me" # the base hostname & protocol for your site
 github_username:  befelix
 
 permalink: /blog/:title/

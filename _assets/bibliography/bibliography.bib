@@ -5,7 +5,7 @@
   year = {2018},
   month = {March},
   url = {\href{http://arxiv.org/abs/1602.04450}{arXiv:1602.04450 [cs.RO]}},
-  abstract = {Learning-based methods have been successful in solving complex control tasks without significant prior knowledge about the system. However, these methods typically do not provide any safety guarantees, which prevents their use in safety-critical, real-world applications. In this paper, we present a learning-based model predictive control scheme that provides provable high-probability safety guarantees. To this end, we exploit regularity assumptions on the dynamics in terms of a Gaussian process prior to construct provably accurate confidence intervals on predicted trajectories. Unlike previous approaches, we do not assume that model uncertainties are independent. Based on these predictions, we guarantee that trajectories satisfy safety constraints. Moreover, we use a terminal set constraint to recursively guarantee the existence of safe control actions at every iteration. In our experiments, we show that the resulting algorithm can be used to safely and efficiently explore and learn about dynamic systems.}
+  abstract = {Learning-based methods have been successful in solving complex control tasks without significant prior knowledge about the system. However, these methods typically do not provide any safety guarantees, which prevents their use in safety-critical, real-world applications. In this paper, we present a learning-based model predictive control scheme that provides provable high-probability safety guarantees. To this end, we exploit regularity assumptions on the dynamics in terms of a Gaussian process prior to construct provably accurate confidence intervals on predicted trajectories. Unlike previous approaches, we do not assume that model uncertainties are independent. Based on these predictions, we guarantee that trajectories satisfy safety constraints. Moreover, we use a terminal set constraint to recursively guarantee the existence of safe control actions at every iteration. In our experiments, we show that the resulting algorithm can be used to safely and efficiently explore and learn about dynamic systems.},
   file = {https://arxiv.org/pdf/1803.08287},
 }
 
@@ -79,9 +79,9 @@
   author = {Berkenkamp, Felix and Krause, Andreas and Angela P. Schoellig},
   year = {2016},
   month = {February},
-  url = {\href{http://arxiv.org/abs/1602.04450}{arXiv:1602.04450 [cs.RO]}},
+  url = {\href{https://arxiv.org/abs/1602.04450}{arXiv:1602.04450 [cs.RO]}},
   abstract = {Robotics algorithms typically depend on various parameters, the choice of which significantly affects the robot's performance. While an initial guess for the parameters may be obtained from dynamic models of the robot, parameters are usually tuned manually on the real system to achieve the best performance. Optimization algorithms, such as Bayesian optimization, have been used to automate this process. However, these methods may evaluate parameters during the optimization process that lead to safety-critical system failures. Recently, a safe Bayesian optimization algorithm, called SafeOpt, has been developed and applied in robotics, which guarantees that the performance of the system never falls below a critical value; that is, safety is defined based on the performance function. However, coupling performance and safety is not desirable in most cases. In this paper, we define separate functions for performance and safety. We present a generalized SafeOpt algorithm that, given an initial safe guess for the parameters, maximizes performance but only evaluates parameters that satisfy all safety constraints with high probability. It achieves this by modeling the underlying and unknown performance and constraint functions as Gaussian processes. We provide a theoretical analysis and demonstrate in experiments on a quadrotor vehicle that the proposed algorithm enables fast, automatic, and safe optimization of tuning parameters. Moreover, we show an extension to context- or environment-dependent, safe optimization in the experiments.},
-  file = {http://arxiv.org/pdf/1602.04450},
+  file = {https://arxiv.org/pdf/1602.04450},
   code = {https://github.com/befelix/SafeOpt},
 }
 
@@ -92,9 +92,9 @@
   year = {2016},
   pages = {4661--4666},
   month = {December},
-  url = {\href{http://arxiv.org/abs/1603.04915}{arXiv:1603.04915 [cs.SY]}},
+  url = {\href{https://arxiv.org/abs/1603.04915}{arXiv:1603.04915 [cs.SY]}},
   abstract = {Control theory can provide useful insights into the properties of controlled, dynamic systems. One important property of nonlinear systems is the region of attraction (ROA), which is a safe subset of the state space in which a given controller renders an equilibrium point asymptotically stable. The ROA is typically estimated based on a model of the system. However, since models are only an approximation of the real world, the resulting estimated safe region can contain states outside the ROA of the real system. This is not acceptable in safety-critical applications. In this paper, we consider an approach that learns the ROA from experiments on a real system, without ever leaving the ROA of the real system. This approach enables us to find an estimate of the real ROA, without risking safety-critical failures. Based on regularity assumptions on the model errors in terms of a Gaussian process prior, we determine a region in which an equilibrium point is asymptotically stable with high probability, according to an underlying Lyapunov function. Moreover, we actively select areas of the state space to evaluate in order to expand the ROA. We demonstrate the effectiveness of this method in simulated experiments.},
-  file = {http://arxiv.org/pdf/1603.04915},
+  file = {https://arxiv.org/pdf/1603.04915},
   code = {https://github.com/befelix/lyapunov-learning},
   slides = {https://1drv.ms/p/s!AgZNQetv3at4hhHn4WNZU_GmG2ix},
   talk = {https://www.youtube.com/watch?v=bSv-pNOWn7c},
@@ -108,10 +108,10 @@
   year = {2016},
   month = {December},
   pages = {4305--4313},
-  url = {\href{http://arxiv.org/abs/1606.04753}{arXiv:1606.04753 [cs.LG]}},
+  url = {\href{https://arxiv.org/abs/1606.04753}{arXiv:1606.04753 [cs.LG]}},
   abstract = {In classical reinforcement learning, when exploring an environment, agents accept arbitrary short term loss for long term gain. This is infeasible for safety critical applications, such as robotics, where even a single unsafe action may cause system failure. In this paper, we address the problem of safely exploring finite Markov decision processes (MDP). We define safety in terms of an, a priori unknown, safety constraint that depends on states and actions. We aim to explore the MDP under this constraint, assuming that the unknown function satisfies regularity conditions expressed via a Gaussian process prior. We develop a novel algorithm for this task and prove that it is able to completely explore the safely reachable part of the MDP without violating the safety constraint. To achieve this, it cautiously explores safe states and actions in order to gain statistical confidence about the safety of unvisited state-action pairs from noisy observations collected while navigating the environment. Moreover, the algorithm explicitly considers reachability when exploring the MDP, ensuring that it does not get stuck in any state with no safe way out. We demonstrate our method on digital terrain models for the task of exploring an unknown map with a rover.},
   video = {https://www.youtube.com/watch?v=dHHh7CZQM_M},
-  file = {http://arxiv.org/pdf/1606.04753},
+  file = {https://arxiv.org/pdf/1606.04753},
   code = {https://github.com/befelix/SafeMDP}
 }
 
@@ -122,9 +122,9 @@
   year = {2016},
   month = {May},
   pages = {493--496},
-  url = {\href{http://arxiv.org/abs/1509.01066}{arXiv:1509.01066 [cs.RO]}},
+  url = {\href{https://arxiv.org/abs/1509.01066}{arXiv:1509.01066 [cs.RO]}},
   abstract = {One of the most fundamental problems when designing controllers for dynamic systems is the tuning of the controller parameters. Typically, a model of the system is used to obtain an initial controller, but ultimately the controller parameters must be tuned manually on the real system to achieve the best performance. To avoid this manual tuning step, methods from machine learning, such as Bayesian optimization, have been used. However, as these methods evaluate different controller parameters on the real system, safety-critical system failures may happen. In this paper, we overcome this problem by applying, for the first time, a recently developed safe optimization algorithm, SafeOpt, to the problem of automatic controller parameter tuning. Given an initial, low-performance controller, SafeOpt automatically optimizes the parameters of a control law while guaranteeing safety. It models the underlying performance measure as a Gaussian process and only explores new controller parameters whose performance lies above a safe performance threshold with high probability. Experimental results on a quadrotor vehicle indicate that the proposed method enables fast, automatic, and safe optimization of controller parameters without human intervention.},
-  file = {http://arxiv.org/pdf/1509.01066},
+  file = {https://arxiv.org/pdf/1509.01066},
   pitch = {https://www.youtube.com/watch?v=IYi8qMnt0yU},
   video = {https://www.youtube.com/watch?v=GiqNQdzc5TI},
   code = {https://github.com/befelix/SafeOpt},
@@ -170,5 +170,5 @@
   year = {2014},
   month = {July},
   pages = {233--240},
-  file = {http://www.sciencedirect.com/science/article/pii/S0378778814005921},
+  file = {https://www.sciencedirect.com/science/article/pii/S0378778814005921},
 }
