@@ -1,9 +1,9 @@
-@techreport{Spencer2018LyapunovNN,
+@inproceedings{Spencer2018LyapunovNN,
   title = {The Lyapunov Neural Network: Adaptive Stability Certification for Safe Learning of Dynamic Systems},
-  publisher = {ArXiv},
+  booktitle = {Proc. of the Conference on Robot Learning (CoRL)},
   author = {Spencer M. Richards and Felix Berkenkamp and Andreas Krause},
   year = {2018},
-  month = {August},
+  month = {October},
   url = {\href{https://arxiv.org/abs/1808.00924}{arXiv:1808.00924 [cs.SY]}},
   abstract = {Learning algorithms have shown considerable prowess in simulation by allowing robots to adapt to uncertain environments and improve their performance. However, such algorithms are rarely used in practice on safety-critical systems, since the learned policy typically does not yield any safety guarantees and thus the required exploration may cause physical harm to the robot or its environment. In this paper, we present a method to learn accurate safety certificates for nonlinear, closed-loop dynamic systems. Specifically, we construct a neural network Lyapunov function and a training algorithm that adapts it to the shape of the largest safe region in the state space. The algorithm relies only on knowledge of inputs and outputs of the dynamics, rather than on any specific model structure. We demonstrate our method by learning the safe region of attraction for a simulated inverted pendulum. Furthermore, we discuss how our method can be used in safe learning algorithms together with statistical models of dynamic systems.},
   file = {https://arxiv.org/pdf/1602.04450},
@@ -11,13 +11,13 @@
 }
 
 @inproceedings{Koller2018BSafeMPC,
-  title = {Learning-based Model Predictive Control for Safe Exploration and Reinforcement Learning},
+  title = {Learning-based Model Predictive Control for Safe Exploration},
   author = {Torsten Koller and Felix Berkenkamp and Matteo Turchetta and Andreas Krause},
   booktitle = {Proc. of the Conference on Decision and Control (CDC)},
   year = {2018},
   month = {December},
   url = {\href{http://arxiv.org/abs/1602.04450}{arXiv:1602.04450 [cs.RO]}},
-  abstract = {Learning-based methods have been successful in solving complex control tasks without significant prior knowledge about the system. However, these methods typically do not provide any safety guarantees, which prevents their use in safety-critical, real-world applications. In this paper, we present a learning-based model predictive control scheme that provides provable high-probability safety guarantees. To this end, we exploit regularity assumptions on the dynamics in terms of a Gaussian process prior to construct provably accurate confidence intervals on predicted trajectories. Unlike previous approaches, we do not assume that model uncertainties are independent. Based on these predictions, we guarantee that trajectories satisfy safety constraints. Moreover, we use a terminal set constraint to recursively guarantee the existence of safe control actions at every iteration. In our experiments, we show that the resulting algorithm can be used to safely and efficiently explore and learn about dynamic systems.},
+  abstract = {Learning-based methods have been successful in solving complex control tasks without significant prior knowledge about the system. However, these methods typically do not provide any safety guarantees, which prevents their use in safety-critical, real-world applications. In this paper, we present a learning-based model predictive control scheme that can provide provable high-probability safety guarantees. To this end, we exploit regularity assumptions on the dynamics in terms of a Gaussian process prior to construct provably accurate confidence intervals on predicted trajectories. Unlike previous approaches, we do not assume that model uncertainties are independent. Based on these predictions, we guarantee that trajectories satisfy safety constraints. Moreover, we use a terminal set constraint to recursively guarantee the existence of safe control actions at every iteration. In our experiments, we show that the resulting algorithm can be used to safely and efficiently explore and learn about dynamic systems.},
   file = {https://arxiv.org/pdf/1803.08287},
 }
 
