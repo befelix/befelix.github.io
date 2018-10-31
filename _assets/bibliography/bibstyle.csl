@@ -240,7 +240,7 @@
     </group>
 
       <!-- Rest of Citation -->
-      <group suffix=". ">
+      <group suffix=" ">
         <choose>
           <!-- Specific Formats -->
           <if type="article-journal">
