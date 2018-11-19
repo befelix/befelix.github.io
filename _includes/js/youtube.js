@@ -18,7 +18,7 @@ all_videos.each(function() {
   resize($(this))
 });
 
-// // Make sure elements stay correct size afte resizing
+// Make sure elements stay correct size afte resizing
 $(window).resize(function () {
     $("div.video").each(function() {
         resize($(this))
