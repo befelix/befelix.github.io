@@ -11,18 +11,25 @@ function resize(element) {
   element.css({"width": new_width, "height": new_height});
 }
 
-var videos = $("div.youtube");
+var all_videos = $("div.video");
 
 // Rescale youtubes to fit page width
-videos.each(function() {
+all_videos.each(function() {
   resize($(this))
+});
+
+// // Make sure elements stay correct size afte resizing
+$(window).resize(function () {
+    $("div.video").each(function() {
+        resize($(this))
+    });
 });
 
 // Disable video link
 $("a.videolink").click(function() { return false; });
 
-// Add click to the video
-videos.click(function () {
+// Add click to the youtube video
+$("div.video.youtube").click(function () {
 
   var placeholder = $(this);
   var div = placeholder.parent();
@@ -40,9 +47,13 @@ videos.click(function () {
   div.addClass('embed-responsive embed-responsive-16by9');
 });
 
-// Make sure elements stay correct size afte resizing
-$(window).resize(function () {
-  $("div.youtube").each(function() {
-    resize($(this))
-  });
+
+// Add click to the ETH videos
+$("div.video.eth").click(function () {
+
+    var placeholder = $(this);
+    var div = placeholder.parent();
+
+    placeholder.replaceWith("<iframe class='embed-responsive-item' width='560' height='315' src='" + this.id + "' frameborder='0' allowfullscreen></iframe>");
+    div.addClass('embed-responsive embed-responsive-16by9');
 });
