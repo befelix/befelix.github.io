@@ -1,12 +1,18 @@
 @misc{Koller2019Learningbased,
   title = {Learning-based Model Predictive Control for Safe Exploration and Reinforcement Learning},
+  publisher = {ArXiv},
   author = {Koller*, Torsten and Berkenkamp*, Felix and Turchetta, Matteo and Boedecker, Joschka and Krause, Andreas},
   year = {2019},
   month = {June},
-  publisher = {(under review, available soon)},
+  eprint={1906.12189},
+  archivePrefix={arXiv},
+  primaryClass={eess.SY},
+  url = {https://arxiv.org/abs/1906.12189},
   abstract = {Reinforcement learning (RL) has been successfully used to solve difficult tasks in complex unknown environments solely based on feedback signals from the system. However, these methods typically do not provide any safety guarantees, especially in early stages when the RL agent actively explores its environment. This prevents their use in safety-critical, real-world applications. In this paper, we present a learning-based model predictive control scheme that provides high-probability safety guarantees during the RL learning process. Based on a reliable statistical model, we construct provably accurate confidence intervals on predicted trajectories. Unlike previous approaches, we allow for input-dependent uncertainties. Based on these reliable predictions, we guarantee that trajectories satisfy safety constraints. Moreover, we use a terminal set constraint to recursively guarantee the existence of safe control actions at every iteration. We evaluate the resulting algorithm to safely explore the dynamics of an inverted pendulum and to solve a RL task in a cart-pole dynamical system with safety constraints.},
+  file = {https://arxiv.org/pdf/1906.12189},
   code = {https://github.com/befelix/safe-exploration},
 }
+
 
 @misc{Melchior2019Structured,
   title = {Structured Variational Inference in Unstable Gaussian Process State Space Models},
