@@ -1,3 +1,14 @@
+@inproceedings{Melchior2020Structured,
+  title = {Structured Variational Inference in Partially Observable Unstable Gaussian Process State Space Models},
+  booktitle = {Learning for Dynamics and Control (L4DC)},
+  author = {Melchior, Silvan and Curi, Sebastian and Berkenkamp, Felix and Krause, Andreas},
+  year = {2020},
+  month = {June},
+  url = {https://arxiv.org/abs/1907.07035},
+  abstract = {We propose a new variational inference algorithm for learning in Gaussian Process State-Space Models (GPSSMs). Our algorithm enables learning of unstable and partially observable systems, where previous algorithms fail. Our main algorithmic contribution is a novel approximate posterior that can be calculated efficiently using a single forward and backward pass along the training trajectories. The forward-backward pass is inspired on Kalman smoothing for linear dynamical systems but generalizes to GPSSMs. Our second contribution is a modification of the conditioning step that effectively lowers the Kalman gain. This modification is crucial to attaining good test performance where no measurements are available. Finally, we show experimentally that our learning algorithm performs well in stable and unstable real systems with hidden states.},
+  file = {https://arxiv.org/pdf/1907.07035}},
+}
+
 @inproceedings{Siegel2020Keep,
 	title={Keep Doing What Worked: Behavior Modelling Priors for Offline Reinforcement Learning},
 	author={Noah Siegel and Jost Tobias Springenberg and Felix Berkenkamp and Abbas Abdolmaleki and Michael Neunert and Thomas Lampe and Roland Hafner and Nicolas Heess and Martin Riedmiller},
@@ -43,22 +54,6 @@
   abstract = {Reinforcement learning (RL) has been successfully used to solve difficult tasks in complex unknown environments solely based on feedback signals from the system. However, these methods typically do not provide any safety guarantees, especially in early stages when the RL agent actively explores its environment. This prevents their use in safety-critical, real-world applications. In this paper, we present a learning-based model predictive control scheme that provides high-probability safety guarantees during the RL learning process. Based on a reliable statistical model, we construct provably accurate confidence intervals on predicted trajectories. Unlike previous approaches, we allow for input-dependent uncertainties. Based on these reliable predictions, we guarantee that trajectories satisfy safety constraints. Moreover, we use a terminal set constraint to recursively guarantee the existence of safe control actions at every iteration. We evaluate the resulting algorithm to safely explore the dynamics of an inverted pendulum and to solve a RL task in a cart-pole dynamical system with safety constraints.},
   file = {https://arxiv.org/pdf/1906.12189},
   code = {https://github.com/befelix/safe-exploration},
-}
-
-
-@misc{Melchior2019Structured,
-  title = {Structured Variational Inference in Unstable Gaussian Process State Space Models},
-  publisher = {ArXiv},
-  author = {Melchior, Silvan and Berkenkamp, Felix and Curi, Sebastian and Krause, Andreas},
-  year = {2019},
-  month = {July},
-  eprint = {1907.07035},
-  archivePrefix = {arXiv},
-  primaryClass = {cs.LG},
-  url = {https://arxiv.org/abs/1907.07035},
-  abstract = {Gaussian processes are expressive, non-parametric statistical models that are well-suited to learn nonlinear dynamical systems. However, large-scale inference in these state space models is a challenging problem. In this paper, we propose CBF-SSM a scalable model that employs a structured variational approximation to maintain temporal correlations. In contrast to prior work, our approach applies to the important class of unstable systems, where state uncertainty grows unbounded over time. For these systems, our method contains a probabilistic, model-based backward pass that infers latent states during training. We demonstrate state-of-the-art performance in our experiments. Moreover, we show that CBF-SSM can be combined with physical models in the form of ordinary differential equations to learn a reliable model of a physical flying robotic vehicle.},
-  file = {https://arxiv.org/pdf/1907.07035},
-  code = {https://github.com/silvanmelchior/CBF-SSM},
 }
 
 
