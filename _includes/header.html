@@ -15,7 +15,7 @@
             {% for page in site.pages %}
               {% if page.title %}
                 <li class="nav-item active">
-                  <a class="nav-link pl-sm-5" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+                  <a class="nav-link pl-sm-5" href="{{ page.url }}">{{ page.title }}</a>
                 </li>
               {% endif %}
             {% endfor %}
