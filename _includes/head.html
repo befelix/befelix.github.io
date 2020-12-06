@@ -21,6 +21,10 @@
     crossorigin="anonymous"
   >
 
+  {% for javascript in page.javascript -%}
+    <script src="{{ javascript }}" async></script>
+  {% endfor -%}
+
   <style>
     {% capture include_to_scssify %}
       {% if page.css %}
@@ -31,7 +35,6 @@
         {% include css/default.scss %}
       {% endif %}
     {% endcapture %}
-
-    {{ include_to_scssify | scssify }}
+    {{- include_to_scssify | scssify -}}
   </style>
 </head>

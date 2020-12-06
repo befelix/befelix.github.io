@@ -31,7 +31,6 @@ plugins_dir: ./_plugins
 plugins:
   - jekyll-sitemap
 
-
 scholar:
   style: _assets/bibliography/bibstyle.csl
   locale: en
