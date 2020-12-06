@@ -45,7 +45,7 @@ To solve this problem, typical RL algorithms replace the unknown transition mode
 $$ \pi_t $$ and collect new transition data by rolling out with $$\pi_t$$ on the true environment. Subsequently, we improve our model approximation $$\tilde{f}$$ based on the new data and repeat the process. The goal is to converge to a policy that maximizes the original problem $$J(f, \pi)$$, that is, we want $$\pi_t \to \pi^*$$.
 
 
-Greedy Exploration
+Greedy Exploitation
 ------------------
 
 A key challenge now lies in how to account for the fact that we have model errors, so that $$\tilde{f} \ne f$$. While it is possible to solve this problem with a best-fit approximation of the model to the data, the most data-efficient approaches learn *probabilistic* models of $$\tilde{f}$$ that explicitly represent uncertainty; be it through nonparemetric models such as Gaussian processes as in PILCO {% cite Deisenroth2015Pilco %} or ensembles of neural networks as in PETS {% cite Chua2018HandfulTrials %}. The end-result is a distribution of dynamics models $$p(\tilde{f})$$ that could potentially explain the transitions on the true environment observed so far.
@@ -58,9 +58,9 @@ $$
 \end{equation}
 $$
 
-That is, for episode $$t$$ $$pi_t^{\mathrm{greedy}}$$ is the policy that achieves the maximal performance in expectation over the learned distribution of transition models $$p(\tilde{f})$$. This is a greedy scheme that exploits existing knowledge (best performance given current knowledge), but does not explicitly take exploration into account outside of special configurations of reward $$r$$ and dynamics $$f$$ (e.g., linear-quadratic control {% cite Mania2019Certainty %}). In fact, even with our restriction to deterministic dynamics $$f$$ in this blog post, this is a *stochastic* policy optimization scheme that effectively treats uncertainty about the transition dynamics similar to environment noise that we want to average over.
+That is, for episode $$t$$ $$\pi_t^{\mathrm{greedy}}$$ is the policy that achieves the maximal performance in expectation over the learned distribution of transition models $$p(\tilde{f})$$. This is a greedy scheme that exploits existing knowledge (best performance given current knowledge), but does not explicitly take exploration into account outside of special configurations of reward $$r$$ and dynamics $$f$$ (e.g., linear-quadratic control {% cite Mania2019Certainty %}). In fact, even with our restriction to deterministic dynamics $$f$$ in this blog post, this is a *stochastic* policy optimization scheme that effectively treats uncertainty about the transition dynamics similar to environment noise that we want to average over.
 
-This can lead to peculiar behavior in practice. Consider the standard pendulum-swingup task with sparse rewards (we only get a reward when the pendulum is upright). In addition, we add a penalty on the norm of our actions, which is often desirable in terms of minimizing energy and jitter but also means that exploration comes at a cost. Now, during the first episode we collect random data, since we do not have any knowledge about the dynamics yet. Consequently, our learned model will have low uncertainty at the downwards position of the pendulum, but high uncertainty elsewhere in the state space. This is not a problem without action penalty, since there is still a marginal benefit to swinging up. Consequently, greedy exploration solves that task independently of the model (DE=deterministic ensemble, PE=probabilistic ensemble, GP=Gaussian process):
+This can lead to peculiar behavior in practice. Consider the standard pendulum-swingup task with sparse rewards (we only get a reward when the pendulum is upright). In addition, we add a penalty on the norm of our actions, which is often desirable in terms of minimizing energy and jitter but also means that exploration comes at a cost. Now, during the first episode we collect random data, since we do not have any knowledge about the dynamics yet. Consequently, our learned model will have low uncertainty at the downwards position of the pendulum, but high uncertainty elsewhere in the state space. This is not a problem without action penalty, since there is still a marginal benefit to swinging up. Consequently, greedy exploitation solves that task independently of the model (DE=deterministic ensemble, PE=probabilistic ensemble, GP=Gaussian process):
 
 <div class="row"><div class="mx-auto">
   <img 
@@ -89,21 +89,17 @@ While we focused on this simple environment here, the paper shows that this beha
 Optimistic Exploration
 ----------------------
 
-To solve this problem, we instead have to explicitly explore and treat uncertainty as an opportunity, rather an adversary. We propose *H-UCRL* (Hallucinated-Upper Confidence RL), a practical optimistic exploration scheme that is both practical, so that it can be easily implemented within existing model-based RL frameworks, and has theoretical guarantees in the case of Gaussian process models. Instead of averaging over the state distribution imposed by the expectation in the greedy formulation, we instead consider acting optimistically within one-step transitions of our model. That is, conditioned on a particular state $$s$$ our distribution over $$\tilde{f}$$ introduces a distribution over possible next states. In particular, we consider Gaussian distributions so that 
+To solve this problem, we have to explicitly explore and treat uncertainty as an opportunity, rather an adversary. We propose *H-UCRL* (Hallucinated-Upper Confidence RL), a practical optimistic exploration scheme that is both practical, so that it can be easily implemented within existing model-based RL frameworks, and has theoretical guarantees in the case of Gaussian process models. Instead of averaging over the state distribution imposed by the expectation in the greedy formulation, we instead consider acting optimistically within one-step transitions of our model. 
+
+Conditioned on a particular state $$s$$, our belief over $$\tilde{f}$$ introduces a distribution over possible next states. In particular, we consider Gaussian distributions so that the next state is distributed as
 
 $$p(s_{t+1} \,|\, s_t, a_t) \sim \mathcal{N}(\mu_t(s_t, a_t), \sigma_t(s_t, a_t)^2)$$
 
-Instead of averaging over these transitions, we consider an exploration scheme that acts optimistically on the actions $$a_t$$ and, consequently, optimistically within the confidence intervals over the subsequent states. We can consider this second step as an extended (hallucinated) action input with control authority proportional to the on-step model uncertainty $$\sigma$$. If we assign a separate policy $$\eta$$ to this hallucinated action space, this is equivalent to optimizing the two policies jointly, 
+according to our model. Instead of averaging over these transitions, we propose an exploration scheme that acts optimistically within the confidence intervals over the subsequent states. To this end, we introduce an additional (hallucinated) action input with control authority proportional to the one-step model uncertainty $$\sigma(\cdot)$$, scaled by an appropriate constant $$\beta$$ to select a confidence interval (we set $$\beta=1$$ for all our experiments). If we assign a separate policy $$\eta$$ to this hallucinated action space that take values in $$[-1, 1]$$, this reduces the stochastic belief over the next state according to $$p(\tilde{f})$$ to the deterministic dynamics
 
-$$\pi_t^{\mathrm{H-UCRL}} = \mathrm{argmax}_\pi \max_\eta J(\tilde{f}, (\pi, \eta))$$ 
+$$s_{t+1} = \mu_t(s_t, a_t) + \beta \, \sigma_t(s_t, a_t) \, \eta(s_t)$$
 
-with the extended dynamics
-
-$$\tilde{f}(s, a) = \mu_t(s, \pi(s)) + \beta \sigma_t(s, \pi(s)) \eta(s) ,$$
-
-where $$\beta$$ is a scaling constant for the confidence intervals that is typical set equal to two or three. Note that while we optimize over $$\pi$$ and $$\eta$$ jointly, only $$\pi$$ is applied when collecting data on the true environment $$f$$.
-
-We can visualize the difference between predictions according to samples from $$p(\tilde{f})$$ and the optimistic dynamics below. For a given starting state $$s_0$$, the distribution over possible transition dynamics induces a wide state distribution (light gray). In the case of sparse rewards (red cross), only very few of these transitions will actually obtain a positive reward. This causes greedy exploration to fail in the presence of action penalties. In contrast, optimistic exploration can act optimistically within these confidence intervals (illustrated by vertical blue arrows), so that the joint policies $$(\pi, \eta)$$ operate on a simpler, deterministic system that can be driven to the sparse reward exactly.
+We can visualize the difference between predictions according to samples from $$p(\tilde{f})$$ and the optimistic dynamics under $$\eta$$ below. For a given starting state $$s_0$$, the distribution over possible transition dynamics induces a wide state distribution (light gray). In the case of sparse rewards (red cross), only very few of these transitions can obtain a positive reward. This causes greedy exploitation with $$\pi_t^\mathrm{greedy}$$ to fail in the presence of action penalties. In contrast, H-UCRL can act optimistically within the one-step confidence intervals of our model (illustrated by vertical blue arrows within the dark gray area), so that the joint policies $$(\pi, \eta)$$ operate on a simpler, deterministic system that can be driven to the sparse reward exactly.
 
 <div class="row"><div class="mx-auto">
   <img 
@@ -114,8 +110,15 @@ We can visualize the difference between predictions according to samples from $$
 </div></div>
 <br>
 
-Intuitively, $$(\pi, \eta)$$ turn the stochastic distribution $$p(\tilde{f})$$ into a simpler deterministic dynamic system that can be controlled easily. While $$\pi_t$$ will not solve the task on the true system initially, it will collect informative data and converges to the optimal policy as the uncertainty in our model decreases (provably so in the case of Gaussian process models). At the same time, the optimistic formulation of H-UCRL fits into standard RL frameworks, where we just have a different dynamic system that includes an extended action space. This makes it easy to implement and [code is available](http://github.com/sebascuri/hucrl). Much more explanations and details can be found in the paper {% cite Curi2020OptimisticModel -f personal %}.
+Intuitively, $$(\pi, \eta)$$ turn the stochastic distribution $$p(\tilde{f})$$ into a simpler deterministic dynamic system that can be controlled easily (with large uncertainty $$\eta$$ can influence the states directly). Thus, we optimize the two policies jointly,
 
+$$\pi_t^{\mathrm{H-UCRL}} = \mathrm{argmax}_\pi \max_\eta J(\tilde{f}, (\pi, \eta))$$ 
+
+under the extended dynamics
+
+$$\tilde{f}(s, (\pi, \eta)) = \mu_t(s, \pi(s)) + \beta \sigma_t(s, \pi(s)) \eta(s) ,$$
+
+Note that while we optimize over $$\pi$$ and $$\eta$$ jointly, only $$\pi$$ is applied when collecting data on the true environment $$f$$. While the resulting $$\pi_t^{\mathrm{H-UCRL}}$$ will not solve the task on the true system initially, it will collect informative data and converges to the optimal policy as the uncertainty $$\sigma(\cdot)$$ in our model decreases (provably so in the case of Gaussian process models). At the same time, the optimistic formulation of H-UCRL fits into standard RL frameworks, where we just have a different dynamic system that includes an extended action space. This makes it easy to implement and [code is available](http://github.com/sebascuri/hucrl). Much more explanations and details can be found in the paper {% cite Curi2020OptimisticModel -f personal %}.
 
 
 References
