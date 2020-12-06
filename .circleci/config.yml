@@ -27,3 +27,13 @@ jobs:
             git commit -m "Upload compiled website from CI"
             git remote add production https://${GITHUB_TOKEN}@github.com/befelix/befelix.github.io.git
             git push --quiet --force production master
+
+workflows:
+    version: 2
+    commit:
+      jobs:
+        - build:
+          filters:
+            branches:
+              only:
+                - master
