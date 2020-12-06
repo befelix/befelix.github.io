@@ -7,12 +7,12 @@
 
 # Site settings
 title: Felix Berkenkamp
-email: befelix@inf.ethz.ch
+email: fberkenkamp@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  Felix Berkenkamp is a PhD student at the Learning and Adaptive Systems
-  group at ETH Zurich. His research focuses on safe learning, with the
-  goal of making robots learn without risking unsafe behavior during
-  the learning process.
+  Felix Berkenkamp is a research scientist at the Bosch Center for AI. He
+  completed his PhD at ETH Zurich and his research focuses on safe learning, 
+  with the goal of making real-world systems learn without risking unsafe 
+  behavior during the learning process.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://berkenkamp.me" # the base hostname & protocol for your site
 github_username:  befelix
