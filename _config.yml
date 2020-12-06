@@ -17,7 +17,8 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://berkenkamp.me" # the base hostname & protocol for your site
 github_username:  befelix
 
-permalink: /blog/:title/
+permalink: /blog/:year-:month-:day-:title/
+
 # Build settings
 sass:
   sass_dir: _sass
@@ -42,7 +43,7 @@ scholar:
   group_order: ascending
 
   source: _assets/bibliography
-  bibliography: bibliography.bib
+  bibliography: general
   bibliography_template: bibtemplate
 
   replace_strings: true

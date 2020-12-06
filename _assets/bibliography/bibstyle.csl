@@ -58,9 +58,9 @@
   </macro>
   <macro name="issued">
     <choose>
-      <if type="article-journal report" match="any">
+      <if type="article-journal report misc" match="any">
         <date variable="issued">
-          <date-part name="month" form="short" suffix=" "/>
+          <!-- <date-part name="month" form="short" suffix=" "/> -->
           <date-part name="year" form="long"/>
         </date>
       </if>
@@ -71,8 +71,8 @@
       </else-if>
       <else>
         <date variable="issued">
-          <date-part name="day" form="numeric-leading-zeros" suffix="-"/>
-          <date-part name="month" form="short" suffix="-" strip-periods="true"/>
+          <!-- <date-part name="day" form="numeric-leading-zeros" suffix="-"/>
+          <date-part name="month" form="short" suffix="-" strip-periods="true"/> -->
           <date-part name="year" form="long"/>
         </date>
       </else>
@@ -97,7 +97,7 @@
 
   <!-- Hide volume/edition information -->
   <macro name="locators">
-    <!--group delimiter=", ">
+    group delimiter=", ">
       <text macro="edition"/>
       <group delimiter=" ">
         <text term="volume" form="short"/>
@@ -111,7 +111,7 @@
         <text term="issue" form="short"/>
         <number variable="issue" form="numeric"/>
       </group>
-    </group-->
+    </group
   </macro>
   <macro name="title">
     <choose>
@@ -247,21 +247,24 @@
             <group delimiter=", ">
               <text variable="container-title" font-style="italic" form="short"/>
               <text macro="locators"/>
+              <text macro="issued"/>
             </group>
           </if>
           <else-if type="paper-conference">
             <group delimiter=", ">
               <text macro="event"/>
               <text macro="locators"/>
+              <text macro="issued"/>
             </group>
           </else-if>
-          <else-if type="report">
+          <else-if type="report misc" match="any">
             <group delimiter=", ">
 
               <text macro="publisher" prefix="Technical report, "/>
               <group delimiter=" ">
                 <text variable="genre"/>
                 <text variable="number"/>
+                <text macro="issued"/>
               </group>
             </group>
           </else-if>
@@ -269,6 +272,7 @@
             <group delimiter=", ">
               <text variable="genre"/>
               <text macro="publisher"/>
+              <text macro="issued"/>
             </group>
           </else-if>
           <else-if type="webpage">
@@ -303,6 +307,7 @@
               <group delimiter=" ">
                 <text term="in"/>
                 <text variable="container-title" font-style="italic"/>
+                <text macro="issued"/>
               </group>
               <text macro="locators"/>
             </group>

@@ -1,0 +1,34 @@
+@inproceedings{Chua2018HandfulTrials,
+  title={Deep reinforcement learning in a handful of trials using probabilistic dynamics models},
+  author={Chua, Kurtland and Calandra, Roberto and McAllister, Rowan and Levine, Sergey},
+  booktitle={Neural Information Processing Systems (NeurIPS)},
+  pages={4754--4765},
+  year={2018},
+  file={https://papers.nips.cc/paper/7725-deep-reinforcement-learning-in-a-handful-of-trials-using-probabilistic-dynamics-models.pdf},
+  abstract={Model-based reinforcement learning (RL) algorithms can attain excellent sampleefficiency, but often lag behind the best model-free algorithms in terms of asymp-totic performance. This is especially true with high-capacity parametric functionapproximators, such as deep networks. In this paper, we study how to bridge thisgap, by employing uncertainty-aware dynamics models. We propose a new algo-rithm called probabilistic ensembles with trajectory sampling (PETS) that combinesuncertainty-aware deep network dynamics models with sampling-based uncertaintypropagation. Our comparison to state-of-the-art model-based and model-free deepRL algorithms shows that our approach matches the asymptotic performance ofmodel-free algorithms on several challenging benchmark tasks, while requiringsignificantly fewer samples (e.g., 8 and 125 times fewer samples than Soft ActorCritic and Proximal Policy Optimization respectively on the half-cheetah task)}
+}
+
+@article{Deisenroth2015Pilco,
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  title={Gaussian Processes for Data-Efficient Learning in Robotics and Control},
+  author={Deisenroth, Marc and Fox, Dieter, and Rasmussen, Carl E},
+  year={2015},
+  volume={37},
+  number={2},
+  pages={408-423},
+  doi={10.1109/TPAMI.2013.218},
+  abstract={Autonomous learning has been a promising direction in control and robotics for more than a decade since data-driven learning allows to reduce the amount of engineering knowledge, which is otherwise required. However, autonomous reinforcement learning (RL) approaches typically require many interactions with the system to learn controllers, which is a practical limitation in real systems, such as robots, where many interactions can be impractical and time consuming. To address this problem, current learning approaches typically require task-specific knowledge in form of expert demonstrations, realistic simulators, pre-shaped policies, or specific knowledge about the underlying dynamics. In this paper, we follow a different approach and speed up learning by extracting more information from data. In particular, we learn a probabilistic, non-parametric Gaussian process transition model of the system. By explicitly incorporating model uncertainty into long-term planning and controller learning our approach reduces the effects of model errors, a key problem in model-based learning. Compared to state-of-the art RL our model-based policy search method achieves an unprecedented speed of learning. We demonstrate its applicability to autonomous learning in real robot and control tasks.},
+  file={https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6654139},
+}
+
+@inproceedings{Mania2019Certainty,
+  title={Certainty equivalence is efficient for linear quadratic control},
+  author={Mania, Horia and Tu, Stephen and Recht, Benjamin},
+  booktitle={Advances in Neural Information Processing Systems},
+  pages={10154--10164},
+  year={2019},
+  file={http://papers.nips.cc/paper/9205-certainty-equivalence-is-efficient-for-linear-quadratic-control.pdf},
+  abstract={We study the performance of thecertainty equivalent controlleron Linear Quadratic(LQ) control problems with unknown transition dynamics. We show that for boththe fully and partially observed settings, the sub-optimality gap between the costincurred by playing the certainty equivalent controller on the true system and thecost incurred by using the optimal LQ controller enjoys a fast statistical rate, scalingas thesquareof the parameter error. To the best of our knowledge, our result is thefirst sub-optimality guarantee in the partially observed Linear Quadratic Gaussian(LQG) setting. Furthermore, in the fully observed Linear Quadratic Regulator(LQR), our result improves upon recent work by Dean et al.[11], who present analgorithm achieving a sub-optimality gap linear in the parameter error. A key partof our analysis relies on perturbation bounds for discrete Riccati equations. Weprovide two new perturbation bounds, one that expands on an existing result fromKonstantinov et al. [25], and another based on a new elementary proof strategy.},
+}
+
+
