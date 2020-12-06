@@ -4,6 +4,11 @@ title:  "The need for Explicit Exploration in Model-based Reinforcement Learning
 author: "Sebastian Curi, Felix Berkenkamp, Andreas Krause"
 javascript:
   - "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"
+inline:
+  - references
+  - publications
+css:
+  - publications
 ---
 
 
