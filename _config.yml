@@ -36,7 +36,9 @@ scholar:
   style: _assets/bibliography/bibstyle.csl
   locale: en
 
-  sort_by: year,month
+  # While sorting by year,month is nice for bibliography, it is confusing in blog posts
+  # Couldn't figure out how to have per-page sorting.
+  sort_by: none #year,month
   order: descending
 
   group_by: none
