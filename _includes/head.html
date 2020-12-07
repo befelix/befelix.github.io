@@ -21,7 +21,7 @@
     crossorigin="anonymous"
   >
 
-  {% for javascript in page.javascript -%}
+  {% for javascript in page.import-javascript -%}
     <script src="{{ javascript }}" async></script>
   {% endfor -%}
 

@@ -47,3 +47,8 @@ div.tab-abstract {
     padding-left: 0;
    }
 }
+
+// highlight references (see js/highligh-selected-ref.js)
+div.reference-header.highlight {
+  background-color: #e6e6ff;
+}
