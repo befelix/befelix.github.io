@@ -3,7 +3,7 @@ layout: post
 title:  "The need for Explicit Exploration in Model-based Reinforcement Learning"
 author: "Sebastian Curi, Felix Berkenkamp, Andreas Krause"
 import-javascript:
-  - "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"
+  - "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML"
 inline-javascript:
   - references
   - highlight-selected-ref
@@ -18,10 +18,6 @@ and aleatoric (noise, independent of data) uncertainty.
 When optimizing the policy, current algorithms typically average over both types of uncertainty. In this blog post,
 we discuss problems with this approach and briefly discuss a tractable variant of optimistic exploration based on our upcoming NeurIPS paper {% cite Curi2020OptimisticModel -f personal %}.
 
-<div>
-  <b>If you want to discuss the following, please come to our NeurIPS poster on Tuesday.</b>
-</div>
-<br>
 
 Model-based reinforcement learning
 ----------------------------------
