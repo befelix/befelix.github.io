@@ -25,8 +25,8 @@ sass:
   style: compressed
 
 include: ['_pages']
-karmdown:
-  input: GFM
+kramdown:
+  math_engine: mathjax
 
 plugins_dir: ./_plugins
 plugins:

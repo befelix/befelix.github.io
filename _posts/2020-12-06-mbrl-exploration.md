@@ -3,14 +3,13 @@ layout: post
 title:  "The need for Explicit Exploration in Model-based Reinforcement Learning"
 author: "Sebastian Curi, Felix Berkenkamp, Andreas Krause"
 import-javascript:
-  - "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML"
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
 inline-javascript:
   - references
   - highlight-selected-ref
 css:
   - publications
 ---
-
 
 In model-based reinforcement learning, we aim to optimize the expected performance of a policy in a stochastic
 environment by learning a transition model that includes both epistemic (structural, decays with more data) 
@@ -38,7 +37,7 @@ and our goal is to find the policy that maximizes performance, that is
 
 $$
 \begin{equation}
-    \pi^* = \mathrm{argmax}_{\pi} \, J(f, \pi).
+    \pi^* = \mathop{\mathrm{argmax}}_{\pi} \, J(f, \pi).
 \end{equation}
 $$
 
@@ -55,7 +54,7 @@ Even though both PILCO and PETS represent uncertainty in their dynamics models, 
 
 $$
 \begin{equation}
-  \pi_t^{\mathrm{greedy}} = \mathrm{argmax}_\pi \, E_{\tilde{f} \sim p(\tilde{f})} \left[ J(\tilde{f}, \pi) \right].
+  \pi_t^{\mathrm{greedy}} = \mathop{\mathrm{argmax}}_\pi \, \mathop{\mathbb{E}}_{\tilde{f} \sim p(\tilde{f})} \left[ J(\tilde{f}, \pi) \right].
 \end{equation}
 $$
 
@@ -113,7 +112,7 @@ We can visualize the difference between predictions according to samples from $$
 
 Intuitively, $$(\pi, \eta)$$ turn the stochastic distribution $$p(\tilde{f})$$ into a simpler deterministic dynamic system that can be controlled easily (with large uncertainty $$\eta$$ can influence the states directly). Thus, we optimize the two policies jointly,
 
-$$\pi_t^{\mathrm{H-UCRL}} = \mathrm{argmax}_\pi \max_\eta J(\tilde{f}, (\pi, \eta))$$ 
+$$\pi_t^{\mathrm{H-UCRL}} = \mathop{\mathrm{argmax}}_\pi \max_\eta J(\tilde{f}, (\pi, \eta))$$ 
 
 under the extended dynamics
 
