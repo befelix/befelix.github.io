@@ -32,6 +32,16 @@ plugins_dir: ./_plugins
 plugins:
   - jekyll-sitemap
 
+# Exclude notebooks from sitemap. They are just exported html from ages ago and don't
+# live up to modern web standards. They'll either go away or will need a proper solution
+# at some point down the road.
+defaults:
+  -
+    scope:
+      path:            "assets/jupyter/**/*.html"
+    values:
+      sitemap:         false
+
 scholar:
   style: _assets/bibliography/bibstyle.csl
   locale: en
