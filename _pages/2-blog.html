@@ -2,8 +2,7 @@
 layout: page
 title: Blog
 permalink: /blog/
-import-javascript:
-  - "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"
+mathjax: true
 ---
 
 
@@ -15,7 +14,7 @@ import-javascript:
           {{ post.title }}
         </h2>
       </a>
-      {{ post.date | date_to_string }}
+      {{ post.date | date_to_string }} • {% include read-time.html content=post.content %}
       {{ post.excerpt }}
     </div>
   {%- endfor -%}
