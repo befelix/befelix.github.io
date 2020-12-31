@@ -14,7 +14,9 @@ mathjax: true
           {{ post.title }}
         </h2>
       </a>
-      {{ post.date | date_to_string }} • {% include read-time.html content=post.content %}
+      <p class="post-meta">
+        {{ post.date | date_to_string }} • {% include read-time.html content=post.content %}
+      </p>
       {{ post.excerpt }}
     </div>
   {%- endfor -%}
