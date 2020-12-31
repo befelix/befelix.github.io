@@ -1,6 +1,6 @@
 <head>
-  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link 
     rel="canonical" 
@@ -15,16 +15,35 @@
   <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
+  <!-- Load bootstrap css (js component in default) -->
   <link 
     rel="stylesheet" 
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
     crossorigin="anonymous"
   >
 
+  <!-- Enable mathjax if specified in header -->
+  {% if page.mathjax -%}
+    <script>
+      window.MathJax = {
+        tex: {
+          macros: {
+            E: "\\mathop{\\mathbb{E}}",
+          }
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async 
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
+  {% endif -%}
+
+  <!-- Import generic javascript libraries -->
   {% for javascript in page.import-javascript -%}
     <script src="{{ javascript }}" async></script>
   {% endfor -%}
 
+  <!-- Load all requested style sheets from page.css -->
   <style>
     {% capture include_to_scssify %}
       {% if page.css %}

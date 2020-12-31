@@ -2,8 +2,7 @@
 layout: post
 title:  "The need for Explicit Exploration in Model-based Reinforcement Learning"
 author: "Sebastian Curi, Felix Berkenkamp, Andreas Krause"
-import-javascript:
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
+mathjax: true
 inline-javascript:
   - references
   - highlight-selected-ref
@@ -37,7 +36,7 @@ and our goal is to find the policy that maximizes performance, that is
 
 $$
 \begin{equation}
-    \pi^* = \mathop{\mathrm{argmax}}_{\pi} \, J(f, \pi).
+    \pi^* = \arg\max_\pi \, J(f, \pi).
 \end{equation}
 $$
 
@@ -54,7 +53,7 @@ Even though both PILCO and PETS represent uncertainty in their dynamics models, 
 
 $$
 \begin{equation}
-  \pi_t^{\mathrm{greedy}} = \mathop{\mathrm{argmax}}_\pi \, \mathop{\mathbb{E}}_{\tilde{f} \sim p(\tilde{f})} \left[ J(\tilde{f}, \pi) \right].
+  \pi_t^{\mathrm{greedy}} = \arg\max_\pi \, \E_{\tilde{f} \sim p(\tilde{f})} \left[ J(\tilde{f}, \pi) \right].
 \end{equation}
 $$
 
@@ -112,7 +111,7 @@ We can visualize the difference between predictions according to samples from $$
 
 Intuitively, $$(\pi, \eta)$$ turn the stochastic distribution $$p(\tilde{f})$$ into a simpler deterministic dynamic system that can be controlled easily (with large uncertainty $$\eta$$ can influence the states directly). Thus, we optimize the two policies jointly,
 
-$$\pi_t^{\mathrm{H-UCRL}} = \mathop{\mathrm{argmax}}_\pi \max_\eta J(\tilde{f}, (\pi, \eta))$$ 
+$$\pi_t^{\mathrm{H-UCRL}} = \arg\max_\pi \max_\eta J(\tilde{f}, (\pi, \eta))$$ 
 
 under the extended dynamics
 
