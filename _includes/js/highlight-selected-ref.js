@@ -5,15 +5,18 @@ var hash = window.location.hash;
 
 highlight = function() {
     // Remove highlight from previous
-    $(hash).parent().removeClass("highlight");
+    document.querySelector(hash).parentElement.classList.remove("highlight");
+
     // Get new location
     hash = window.location.hash;
-    // hash points to the span object of the reference, so the parent
+
     // points to the enclosing div (without buttons below).
-    $(hash).parent().addClass("highlight");
+    document.querySelector(hash).parentElement.classList.add("highlight");
 }
 
 // Run initially once
 highlight();
 // Keep updating as it changes
-$(window).on("hashchange", highlight);
+window.addEventListener('hashchange', function() {
+    highlight();
+});
