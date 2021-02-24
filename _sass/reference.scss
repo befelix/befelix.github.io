@@ -5,7 +5,7 @@ ol.bibliography li {
 
 /* Color of the comment atribute */
 .comment {
-    color: gray;
+    color: $grey-color;
 }
 
 .flex-wrap a.nav-link {
@@ -30,12 +30,13 @@ div.materials {
 }
 
 div.tab-abstract {
-  background-color: #f2f2f2;
+  background-color: $grey-background;
+  background-color: re;
   padding: 0.5em;
 }
 
 .materials pre {
-  background-color: #f2f2f2;
+  background-color: $grey-background;
   display: inline-block !important;
   padding: 0.5em;
   max-width: 100%;
@@ -50,5 +51,5 @@ div.tab-abstract {
 
 // highlight references (see js/highligh-selected-ref.js)
 div.reference-header.highlight {
-  background-color: #e6e6ff;
+  background-color: $highlight-color;
 }
