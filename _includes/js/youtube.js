@@ -3,8 +3,7 @@ document.querySelectorAll("a.videolink").forEach(function(link) {
   link.removeAttribute("href");
 })
 
-// Replace a video placeholder by an iframe
-function replaceVideoPlaceholder(placeholder, url) {
+function createVideoElement(url) {
   // Create new video iframe
   var iframe = document.createElement("iframe");
   iframe.classList.add("embed-responsive-item");
@@ -13,7 +12,13 @@ function replaceVideoPlaceholder(placeholder, url) {
   iframe.setAttribute("src", url);
   iframe.setAttribute("frameborder", "0");
   iframe.setAttribute("allowfullscreen", "true");
-  
+  return iframe
+}
+
+// Replace a video placeholder by an iframe
+function replaceVideoPlaceholder(placeholder, url) {
+  iframe = createVideoElement(url);
+
   // The parent container now embeds a responsive object
   container = placeholder.parentElement;
   container.classList.add("embed-responsive");
@@ -37,7 +42,6 @@ document.querySelectorAll("div.video.youtube").forEach(function(placeholder) {
       replaceVideoPlaceholder(placeholder=this, url=url)
   })
 })
-
 
 // Add click to the ETH videos
 document.querySelectorAll("div.video.eth").forEach(function(placeholder) {

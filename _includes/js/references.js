@@ -1,9 +1,21 @@
+function createVideoElement(url) {
+    // Create new video iframe
+    var iframe = document.createElement("iframe");
+    iframe.classList.add("embed-responsive-item");
+    iframe.setAttribute("width", "560");
+    iframe.setAttribute("height", "315");
+    iframe.setAttribute("src", url);
+    iframe.setAttribute("frameborder", "0");
+    iframe.setAttribute("allowfullscreen", "true");
+    return iframe
+  }
+
 // A function to add videos to divs
 function add_video(link, autoplay=1) {
     // Extract video information
-    var target = link.attr('href');
-    var video_id = link.attr('video-id');
-    var starttime = link.attr('start');
+    var target = link.getAttribute('href');
+    var video_id = link.getAttribute('video-id');
+    var starttime = link.getAttribute('start');
 
     var url = "https://www.youtube.com/embed/" + video_id + "?autoplay=" + autoplay;
     // Add starttime to url if defined
@@ -12,9 +24,8 @@ function add_video(link, autoplay=1) {
     }
 
     // Add iframe
-    $(target).append("<iframe class='embed-responsive-item' width='560' height='315' src='"
-        + url
-        + "' frameborder='0' allowfullscreen></iframe>");
+    video_iframe = createVideoElement(url);
+    document.querySelector(target).appendChild(video_iframe);
 }
 
 function getParameterByName(url, name) {
@@ -26,64 +37,57 @@ function getParameterByName(url, name) {
 $(document).ready(function(){
 
     // Make video point to tab instead and add information
-    $('a.video-tab').each(function () {
-        var link = $(this);
-        var video_url = link.attr('href');
-        // var video_id = video_url.split('?v=')[1];
-        // var params = video_url.split('?')[1];
+    document.querySelectorAll("a.video-tab").forEach(function (link) {
+        var video_url = link.getAttribute("href");
 
-        // var video_id = params.split('v=')[1].split('&')[0];
-        // var time = params.split('time=')[1].split('&')[0];
         var video_id = getParameterByName(video_url, 'v');
         var starttime = getParameterByName(video_url, 'start');
-        // alert(time)
-
-        var key = link.closest('div.reference').attr('data-key');
+        var key = link.closest('div.reference').getAttribute('data-key');
         var target = '#' + key + '-video';
 
-        link.attr('data-toggle', 'tab');
-        link.attr('href', target);
-        link.attr('video-id', video_id)
+        link.setAttribute("data-toggle", "tab");
+        link.setAttribute("href", target);
+        link.setAttribute("video-id", video_id);
         if (starttime) {
-          link.attr('start', starttime);
-        }
-    });
+          link.setAttribute('start', starttime);
+        }        
+    })
 
     // handle the closing of active tabs
-    $('div.reference a.nav-link').click(function (e) {
-        var link = $(this);
+    document.querySelectorAll("div.reference a.nav-link").forEach(function(link) {
+        link.addEventListener("click", function() {
+            var link = this
 
-        // Make sure that the current video stops playing
-        if (link.is('[data-toggle]')) {
-            // if we're switching to another tab -- remove the video.
-            link.closest('div.reference').find('iframe').remove();
-        } else if (link.is('[target]')) {
-            // if we're going to an external website, let's reload video
-            // Get the active video tab
-            var video_link = link.closest('div.reference').find('a.active.video-tab');
-            var target = video_link.attr('href');
-            // Remove the current iframe
-            $(target).find('iframe').remove();
-            // add the video without autoplay
-            add_video(video_link, 0)
-        }
+            // If we're opening a new tab with content, let's remove existing videos (iframes)
+            if (link.hasAttribute("data-toggle")) {
+                // Make sure we cleaned up any active children of the current tab
+                var iframes = link.closest("div.reference").querySelectorAll("iframe");
+                iframes.forEach(function(iframe) {
+                    iframe.remove();
+                })
+            };
 
-        // Remove the active field (allow closing of open tabs)
-        if (link.hasClass('active')) {
-            // timeout to allow bootstrap code to finish
-            window.setTimeout(function(){
-                $(link.attr('href')).removeClass('active');
-                link.removeClass('active')
-            }, 1);
-        } else if (link.hasClass('video-tab')) {
-            // Add the current video
-            add_video(link, 1)
-        }
+            if (link.classList.contains('active')) {
+                // timeout to allow bootstrap code to finish
+                window.setTimeout(function(){
+                    target = link.getAttribute("href");
+                    document.querySelector(target).classList.remove("active");
+                    // $(link.attr('href')).removeClass('active');
+                    link.classList.remove('active')
+                }, 1);
+            } else if (link.classList.contains('video-tab')) {
+                // Add the current video
+                add_video(link, 1)
+            }
+        });
     });
 
-    // add code for close button on mobile
-    $('a.duplicate').click(function () {
-        var parent = $(this).attr('dublicate-target');
-        $(parent).trigger('click');
-    });
+    // Clicking the close button at the bottom of the abstract is equivalent to
+    // clicking the Abstract button
+    document.querySelectorAll("a.duplicate").forEach(function(link) {
+        link.addEventListener("click", function(){
+            var parent = this.getAttribute("duplicate-target");
+            document.querySelector(parent).click();
+        })
+    })
 });
