@@ -6,7 +6,6 @@ document.querySelectorAll("a.videolink").forEach(function(link) {
 function createVideoElement(url) {
   // Create new video iframe
   var iframe = document.createElement("iframe");
-  iframe.classList.add("embed-responsive-item");
   iframe.setAttribute("width", "560");
   iframe.setAttribute("height", "315");
   iframe.setAttribute("src", url);
@@ -17,15 +16,16 @@ function createVideoElement(url) {
 
 // Replace a video placeholder by an iframe
 function replaceVideoPlaceholder(placeholder, url) {
-  iframe = createVideoElement(url);
+  // Remove content of placeholder (e.g., img)
+  placeholder.innerHTML = ""
 
-  // The parent container now embeds a responsive object
-  container = placeholder.parentElement;
-  container.classList.add("embed-responsive");
-  container.classList.add("embed-responsive-16by9");
-  
-  // Replace the placeholder with the iframe
-  placeholder.replaceWith(iframe);
+  // Make sure the placeholder has ratio classes
+  placeholder.classList.add("ratio");
+  placeholder.classList.add("ratio-16x9");
+
+  // Add iframe to div
+  iframe = createVideoElement(url);
+  placeholder.appendChild(iframe);
 }
 
 // Add click to the Youtube videos

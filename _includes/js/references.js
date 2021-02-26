@@ -1,7 +1,6 @@
 function createVideoElement(url) {
     // Create new video iframe
     var iframe = document.createElement("iframe");
-    iframe.classList.add("embed-responsive-item");
     iframe.setAttribute("width", "560");
     iframe.setAttribute("height", "315");
     iframe.setAttribute("src", url);
@@ -24,7 +23,7 @@ function add_video(link, autoplay=1) {
     }
 
     // Add iframe
-    video_iframe = createVideoElement(url);
+    var video_iframe = createVideoElement(url);
     document.querySelector(target).appendChild(video_iframe);
 }
 
