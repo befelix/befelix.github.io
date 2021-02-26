@@ -17,15 +17,17 @@
 
     <!-- Add clickable toggles for bonus material -->
     <div class="links">
-      <ul class="nav nav-pills flex-wrap" role="tablist">
+      <ul class="nav nav-pills" role="tablist">
         {%- if entry.abstract -%}
           <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#{{key}}-abstract" id="button-{{key}}-abstract">Abstract</a>
+            <a class="nav-link"  id="button-{{key}}-abstract" href="#{{key}}-abstract" aria-controls="{{key}}-abstract"
+            data-bs-toggle="pill" role="tab" aria-selected="false">Abstract</a>
           </li>
         {%- endif -%}
 
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#{{key}}-bibtex">BibTex</a>
+          <a class="nav-link"  id="button-{{key}}-bibtex" href="#{{key}}-bibtex" aria-controls="{{key}}-bibtex"
+          data-bs-toggle="pill" role="tab" aria-selected="false">Bibtex</a>
         </li>
 
         {%- if entry.file -%}
@@ -48,7 +50,7 @@
 
         {%- if entry.video -%}
           <li class="nav-item">
-            <a class="nav-link video-tab" href="{{ entry.video }}" target="_blank">Video</a>
+            <a class="nav-link video-tab" id="button-{{key}}-video" href="{{ entry.video }}" target="_blank" aria-selected="false">Video</a>
           </li>
         {%- endif -%}
 
@@ -83,7 +85,9 @@
   <div class="materials tab-content" id="{{key}}-material">
 
     {%- if entry.abstract -%}
-    <div class="tab-pane tab-abstract" role="tabpanel" id="{{key}}-abstract">
+
+    <!-- fade class? -->
+    <div class="tab-pane tab-abstract" role="tabpanel" id="{{key}}-abstract" aria-labelledby="button-{{key}}-abstract">
       <p class="abstract p-2">
         {{entry.abstract}}
         <br>
@@ -95,7 +99,7 @@
     {%- endif -%}
 
     {%- if entry.bibtex -%}
-    <div class="tab-pane tab-bibtex" role="tabpanel" id="{{key}}-bibtex">
+    <div class="tab-pane tab-bibtex" role="tabpanel" id="{{key}}-bibtex" aria-labelledby="button-{{key}}-bibtex">
       <pre>
         {{- entry.bibtex -}}
       </pre>
@@ -103,7 +107,7 @@
     {%- endif -%}
 
     {%- if entry.video or entry.pitch or entry.talk -%}
-    <div class="tab-pane embed-responsive embed-responsive-16by9" role="tabpanel" id="{{key}}-video"></div>
+    <div class="tab-pane  embed-responsive embed-responsive-16by9" role="tabpanel" id="{{key}}-video" aria-labelledby="button-{{key}}-video">
     {%- endif -%}
   </div>
 </div>

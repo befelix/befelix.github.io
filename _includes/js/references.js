@@ -36,7 +36,7 @@ function getParameterByName(url, name) {
 
 document.addEventListener("DOMContentLoaded", function(event) {
 
-    // Make video point to tab instead and add information
+    // Make video links point to tab instead and add information
     document.querySelectorAll("a.video-tab").forEach(function (link) {
         var video_url = link.getAttribute("href");
 
@@ -45,39 +45,46 @@ document.addEventListener("DOMContentLoaded", function(event) {
         var key = link.closest('div.reference').getAttribute('data-key');
         var target = '#' + key + '-video';
 
-        link.setAttribute("data-toggle", "tab");
+        // <a class="nav-link"  href="#{{key}}-bibtex" aria-controls="{{key}}-bibtex"
+        // data-bs-toggle="pill" role="tab" aria-controls="{{key}}-abstract" aria-selected="false">Bibtex</a>
+
+        link.setAttribute("data-bs-toggle", "pill");
         link.setAttribute("href", target);
         link.setAttribute("video-id", video_id);
+        link.setAttribute("role", "tab");
+        link.setAttribute("artia-controls", key + "-video");
         if (starttime) {
           link.setAttribute('start', starttime);
         }
     })
 
     // handle the closing of active tabs
-    document.querySelectorAll("div.reference a.nav-link").forEach(function(link) {
+    document.querySelectorAll("div.reference a.nav-link[data-bs-toggle]").forEach(function(link) {
         link.addEventListener("click", function() {
             var link = this
-
+            ul = link.closest("ul");
             // If we're opening a new tab with content, let's remove existing videos (iframes)
-            if (link.hasAttribute("data-toggle")) {
-                // Make sure we cleaned up any active children of the current tab
-                var iframes = link.closest("div.reference").querySelectorAll("iframe");
-                iframes.forEach(function(iframe) {
-                    iframe.remove();
-                })
-            };
+            // Make sure we cleaned up any active children of the current tab
+            var iframes = link.closest("div.reference").querySelectorAll("iframe");
+            iframes.forEach(function(iframe) {
+                iframe.remove();
+            })
 
-            if (link.classList.contains('active')) {
-                // timeout to allow bootstrap code to finish
-                window.setTimeout(function(){
-                    target = link.getAttribute("href");
-                    document.querySelector(target).classList.remove("active");
-                    // $(link.attr('href')).removeClass('active');
-                    link.classList.remove('active')
-                }, 1);
-            } else if (link.classList.contains('video-tab')) {
+            previous_active = ul.getAttribute("previous-active");
+            if (previous_active == link.id){
+                // Here we've reclicked the same that was previously active -> deactivate
+                link.classList.remove("active");
+                target = document.querySelector(link.getAttribute("href"))
+                target.classList.remove("active");
+                ul.removeAttribute("previous-active");
+            } else {
+                // Update new active target
+                ul.setAttribute("previous-active", link.id);
+            }
+
+            if (link.classList.contains('video-tab')) {
                 // Add the current video
-                add_video(link, 1)
+                add_video(link, 1);
             }
         });
     });
