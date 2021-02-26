@@ -1,11 +1,11 @@
 // Hide actual email adress
 var m_ = "mailto:";
 var a_ = "@";
-var name = "berkenkamp";
+var myname = "berkenkamp";
 var dom = "gmail.com";
-var s = name + a_ + dom;
-$("a.email").attr("href", m_ + 'f' + s).text('f' + s);
+var s = myname + a_ + dom;
 
-// Display skype name
-var skype = "felix.ber";
-$("a.skype").attr("href", "skype:" + skype).text("Skype");
+document.querySelectorAll("a.email").forEach(element => {
+    element.setAttribute("href", m_ + "f" + s);
+    element.text = "f" + s
+});
