@@ -1,17 +1,27 @@
 // Highlight the selected element that we navigate to with the hash
 
-// Get the initial location
-var hash = window.location.hash;
-
 highlight = function() {
-    // Remove highlight from previous
-    document.querySelector(hash).parentElement.classList.remove("highlight");
+    // Remove any previous highlights
+    document.querySelectorAll("div.reference.highlight").forEach(function (div){
+        div.classList.remove("highlight");
+    })
+    if (hash != "") {
+        var previous_highlight = document.querySelector(hash);
+        if (previous_highlight != null) {
+            previous_highlight.parentElement.classList.remove("highlight");
+        }
+    }
 
     // Get new location
-    hash = window.location.hash;
-
+    var hash = window.location.hash;
+    if (hash == "") {
+        return;
+    }
     // points to the enclosing div (without buttons below).
-    document.querySelector(hash).parentElement.classList.add("highlight");
+    var new_highlight = document.querySelector(hash);
+    if (new_highlight != null) {
+        new_highlight.parentElement.classList.add("highlight");
+    }
 }
 
 // Run initially once
