@@ -34,7 +34,7 @@ function getParameterByName(url, name) {
     return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 }
 
-$(document).ready(function(){
+document.addEventListener("DOMContentLoaded", function(event) {
 
     // Make video point to tab instead and add information
     document.querySelectorAll("a.video-tab").forEach(function (link) {
@@ -50,7 +50,7 @@ $(document).ready(function(){
         link.setAttribute("video-id", video_id);
         if (starttime) {
           link.setAttribute('start', starttime);
-        }        
+        }
     })
 
     // handle the closing of active tabs
