@@ -22,18 +22,8 @@ div.container {
   width: 100%;
 }
 
-// Header
-.div-brand {
-  max-width: 50%;
-}
 .navbar-brand {
-  font-size: 1.6em;
   color: $grey-color-dark !important;
-}
-
-button.navbar-toggler.navbar-toggler-right {
-  right: 0;
-  padding: .1em;
 }
 
 .text {
