@@ -36,7 +36,7 @@ function getParameterByName(url, name) {
 document.addEventListener("DOMContentLoaded", function(event) {
 
     // Make video links point to tab instead and add information
-    document.querySelectorAll("a.video-tab").forEach(function (link) {
+    document.querySelectorAll("div.reference a.nav-link.video-tab").forEach(function (link) {
         var video_url = link.getAttribute("href");
 
         var video_id = getParameterByName(video_url, 'v');
@@ -44,9 +44,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         var key = link.closest('div.reference').getAttribute('data-key');
         var target = '#' + key + '-video';
 
-        // <a class="nav-link"  href="#{{key}}-bibtex" aria-controls="{{key}}-bibtex"
-        // data-bs-toggle="pill" role="tab" aria-controls="{{key}}-abstract" aria-selected="false">Bibtex</a>
-
+        // Set attributes
         link.setAttribute("data-bs-toggle", "pill");
         link.setAttribute("href", target);
         link.setAttribute("video-id", video_id);
@@ -62,14 +60,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
         link.addEventListener("click", function() {
             var link = this
             ul = link.closest("ul");
-            // If we're opening a new tab with content, let's remove existing videos (iframes)
-            // Make sure we cleaned up any active children of the current tab
-            var iframes = link.closest("div.reference").querySelectorAll("iframe");
-            iframes.forEach(function(iframe) {
-                iframe.remove();
-            })
-
             previous_active = ul.getAttribute("previous-active");
+
+            // If we're opening a new tab with content, let's remove existing videos (iframes)
+            link.closest("div.reference").querySelector("div.ratio").innerHTML = "";
+
             if (previous_active == link.id){
                 // Here we've reclicked the same that was previously active -> deactivate
                 link.classList.remove("active");
@@ -79,12 +74,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
             } else {
                 // Update new active target
                 ul.setAttribute("previous-active", link.id);
+
+                if (link.classList.contains('video-tab')) {
+                    // Add the current video
+                    add_video(link, 1);
+                }
             }
 
-            if (link.classList.contains('video-tab')) {
-                // Add the current video
-                add_video(link, 1);
-            }
         });
     });
 
