@@ -2,15 +2,9 @@
 
 highlight = function() {
     // Remove any previous highlights
-    document.querySelectorAll("div.reference.highlight").forEach(function (div){
+    document.querySelectorAll("div.reference div.highlight").forEach(function (div){
         div.classList.remove("highlight");
     })
-    if (hash != "") {
-        var previous_highlight = document.querySelector(hash);
-        if (previous_highlight != null) {
-            previous_highlight.parentElement.classList.remove("highlight");
-        }
-    }
 
     // Get new location
     var hash = window.location.hash;
