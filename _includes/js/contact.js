@@ -7,5 +7,5 @@ var s = myname + a_ + dom;
 
 document.querySelectorAll("a.email").forEach(element => {
     element.setAttribute("href", m_ + "f" + s);
-    element.querySelector("#mail-placeholder").innerHTML = "f" + s;
+    element.querySelector(".mail-placeholder").innerHTML = "f" + s;
 });
