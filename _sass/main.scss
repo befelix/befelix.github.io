@@ -51,6 +51,10 @@ a {
 }
 
 // Icons
+a>svg {
+  color: black;
+}
+
 .icon {
 
     > svg {
@@ -64,4 +68,3 @@ a {
         }
     }
 }
-
