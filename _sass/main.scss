@@ -52,7 +52,7 @@ a {
 
 // Icons
 a>svg {
-  color: black;
+  color: $grey-color-dark;
 }
 
 .icon {
@@ -64,7 +64,7 @@ a>svg {
         vertical-align: middle;
 
         path {
-            fill: $grey-color;
+            fill: $grey-color-dark;
         }
     }
 }
