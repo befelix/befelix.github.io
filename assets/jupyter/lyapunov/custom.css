@@ -1,0 +1,17 @@
+/* Make notebooks full-width */
+#notebook-container {
+  width: 100%;
+}
+
+/* Make left fields a bit smaller */
+.prompt {
+  min-width: 5em;
+  text-align: left;
+}
+
+/* Scrollable overflow */
+pre {
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
+}
