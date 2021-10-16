@@ -97,7 +97,7 @@
 
   <!-- Hide volume/edition information -->
   <macro name="locators">
-    group delimiter=", ">
+    <group delimiter=", ">
       <text macro="edition"/>
       <group delimiter=" ">
         <text term="volume" form="short"/>
@@ -111,7 +111,7 @@
         <text term="issue" form="short"/>
         <number variable="issue" form="numeric"/>
       </group>
-    </group
+    </group>
   </macro>
   <macro name="title">
     <choose>
