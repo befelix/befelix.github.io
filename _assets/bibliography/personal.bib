@@ -1,3 +1,19 @@
+@misc{Froehlich2021OnPolicyCorrections,
+  title = {On-Policy Model Errors in Reinforcement Learning},
+  publisher = {ArXiv},
+  author = {Fröhlich, Lukas P. and Lefarov, Maksym and Zeilinger, Melanie N. and Berkenkamp, Felix},
+  year = {2021},
+  month = {October},
+  eprint={2110.07985},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG},
+  url = {https://arxiv.org/abs/2110.07985},
+  abstract = {Model-free reinforcement learning algorithms can compute policy gradients given sampled environment transitions, but require large amounts of data. In contrast, model-based methods can use the learned model to generate new data, but model errors and bias can render learning unstable or sub-optimal. In this paper, we present a novel method that combines real world data and a learned model in order to get the best of both worlds. The core idea is to exploit the real world data for on-policy predictions and use the learned model only to generalize to different actions. Specifically, we use the data as time-dependent on-policy correction terms on top of a learned model, to retain the ability to generate data without accumulating errors over long prediction horizons. We motivate this method theoretically and show that it counteracts an error term for model-based policy improvement. Experiments on MuJoCo- and PyBullet-benchmarks show that our method can drastically improve existing model-based approaches without introducing additional tuning parameters.},
+  file = {https://arxiv.org/pdf/2110.07985},
+}
+
+
+
 @inproceedings{Curi2020OptimisticModel,
   title = {Efficient Model-Based Reinforcement Learning through Optimistic Policy Search and Planning},
   booktitle = {Neural Information Processing Systems (NeurIPS)},
