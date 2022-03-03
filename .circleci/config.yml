@@ -14,7 +14,9 @@ jobs:
           command: gem install jekyll jekyll-scholar jekyll-sitemap
       - run:
           name: Build website
-          command: JEKYLL_ENV=production jekyll build -d ~/website
+          command: |
+            JEKYLL_ENV=production jekyll build -d ~/website
+            touch ~/website/.nojekyll
       - run:
           name: Upload
           working_directory: ~/website
