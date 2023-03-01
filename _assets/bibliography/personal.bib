@@ -1,3 +1,25 @@
+@inproceedings{Bottero2022SafeInformation,
+  title = { Model-Based Uncertainty in Value Functions },
+  booktitle = {The 25th International Conference on Artificial Intelligence and Statistics (AISTATS)},
+  author = {Luis, Carlos E. and Bottero, G. Alessandro and Vinogradska, Julia and Berkenkamp, Felix and Peters, Jan},
+  year = {2023},
+  month = {April},
+  url = {https://arxiv.org/abs/2302.12526},
+  abstract = {We consider the problem of quantifying uncertainty over expected cumulative rewards in model-based reinforcement learning. In particular, we focus on characterizing the variance over values induced by a distribution over MDPs. Previous work upper bounds the posterior variance over values by solving a so-called uncertainty Bellman equation, but the over-approximation may result in inefficient exploration. We propose a new uncertainty Bellman equation whose solution converges to the true posterior variance over values and explicitly characterizes the gap in previous work. Moreover, our uncertainty quantification technique is easily integrated into common exploration strategies and scales naturally beyond the tabular setting by using standard deep reinforcement learning architectures. Experiments in difficult exploration tasks, both in tabular and continuous control settings, show that our sharper uncertainty estimates improve sample-efficiency. },
+  file = {https://arxiv.org/pdf/2302.12526},
+}
+
+@inproceedings{Bottero2022SafeInformation,
+  title = {Information-Theoretic Safe Exploration with Gaussian Processes},
+  booktitle = {Neural Information Processing Systems (NeurIPS)},
+  author = {Bottero, G. Alessandro and Luis, Carlos E. and Vinogradska, Julia and Berkenkamp, Felix and Peters, Jan},
+  year = {2022},
+  month = {December},
+  url = {https://arxiv.org/abs/2212.04914},
+  abstract = {We consider a sequential decision making task where we are not allowed to evaluate parameters that violate an a priori unknown (safety) constraint. A common approach is to place a Gaussian process prior on the unknown constraint and allow evaluations only in regions that are safe with high probability. Most current methods rely on a discretization of the domain and cannot be directly extended to the continuous case. Moreover, the way in which they exploit regularity assumptions about the constraint introduces an additional critical hyperparameter. In this paper, we propose an information-theoretic safe exploration criterion that directly exploits the GP posterior to identify the most informative safe parameters to evaluate. Our approach is naturally applicable to continuous domains and does not require additional hyperparameters. We theoretically analyze the method and show that we do not violate the safety constraint with high probability and that we explore by learning about the constraint up to arbitrary precision. Empirical evaluations demonstrate improved data-efficiency and scalability.},
+  file = {https://arxiv.org/pdf/2212.04914},
+}
+
 @inproceedings{Froehlich2022OnPolicyCorrections,
   title = {On-Policy Model Errors in Reinforcement Learning},
   booktitle = {International Conference on Learning Representations (ICLR)},
