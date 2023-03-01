@@ -1,0 +1,42 @@
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ruby:3.2
+    steps:
+      - name: Install dependencies
+        run: |
+          apt update -yq
+          apt install -yq rsync
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install
+        run: gem install jekyll jekyll-scholar jekyll-sitemap
+      
+      - name: Build website
+        run: |
+          JEKYLL_ENV=production jekyll build -d ./build
+          touch ./build/.nojekyl
+      
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build
+          repository-name: befelix/befelix.github.io
+          token: ${{ secrets.REPO_TOKEN }}
+          branch: master
+          git-config-name: CI
+          git-config-email: fberkenkamp@gmail.com
+          commit-message: Upload compiled website from CI
+          force: true
