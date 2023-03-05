@@ -33,8 +33,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build
-          repository-name: befelix/befelix.github.io
-          token: ${{ secrets.REPO_TOKEN }}
           branch: master
           git-config-name: CI
           git-config-email: fberkenkamp@gmail.com
