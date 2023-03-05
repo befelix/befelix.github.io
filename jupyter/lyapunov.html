@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link
+    rel="canonical"
+    href="https://berkenkamp.me/jupyter/lyapunov"
+  >
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="Felix Berkenkamp"
+    href="https://berkenkamp.me/feed.xml"
+  >
+  <title>Felix Berkenkamp</title>
+  <meta name="description" content="Felix Berkenkamp is a research scientist at the Bosch Center for AI. He completed his PhD at ETH Zurich and his research focuses on safe learning,  with the goal of making real-world systems learn without risking unsafe  behavior during the learning process.
+">
+
+  <!-- Load bootstrap css (js component in default) -->
+  <link 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+    rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
+    crossorigin="anonymous"
+  >
+
+  <!-- Enable mathjax if specified in header -->
+  <!-- Import generic javascript libraries -->
+  <!-- Load all requested style sheets from page.css -->
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"}div.container{max-width:1100px;width:100%}.navbar-brand{color:#5c5c5c !important}.text{max-width:800px}h1{font-size:1.6em}h2{font-size:1.45em}h3{font-size:1.25em}h4{font-size:1.12em}h5{font-size:.83em}h6{font-size:.75em}h1,h2,h3,h4,h5,h6,p,blockquote,pre,ul,ol,dl,figure{margin-bottom:1em}a{text-decoration:none}a>svg{color:#5c5c5c}.icon>svg{display:inline-block;width:16px;height:16px;vertical-align:middle}.icon>svg path{fill:#5c5c5c}ol.bibliography li{display:inline}.comment{color:#828282}.flex-wrap a.nav-link{padding:.5em;padding-top:.4em;padding-bottom:.4em}@media screen and (max-width: 700px){.flex-wrap a.nav-link{padding-top:.1em;padding-bottom:.1em}}div.materials{max-width:800px}.materials div.active{margin-top:.5em}div.tab-abstract{background-color:#f2f2f2;background-color:re;padding:.5em}.materials pre{background-color:#f2f2f2;display:inline-block !important;padding:.5em;max-width:100%}@media screen and (max-width: 700px){ol.bibliography{padding-left:0}}div.reference-header.highlight{background-color:#e6e6ff}div.jupyter iframe{border:none;width:100%;scrolling:no}li.notebook a{display:none}ol.bibliography{padding-left:0}</style>
+</head>
+
+
+  <body>
+
+    <header>
+  <div class="container">
+    <nav class="navbar navbar-expand-sm navbar-light">
+      <a class="navbar-brand fs-3" href="/">Felix Berkenkamp</a>
+
+      <!-- Hamburger menu -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link active ps-5" href="/blog/">Blog</a>
+                </li>
+              
+                <li class="nav-item">
+                  <a class="nav-link active ps-5" href="/publications/">Publications</a>
+                </li>
+              
+                <li class="nav-item">
+                  <a class="nav-link active ps-5" href="/contact/">Contact</a>
+                </li>
+              </ul>
+      </div>
+    </nav>
+  </div>
+  <!-- rule -->
+  <hr class="mt-0 text-secondary mb-4">
+</header>
+    <div class="container">
+      <article class="page">
+
+  
+
+  <div class="page-content">
+    <ol class="bibliography"><li><div class="reference mb-2" data-key="Berkenkamp2016ROA" id='reference-Berkenkamp2016ROA'>
+  <div class='reference-header'>
+    <span id="Berkenkamp2016ROA"><b>Safe Learning of Regions of Attraction for Uncertain, Nonlinear Systems with Gaussian Processes</b><div class="csl-block">Felix Berkenkamp, Riccardo Moriconi, Angela P. Schoellig, Andreas Krause</div>in <i>Proc. of the IEEE Conference on Decision and Control</i>, 2016 </span><br><!-- Add clickable toggles for bonus material -->
+    <div class="links">
+      <ul class="nav nav-pills" role="tablist"><li class="nav-item">
+            <a class="nav-link"  id="button-Berkenkamp2016ROA-abstract" href="#Berkenkamp2016ROA-abstract" aria-controls="Berkenkamp2016ROA-abstract"
+            data-bs-toggle="pill" role="tab" aria-selected="false">Abstract</a>
+          </li><li class="nav-item">
+          <a class="nav-link"  id="button-Berkenkamp2016ROA-bibtex" href="#Berkenkamp2016ROA-bibtex" aria-controls="Berkenkamp2016ROA-bibtex"
+          data-bs-toggle="pill" role="tab" aria-selected="false">Bibtex</a>
+        </li><li class="nav-item">
+            <a class="nav-link" href="https://arxiv.org/pdf/1603.04915">PDF</a>
+          </li><li class="nav-item">
+            <a class="nav-link" href="https://github.com/befelix/lyapunov-learning" target="_blank">Code</a>
+          </li><li class="nav-item notebook">
+          <a class="nav-link" href="/jupyter/lyapunov">Notebooks</a>
+        </li><li class="nav-item">
+            <a class="nav-link video-tab" href="https://www.youtube.com/watch?v=bSv-pNOWn7c" target="_blank">Talk</a>
+          </li><li class="nav-item">
+          <a class="nav-link" href="https://1drv.ms/p/s!AgZNQetv3at4hhHn4WNZU_GmG2ix" target="_blank">Slides</a>
+        </li></ul>
+    </div>
+  </div>
+
+  <!-- Add bonus material -->
+  <div class="materials tab-content" id="Berkenkamp2016ROA-material"><!-- fade class? -->
+    <div class="tab-pane tab-abstract" role="tabpanel" id="Berkenkamp2016ROA-abstract" aria-labelledby="button-Berkenkamp2016ROA-abstract">
+      <p class="abstract p-2">
+        Control theory can provide useful insights into the properties of controlled, dynamic systems. One important property of nonlinear systems is the region of attraction (ROA), which is a safe subset of the state space in which a given controller renders an equilibrium point asymptotically stable. The ROA is typically estimated based on a model of the system. However, since models are only an approximation of the real world, the resulting estimated safe region can contain states outside the ROA of the real system. This is not acceptable in safety-critical applications. In this paper, we consider an approach that learns the ROA from experiments on a real system, without ever leaving the ROA of the real system. This approach enables us to find an estimate of the real ROA, without risking safety-critical failures. Based on regularity assumptions on the model errors in terms of a Gaussian process prior, we determine a region in which an equilibrium point is asymptotically stable with high probability, according to an underlying Lyapunov function. Moreover, we actively select areas of the state space to evaluate in order to expand the ROA. We demonstrate the effectiveness of this method in simulated experiments.
+        <br>
+        <div class="d-sm-none">
+          <a class="duplicate" duplicate-target="#button-Berkenkamp2016ROA-abstract" href="#reference-Berkenkamp2016ROA">Close</a>
+        </div>
+      </p>
+    </div><div class="tab-pane tab-bibtex" role="tabpanel" id="Berkenkamp2016ROA-bibtex" aria-labelledby="button-Berkenkamp2016ROA-bibtex">
+      <pre>@inproceedings{Berkenkamp2016ROA,
+  title = {Safe Learning of Regions of Attraction for Uncertain, Nonlinear Systems with {G}aussian Processes},
+  booktitle = {Proc. of the IEEE Conference on Decision and Control},
+  author = {Berkenkamp, Felix and Moriconi, Riccardo and Schoellig, Angela P. and Krause, Andreas},
+  year = {2016},
+  pages = {4661--4666},
+  url = {\href{https://arxiv.org/abs/1603.04915}{arXiv:1603.04915 [cs.SY]}}
+}
+</pre>
+    </div><div class="tab-pane ratio ratio-16x9" role="tabpanel" id="Berkenkamp2016ROA-video" aria-labelledby="button-Berkenkamp2016ROA-video"></div>
+</div>
+</li></ol>
+
+<br>
+
+<ul class="nav nav-pills flex-wrap" role="tablist">
+  <li class="nav-item">
+    <a class="jupyter nav-link activate" data-toggle="tab" tab-target="#simple_example" href="/assets/jupyter/lyapunov/1d_example.html">1D example</a>
+  </li>
+  <li class="nav-item">
+    <a class="jupyter nav-link" data-toggle="tab" tab-target="#inverted_pendulum" href="/assets/jupyter/lyapunov/inverted_pendulum.html">Inverted pendulum</a>
+  </li>
+</ul>
+
+<div class="jupyter tab-content">
+  <div class="tab-pane jupyter" role="tabpanel" id="simple_example"></div>
+  <div class="tab-pane jupyter" role="tabpanel" id="inverted_pendulum"></div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+crossorigin="anonymous">
+</script>
+
+  </div>
+
+</article>
+
+    </div>
+
+    <script>
+      
+        function createVideoElement(url) {
+    // Create new video iframe
+    var iframe = document.createElement("iframe");
+    iframe.setAttribute("width", "560");
+    iframe.setAttribute("height", "315");
+    iframe.setAttribute("src", url);
+    iframe.setAttribute("frameborder", "0");
+    iframe.setAttribute("allowfullscreen", "true");
+    return iframe
+  }
+
+// A function to add videos to divs
+function getVideoUrl(link, autoplay=1) {
+    // Extract video information
+    var target = link.getAttribute('href');
+    var video_id = link.getAttribute('video-id');
+    var starttime = link.getAttribute('start');
+
+    var url = "https://www.youtube.com/embed/" + video_id + "?autoplay=" + autoplay;
+    // Add starttime to url if defined
+    if (typeof starttime !== 'undefined') {
+        url += "&start=" + starttime;
+    }
+    return url;
+}
+
+function getParameterByName(url, name) {
+    // Extract url parameters
+    var match = RegExp('[?&]' + name + '=([^&]*)').exec(url);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
+function replaceVideolinkByTab(link) {
+    var video_url = link.getAttribute("href");
+
+    var video_id = getParameterByName(video_url, 'v');
+    var starttime = getParameterByName(video_url, 'start');
+    var key = link.closest('div.reference').getAttribute('data-key');
+
+    // Set attributes
+    link.setAttribute("data-bs-toggle", "pill");
+    link.setAttribute("href", '#' + key + '-video');
+    link.setAttribute("video-id", video_id);
+    link.setAttribute("role", "tab");
+    link.setAttribute("artia-controls", key + "-video");
+    if (starttime) {
+        link.setAttribute('start', starttime);
+    }
+}
+
+function handleTabClick(event) {
+    var link = this
+    ul = link.closest("ul");
+
+    // If we're opening a new tab with content, let's remove existing videos (iframes)
+    var video_div = ul.closest("div.reference").querySelector("div.tab-pane.ratio");
+    if (video_div != null) {
+        video_div.innerHTML = "";
+    }
+
+    previous_active = ul.getAttribute("previous-active");
+    if (previous_active == link.id){
+        // Here we've reclicked the same that was previously active -> deactivate
+        link.classList.remove("active");
+        target = document.querySelector(link.getAttribute("href"))
+        target.classList.remove("active");
+        ul.removeAttribute("previous-active");
+    } else {
+        // Update new active target
+        ul.setAttribute("previous-active", link.id);
+
+        // Load video into div on-demand
+        if (link.classList.contains('video-tab')) {
+            var video_iframe = createVideoElement(getVideoUrl(link));
+            video_div.appendChild(video_iframe);
+        }
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function(event) {
+
+    // Make video links point to tab instead and add information
+    document.querySelectorAll("div.reference a.nav-link").forEach(function (link) {
+        if (link.classList.contains("video-tab")) {
+            var video_url = link.getAttribute("href");
+
+            var video_id = getParameterByName(video_url, 'v');
+            var starttime = getParameterByName(video_url, 'start');
+            var key = link.closest('div.reference').getAttribute('data-key');
+
+            // Set attributes
+            link.setAttribute("data-bs-toggle", "pill");
+            link.setAttribute("href", '#' + key + '-video');
+            link.setAttribute("video-id", video_id);
+            link.setAttribute("role", "tab");
+            link.setAttribute("artia-controls", key + "-video");
+            if (starttime) {
+                link.setAttribute('start', starttime);
+            }
+        }
+
+        // handle the closing of active tabs
+        if (link.hasAttribute("data-bs-toggle")) {
+            link.addEventListener("click", handleTabClick);
+        }
+    });
+
+    // Clicking the close button at the bottom of the abstract is equivalent to
+    // clicking the Abstract button
+    document.querySelectorAll("a.duplicate").forEach(function(link) {
+        link.addEventListener("click", function(){
+            var parent = this.getAttribute("duplicate-target");
+            document.querySelector(parent).click();
+        })
+    })
+});
+
+      
+        // Resize automatically according to content
+function resizeIframe(iframe) {
+ $(iframe).height($(iframe).contents().height() + 50);
+}
+
+function load_notebook (div, content) {
+  // Append notebook iframe to corresponding div
+  $(div).append('<iframe src="'
+                + content
+                + '" scrolling="no"></iframe>');
+
+  $(div).children("iframe").on("load", function() {
+    resizeIframe($(div).children("iframe"));
+  });
+};
+
+$(document).ready(function () {
+  $('a.jupyter.nav-link').each(function() {
+    var link = $(this);
+
+    var div = link.attr('tab-target');
+    var content = link.attr('href');
+    link.attr('href', div);
+    link.attr('data-toggle', 'tab');
+
+    link.one('click', function() {
+      load_notebook(div, content);
+    });
+  });
+
+  // Activate the first element
+  $('div.jupyter.tab-content').append('<a href="#">Back to top</a>');
+  $('a.jupyter.activate').trigger('click');
+});
+
+      
+      // Hide actual email adress
+var m_ = "mailto:";
+var a_ = "@";
+var myname = "berkenkamp";
+var dom = "gmail.com";
+var s = myname + a_ + dom;
+
+document.querySelectorAll("a.email").forEach(element => {
+    element.setAttribute("href", m_ + "f" + s);
+    element.querySelector(".mail-placeholder").innerHTML = "f" + s;
+});
+
+    </script>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script 
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+      crossorigin="anonymous">
+    </script>
+
+  </body>
+
+</html>

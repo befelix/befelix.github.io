@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Felix Berkenkamp</title>
+    <description>Felix Berkenkamp is a research scientist at the Bosch Center for AI. He completed his PhD at ETH Zurich and his research focuses on safe learning,  with the goal of making real-world systems learn without risking unsafe  behavior during the learning process.
+</description>
+    <link>https://berkenkamp.me/</link>
+    <atom:link href="https://berkenkamp.me/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 05 Mar 2023 09:41:44 +0000</pubDate>
+    <lastBuildDate>Sun, 05 Mar 2023 09:41:44 +0000</lastBuildDate>
+    <generator>Jekyll v4.3.2</generator>
+    
+      <item>
+        <title>The need for Explicit Exploration in Model-based Reinforcement Learning</title>
+        <description>&lt;p&gt;In model-based reinforcement learning, we aim to optimize the expected performance of a policy in a stochastic
+environment by learning a transition model that includes both epistemic (structural, decays with more data) 
+and aleatoric (noise, independent of data) uncertainty.
+When optimizing the policy, current algorithms typically average over both types of uncertainty. In this blog post,
+we discuss problems with this approach and briefly discuss a tractable variant of optimistic exploration based on our upcoming NeurIPS paper &lt;a class=&quot;citation&quot; href=&quot;#Curi2020OptimisticModel&quot;&gt;[1]&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;model-based-reinforcement-learning&quot;&gt;Model-based reinforcement learning&lt;/h2&gt;
+
+&lt;p&gt;In the following, we focus on deterministic policy and environments, and finite-horizon undiscounted RL for simplicity. Please see the paper for a more
+general exposition. Given those assumptions the typical reinforcement learning objective is to optimize the cumulative \(r(s, a)\) over environment
+state trajectories of length \(N\). For any dynamics \(f\) this performance metric is given by&lt;/p&gt;
+
+\[\begin{align}
+    J(f, \pi) =&amp;amp; \sum_{n=0}^{N} \, r(s_n, \pi(s_n)) \\
+    &amp;amp;s_{n+1} = f(s_n, \pi(s_n) ) \\
+    &amp;amp;a_n = \pi(s_n)
+\end{align}\]
+
+&lt;p&gt;and our goal is to find the policy that maximizes performance, that is&lt;/p&gt;
+
+\[\begin{equation}
+    \pi^* = \arg\max_\pi \, J(f, \pi).
+\end{equation}\]
+
+&lt;p&gt;To solve this problem, typical RL algorithms replace the unknown transition model \(f\) by transition data samples from interactions with the environment. In model-based RL, we instead learn a model \(\tilde{f}\) that approximates the true transition dynamics \(f\). That is, at each episode \(t\) we select a policy
+\(\pi_t\) and collect new transition data by rolling out with \(\pi_t\) on the true environment. Subsequently, we improve our model approximation \(\tilde{f}\) based on the new data and repeat the process. The goal is to converge to a policy that maximizes the original problem \(J(f, \pi)\), that is, we want \(\pi_t \to \pi^*\).&lt;/p&gt;
+
+&lt;h2 id=&quot;greedy-exploitation&quot;&gt;Greedy Exploitation&lt;/h2&gt;
+
+&lt;p&gt;A key challenge now lies in how to account for the fact that we have model errors, so that \(\tilde{f} \ne f\). While it is possible to solve this problem with a best-fit approximation of the model to the data, the most data-efficient approaches learn &lt;em&gt;probabilistic&lt;/em&gt; models of \(\tilde{f}\) that explicitly represent uncertainty; be it through nonparemetric models such as Gaussian processes as in PILCO &lt;a class=&quot;citation&quot; href=&quot;#Deisenroth2015Pilco&quot;&gt;[2]&lt;/a&gt; or ensembles of neural networks as in PETS &lt;a class=&quot;citation&quot; href=&quot;#Chua2018HandfulTrials&quot;&gt;[3]&lt;/a&gt;. The end-result is a distribution of dynamics models \(p(\tilde{f})\) that could potentially explain the transitions on the true environment observed so far.&lt;/p&gt;
+
+&lt;p&gt;Even though both PILCO and PETS represent uncertainty in their dynamics models, in the optimization step they average over the uncertainty in the environment,&lt;/p&gt;
+
+\[\begin{equation}
+  \pi_t^{\mathrm{greedy}} = \arg\max_\pi \, \E_{\tilde{f} \sim p(\tilde{f})} \left[ J(\tilde{f}, \pi) \right].
+\end{equation}\]
+
+&lt;p&gt;That is, for episode \(t\) \(\pi_t^{\mathrm{greedy}}\) is the policy that achieves the maximal performance in expectation over the learned distribution of transition models \(p(\tilde{f})\). This is a greedy scheme that exploits existing knowledge (best performance given current knowledge), but does not explicitly take exploration into account outside of special configurations of reward \(r\) and dynamics \(f\) (e.g., linear-quadratic control &lt;a class=&quot;citation&quot; href=&quot;#Mania2019Certainty&quot;&gt;[4]&lt;/a&gt;). In fact, even with our restriction to deterministic dynamics \(f\) in this blog post, this is a &lt;em&gt;stochastic&lt;/em&gt; policy optimization scheme that effectively treats uncertainty about the transition dynamics similar to environment noise that we want to average over.&lt;/p&gt;
+
+&lt;p&gt;This can lead to peculiar behavior in practice. Consider the standard pendulum-swingup task with sparse rewards (we only get a reward when the pendulum is upright). In addition, we add a penalty on the norm of our actions, which is often desirable in terms of minimizing energy and jitter but also means that exploration comes at a cost. Now, during the first episode we collect random data, since we do not have any knowledge about the dynamics yet. Consequently, our learned model will have low uncertainty at the downwards position of the pendulum, but high uncertainty elsewhere in the state space. This is not a problem without action penalty, since there is still a marginal benefit to swinging up. Consequently, greedy exploitation solves that task independently of the model (DE=deterministic ensemble, PE=probabilistic ensemble, GP=Gaussian process):&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;mx-auto&quot;&gt;
+  &lt;img src=&quot;/assets/img/2020-12-06-inverted_pendulum_no_cost.jpg&quot; alt=&quot;Performance plot without action cost (greedy and optimistic work)&quot; style=&quot;max-width: 100%;&quot; /&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;However, once we add an action penality things change. Since \(\pi_t^\mathrm{greedy}\) averages over model uncertainty, the expected cost of actuating the system and swinging up seems artificially high since many of the possible dynamics in \(p(\tilde{f})\) need different control actions to stabilize at the top. In contrast, not actuating the system at all occurs zero penalty, which leads to a higher overall expected reward than actuating the system. Consequently, greedy exploration cannot solve the task.&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;mx-auto&quot;&gt;
+  &lt;img src=&quot;/assets/img/2020-12-06-inverted_pendulum_cost.jpg&quot; alt=&quot;Performance plot without action cost (only optimistic exploration works)&quot; style=&quot;max-width: 100%;&quot; /&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;While we focused on this simple environment here, the paper shows that this behavior is consistent for more complex Mujoco environments too.&lt;/p&gt;
+
+&lt;h2 id=&quot;optimistic-exploration&quot;&gt;Optimistic Exploration&lt;/h2&gt;
+
+&lt;p&gt;To solve this problem, we have to explicitly explore and treat uncertainty as an opportunity, rather an adversary. We propose &lt;em&gt;H-UCRL&lt;/em&gt; (Hallucinated-Upper Confidence RL), a practical optimistic exploration scheme that is both practical, so that it can be easily implemented within existing model-based RL frameworks, and has theoretical guarantees in the case of Gaussian process models. Instead of averaging over the state distribution imposed by the expectation in the greedy formulation, we instead consider acting optimistically within one-step transitions of our model.&lt;/p&gt;
+
+&lt;p&gt;Conditioned on a particular state \(s\), our belief over \(\tilde{f}\) introduces a distribution over possible next states. In particular, we consider Gaussian distributions so that the next state is distributed as&lt;/p&gt;
+
+\[p(s_{t+1} \,|\, s_t, a_t) \sim \mathcal{N}(\mu_t(s_t, a_t), \sigma_t(s_t, a_t)^2)\]
+
+&lt;p&gt;according to our model. Instead of averaging over these transitions, we propose an exploration scheme that acts optimistically within the confidence intervals over the subsequent states. To this end, we introduce an additional (hallucinated) action input with control authority proportional to the one-step model uncertainty \(\sigma(\cdot)\), scaled by an appropriate constant \(\beta\) to select a confidence interval (we set \(\beta=1\) for all our experiments). If we assign a separate policy \(\eta\) to this hallucinated action space that take values in \([-1, 1]\), this reduces the stochastic belief over the next state according to \(p(\tilde{f})\) to the deterministic dynamics&lt;/p&gt;
+
+\[s_{t+1} = \mu_t(s_t, a_t) + \beta \, \sigma_t(s_t, a_t) \, \eta(s_t)\]
+
+&lt;p&gt;We can visualize the difference between predictions according to samples from \(p(\tilde{f})\) and the optimistic dynamics under \(\eta\) below. For a given starting state \(s_0\), the distribution over possible transition dynamics induces a wide state distribution (light gray). In the case of sparse rewards (red cross), only very few of these transitions can obtain a positive reward. This causes greedy exploitation with \(\pi_t^\mathrm{greedy}\) to fail in the presence of action penalties. In contrast, H-UCRL can act optimistically within the one-step confidence intervals of our model (illustrated by vertical blue arrows within the dark gray area), so that the joint policies \((\pi, \eta)\) operate on a simpler, deterministic system that can be driven to the sparse reward exactly.&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;mx-auto&quot;&gt;
+  &lt;img src=&quot;/assets/img/2020-12-06-optimistic_predictions.jpg&quot; alt=&quot;Performance plot without action cost (only optimistic exploration works)&quot; style=&quot;max-width: 100%;&quot; /&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Intuitively, \((\pi, \eta)\) turn the stochastic distribution \(p(\tilde{f})\) into a simpler deterministic dynamic system that can be controlled easily (with large uncertainty \(\eta\) can influence the states directly). Thus, we optimize the two policies jointly,&lt;/p&gt;
+
+\[\pi_t^{\mathrm{H-UCRL}} = \arg\max_\pi \max_\eta J(\tilde{f}, (\pi, \eta))\]
+
+&lt;p&gt;under the extended dynamics&lt;/p&gt;
+
+\[\tilde{f}(s, (\pi, \eta)) = \mu_t(s, \pi(s)) + \beta \sigma_t(s, \pi(s)) \eta(s) ,\]
+
+&lt;p&gt;Note that while we optimize over \(\pi\) and \(\eta\) jointly, only \(\pi\) is applied when collecting data on the true environment \(f\). While the resulting \(\pi_t^{\mathrm{H-UCRL}}\) will not solve the task on the true system initially, it will collect informative data and converges to the optimal policy as the uncertainty \(\sigma(\cdot)\) in our model decreases (provably so in the case of Gaussian process models). At the same time, the optimistic formulation of H-UCRL fits into standard RL frameworks, where we just have a different dynamic system that includes an extended action space. This makes it easy to implement and &lt;a href=&quot;http://github.com/sebascuri/hucrl&quot;&gt;code is available&lt;/a&gt;. Much more explanations and details can be found in the paper &lt;a class=&quot;citation&quot; href=&quot;#Curi2020OptimisticModel&quot;&gt;[1]&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ol class=&quot;bibliography&quot;&gt;&lt;li&gt;&lt;div class=&quot;reference mb-2&quot; data-key=&quot;Curi2020OptimisticModel&quot; id=&quot;reference-Curi2020OptimisticModel&quot;&gt;
+  &lt;div class=&quot;reference-header&quot;&gt;
+    &lt;span id=&quot;Curi2020OptimisticModel&quot;&gt;&lt;b&gt;Efficient Model-Based Reinforcement Learning through Optimistic Policy Search and Planning&lt;/b&gt;&lt;div class=&quot;csl-block&quot;&gt;Sebastian Curi*, Felix Berkenkamp*, Andreas Krause&lt;/div&gt;in &lt;i&gt;Neural Information Processing Systems (NeurIPS)&lt;/i&gt;, 2020 &lt;/span&gt;&lt;br /&gt;&lt;div class=&quot;comment&quot;&gt;
+        &lt;b&gt;Spotlight talk&lt;/b&gt;
+    &lt;/div&gt;&lt;!-- Add clickable toggles for bonus material --&gt;
+    &lt;div class=&quot;links&quot;&gt;
+      &lt;ul class=&quot;nav nav-pills&quot; role=&quot;tablist&quot;&gt;&lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link&quot; id=&quot;button-Curi2020OptimisticModel-abstract&quot; href=&quot;#Curi2020OptimisticModel-abstract&quot; aria-controls=&quot;Curi2020OptimisticModel-abstract&quot; data-bs-toggle=&quot;pill&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;Abstract&lt;/a&gt;
+          &lt;/li&gt;&lt;li class=&quot;nav-item&quot;&gt;
+          &lt;a class=&quot;nav-link&quot; id=&quot;button-Curi2020OptimisticModel-bibtex&quot; href=&quot;#Curi2020OptimisticModel-bibtex&quot; aria-controls=&quot;Curi2020OptimisticModel-bibtex&quot; data-bs-toggle=&quot;pill&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;Bibtex&lt;/a&gt;
+        &lt;/li&gt;&lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link&quot; href=&quot;https://arxiv.org/pdf/2006.08684&quot;&gt;PDF&lt;/a&gt;
+          &lt;/li&gt;&lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link&quot; href=&quot;http://github.com/sebascuri/hucrl&quot; target=&quot;_blank&quot;&gt;Code&lt;/a&gt;
+          &lt;/li&gt;&lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Add bonus material --&gt;
+  &lt;div class=&quot;materials tab-content&quot; id=&quot;Curi2020OptimisticModel-material&quot;&gt;&lt;!-- fade class? --&gt;
+    &lt;div class=&quot;tab-pane tab-abstract&quot; role=&quot;tabpanel&quot; id=&quot;Curi2020OptimisticModel-abstract&quot; aria-labelledby=&quot;button-Curi2020OptimisticModel-abstract&quot;&gt;
+      &lt;p class=&quot;abstract p-2&quot;&gt;
+        Model-based reinforcement learning algorithms with probabilistic dynamical models are amongst the most data-efficient learning methods. This is often attributed to their ability to distinguish between epistemic and aleatoric uncertainty. However, while most algorithms distinguish these two uncertainties for \em learning the model, they ignore it when \em optimizing the policy. In this paper, we show that ignoring the epistemic uncertainty leads to greedy algorithms that do not explore sufficiently. In turn, we propose a \em practical optimistic-exploration algorithm (\alg), which enlarges the input space with \em hallucinated inputs that can exert as much control as the \em epistemic uncertainty in the model affords. We analyze this setting and construct a general regret bound for well-calibrated models, which is provably sublinear in the case of Gaussian Process models. Based on this theoretical foundation, we show how optimistic exploration can be easily combined with state-of-the-art reinforcement learning algorithms and different probabilistic models. Our experiments demonstrate that optimistic exploration significantly speeds up learning when there are penalties on actions, a setting that is notoriously difficult for existing model-based reinforcement learning algorithms.
+        &lt;br /&gt;
+        &lt;div class=&quot;d-sm-none&quot;&gt;
+          &lt;a class=&quot;duplicate&quot; duplicate-target=&quot;#button-Curi2020OptimisticModel-abstract&quot; href=&quot;#reference-Curi2020OptimisticModel&quot;&gt;Close&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/p&gt;
+    &lt;/div&gt;&lt;div class=&quot;tab-pane tab-bibtex&quot; role=&quot;tabpanel&quot; id=&quot;Curi2020OptimisticModel-bibtex&quot; aria-labelledby=&quot;button-Curi2020OptimisticModel-bibtex&quot;&gt;
+      &lt;pre&gt;@inproceedings{Curi2020OptimisticModel,
+  title = {Efficient Model-Based Reinforcement Learning through Optimistic Policy Search and Planning},
+  booktitle = {Neural Information Processing Systems (NeurIPS)},
+  author = {Curi*, Sebastian and Berkenkamp*, Felix and Krause, Andreas},
+  year = {2020},
+  url = {https://arxiv.org/abs/2006.08684}
+}
+&lt;/pre&gt;
+    &lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class=&quot;reference mb-2&quot; data-key=&quot;Deisenroth2015Pilco&quot; id=&quot;reference-Deisenroth2015Pilco&quot;&gt;
+  &lt;div class=&quot;reference-header&quot;&gt;
+    &lt;span id=&quot;Deisenroth2015Pilco&quot;&gt;&lt;b&gt;Gaussian Processes for Data-Efficient Learning in Robotics and Control&lt;/b&gt;&lt;div class=&quot;csl-block&quot;&gt;Marc Deisenroth, Dieter Fox, Carl E Rasmussen&lt;/div&gt;&lt;i&gt;IEEE Transactions on Pattern Analysis and Machine Intelligence&lt;/i&gt;, vol. 37, no. 2, 2015 &lt;/span&gt;&lt;br /&gt;&lt;!-- Add clickable toggles for bonus material --&gt;
+    &lt;div class=&quot;links&quot;&gt;
+      &lt;ul class=&quot;nav nav-pills&quot; role=&quot;tablist&quot;&gt;&lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link&quot; id=&quot;button-Deisenroth2015Pilco-abstract&quot; href=&quot;#Deisenroth2015Pilco-abstract&quot; aria-controls=&quot;Deisenroth2015Pilco-abstract&quot; data-bs-toggle=&quot;pill&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;Abstract&lt;/a&gt;
+          &lt;/li&gt;&lt;li class=&quot;nav-item&quot;&gt;
+          &lt;a class=&quot;nav-link&quot; id=&quot;button-Deisenroth2015Pilco-bibtex&quot; href=&quot;#Deisenroth2015Pilco-bibtex&quot; aria-controls=&quot;Deisenroth2015Pilco-bibtex&quot; data-bs-toggle=&quot;pill&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;Bibtex&lt;/a&gt;
+        &lt;/li&gt;&lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link&quot; href=&quot;https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;amp;arnumber=6654139&quot;&gt;PDF&lt;/a&gt;
+          &lt;/li&gt;&lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Add bonus material --&gt;
+  &lt;div class=&quot;materials tab-content&quot; id=&quot;Deisenroth2015Pilco-material&quot;&gt;&lt;!-- fade class? --&gt;
+    &lt;div class=&quot;tab-pane tab-abstract&quot; role=&quot;tabpanel&quot; id=&quot;Deisenroth2015Pilco-abstract&quot; aria-labelledby=&quot;button-Deisenroth2015Pilco-abstract&quot;&gt;
+      &lt;p class=&quot;abstract p-2&quot;&gt;
+        Autonomous learning has been a promising direction in control and robotics for more than a decade since data-driven learning allows to reduce the amount of engineering knowledge, which is otherwise required. However, autonomous reinforcement learning (RL) approaches typically require many interactions with the system to learn controllers, which is a practical limitation in real systems, such as robots, where many interactions can be impractical and time consuming. To address this problem, current learning approaches typically require task-specific knowledge in form of expert demonstrations, realistic simulators, pre-shaped policies, or specific knowledge about the underlying dynamics. In this paper, we follow a different approach and speed up learning by extracting more information from data. In particular, we learn a probabilistic, non-parametric Gaussian process transition model of the system. By explicitly incorporating model uncertainty into long-term planning and controller learning our approach reduces the effects of model errors, a key problem in model-based learning. Compared to state-of-the art RL our model-based policy search method achieves an unprecedented speed of learning. We demonstrate its applicability to autonomous learning in real robot and control tasks.
+        &lt;br /&gt;
+        &lt;div class=&quot;d-sm-none&quot;&gt;
+          &lt;a class=&quot;duplicate&quot; duplicate-target=&quot;#button-Deisenroth2015Pilco-abstract&quot; href=&quot;#reference-Deisenroth2015Pilco&quot;&gt;Close&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/p&gt;
+    &lt;/div&gt;&lt;div class=&quot;tab-pane tab-bibtex&quot; role=&quot;tabpanel&quot; id=&quot;Deisenroth2015Pilco-bibtex&quot; aria-labelledby=&quot;button-Deisenroth2015Pilco-bibtex&quot;&gt;
+      &lt;pre&gt;@article{Deisenroth2015Pilco,
+  journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  title = {Gaussian Processes for Data-Efficient Learning in Robotics and Control},
+  author = {Deisenroth, Marc and Fox, Dieter and Rasmussen, Carl E},
+  year = {2015},
+  volume = {37},
+  number = {2},
+  pages = {408-423},
+  doi = {10.1109/TPAMI.2013.218}
+}
+&lt;/pre&gt;
+    &lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class=&quot;reference mb-2&quot; data-key=&quot;Chua2018HandfulTrials&quot; id=&quot;reference-Chua2018HandfulTrials&quot;&gt;
+  &lt;div class=&quot;reference-header&quot;&gt;
+    &lt;span id=&quot;Chua2018HandfulTrials&quot;&gt;&lt;b&gt;Deep reinforcement learning in a handful of trials using probabilistic dynamics models&lt;/b&gt;&lt;div class=&quot;csl-block&quot;&gt;Kurtland Chua, Roberto Calandra, Rowan McAllister, Sergey Levine&lt;/div&gt;in &lt;i&gt;Neural Information Processing Systems (NeurIPS)&lt;/i&gt;, 2018 &lt;/span&gt;&lt;br /&gt;&lt;!-- Add clickable toggles for bonus material --&gt;
+    &lt;div class=&quot;links&quot;&gt;
+      &lt;ul class=&quot;nav nav-pills&quot; role=&quot;tablist&quot;&gt;&lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link&quot; id=&quot;button-Chua2018HandfulTrials-abstract&quot; href=&quot;#Chua2018HandfulTrials-abstract&quot; aria-controls=&quot;Chua2018HandfulTrials-abstract&quot; data-bs-toggle=&quot;pill&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;Abstract&lt;/a&gt;
+          &lt;/li&gt;&lt;li class=&quot;nav-item&quot;&gt;
+          &lt;a class=&quot;nav-link&quot; id=&quot;button-Chua2018HandfulTrials-bibtex&quot; href=&quot;#Chua2018HandfulTrials-bibtex&quot; aria-controls=&quot;Chua2018HandfulTrials-bibtex&quot; data-bs-toggle=&quot;pill&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;Bibtex&lt;/a&gt;
+        &lt;/li&gt;&lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link&quot; href=&quot;https://papers.nips.cc/paper/7725-deep-reinforcement-learning-in-a-handful-of-trials-using-probabilistic-dynamics-models.pdf&quot;&gt;PDF&lt;/a&gt;
+          &lt;/li&gt;&lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Add bonus material --&gt;
+  &lt;div class=&quot;materials tab-content&quot; id=&quot;Chua2018HandfulTrials-material&quot;&gt;&lt;!-- fade class? --&gt;
+    &lt;div class=&quot;tab-pane tab-abstract&quot; role=&quot;tabpanel&quot; id=&quot;Chua2018HandfulTrials-abstract&quot; aria-labelledby=&quot;button-Chua2018HandfulTrials-abstract&quot;&gt;
+      &lt;p class=&quot;abstract p-2&quot;&gt;
+        Model-based reinforcement learning (RL) algorithms can attain excellent sampleefficiency, but often lag behind the best model-free algorithms in terms of asymp-totic performance. This is especially true with high-capacity parametric functionapproximators, such as deep networks. In this paper, we study how to bridge thisgap, by employing uncertainty-aware dynamics models. We propose a new algo-rithm called probabilistic ensembles with trajectory sampling (PETS) that combinesuncertainty-aware deep network dynamics models with sampling-based uncertaintypropagation. Our comparison to state-of-the-art model-based and model-free deepRL algorithms shows that our approach matches the asymptotic performance ofmodel-free algorithms on several challenging benchmark tasks, while requiringsignificantly fewer samples (e.g., 8 and 125 times fewer samples than Soft ActorCritic and Proximal Policy Optimization respectively on the half-cheetah task)
+        &lt;br /&gt;
+        &lt;div class=&quot;d-sm-none&quot;&gt;
+          &lt;a class=&quot;duplicate&quot; duplicate-target=&quot;#button-Chua2018HandfulTrials-abstract&quot; href=&quot;#reference-Chua2018HandfulTrials&quot;&gt;Close&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/p&gt;
+    &lt;/div&gt;&lt;div class=&quot;tab-pane tab-bibtex&quot; role=&quot;tabpanel&quot; id=&quot;Chua2018HandfulTrials-bibtex&quot; aria-labelledby=&quot;button-Chua2018HandfulTrials-bibtex&quot;&gt;
+      &lt;pre&gt;@inproceedings{Chua2018HandfulTrials,
+  title = {Deep reinforcement learning in a handful of trials using probabilistic dynamics models},
+  author = {Chua, Kurtland and Calandra, Roberto and McAllister, Rowan and Levine, Sergey},
+  booktitle = {Neural Information Processing Systems (NeurIPS)},
+  pages = {4754--4765},
+  year = {2018}
+}
+&lt;/pre&gt;
+    &lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;div class=&quot;reference mb-2&quot; data-key=&quot;Mania2019Certainty&quot; id=&quot;reference-Mania2019Certainty&quot;&gt;
+  &lt;div class=&quot;reference-header&quot;&gt;
+    &lt;span id=&quot;Mania2019Certainty&quot;&gt;&lt;b&gt;Certainty equivalence is efficient for linear quadratic control&lt;/b&gt;&lt;div class=&quot;csl-block&quot;&gt;Horia Mania, Stephen Tu, Benjamin Recht&lt;/div&gt;in &lt;i&gt;Advances in Neural Information Processing Systems&lt;/i&gt;, 2019 &lt;/span&gt;&lt;br /&gt;&lt;!-- Add clickable toggles for bonus material --&gt;
+    &lt;div class=&quot;links&quot;&gt;
+      &lt;ul class=&quot;nav nav-pills&quot; role=&quot;tablist&quot;&gt;&lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link&quot; id=&quot;button-Mania2019Certainty-abstract&quot; href=&quot;#Mania2019Certainty-abstract&quot; aria-controls=&quot;Mania2019Certainty-abstract&quot; data-bs-toggle=&quot;pill&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;Abstract&lt;/a&gt;
+          &lt;/li&gt;&lt;li class=&quot;nav-item&quot;&gt;
+          &lt;a class=&quot;nav-link&quot; id=&quot;button-Mania2019Certainty-bibtex&quot; href=&quot;#Mania2019Certainty-bibtex&quot; aria-controls=&quot;Mania2019Certainty-bibtex&quot; data-bs-toggle=&quot;pill&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;Bibtex&lt;/a&gt;
+        &lt;/li&gt;&lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link&quot; href=&quot;http://papers.nips.cc/paper/9205-certainty-equivalence-is-efficient-for-linear-quadratic-control.pdf&quot;&gt;PDF&lt;/a&gt;
+          &lt;/li&gt;&lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Add bonus material --&gt;
+  &lt;div class=&quot;materials tab-content&quot; id=&quot;Mania2019Certainty-material&quot;&gt;&lt;!-- fade class? --&gt;
+    &lt;div class=&quot;tab-pane tab-abstract&quot; role=&quot;tabpanel&quot; id=&quot;Mania2019Certainty-abstract&quot; aria-labelledby=&quot;button-Mania2019Certainty-abstract&quot;&gt;
+      &lt;p class=&quot;abstract p-2&quot;&gt;
+        We study the performance of thecertainty equivalent controlleron Linear Quadratic(LQ) control problems with unknown transition dynamics. We show that for boththe fully and partially observed settings, the sub-optimality gap between the costincurred by playing the certainty equivalent controller on the true system and thecost incurred by using the optimal LQ controller enjoys a fast statistical rate, scalingas thesquareof the parameter error. To the best of our knowledge, our result is thefirst sub-optimality guarantee in the partially observed Linear Quadratic Gaussian(LQG) setting. Furthermore, in the fully observed Linear Quadratic Regulator(LQR), our result improves upon recent work by Dean et al.[11], who present analgorithm achieving a sub-optimality gap linear in the parameter error. A key partof our analysis relies on perturbation bounds for discrete Riccati equations. Weprovide two new perturbation bounds, one that expands on an existing result fromKonstantinov et al. [25], and another based on a new elementary proof strategy.
+        &lt;br /&gt;
+        &lt;div class=&quot;d-sm-none&quot;&gt;
+          &lt;a class=&quot;duplicate&quot; duplicate-target=&quot;#button-Mania2019Certainty-abstract&quot; href=&quot;#reference-Mania2019Certainty&quot;&gt;Close&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/p&gt;
+    &lt;/div&gt;&lt;div class=&quot;tab-pane tab-bibtex&quot; role=&quot;tabpanel&quot; id=&quot;Mania2019Certainty-bibtex&quot; aria-labelledby=&quot;button-Mania2019Certainty-bibtex&quot;&gt;
+      &lt;pre&gt;@inproceedings{Mania2019Certainty,
+  title = {Certainty equivalence is efficient for linear quadratic control},
+  author = {Mania, Horia and Tu, Stephen and Recht, Benjamin},
+  booktitle = {Advances in Neural Information Processing Systems},
+  pages = {10154--10164},
+  year = {2019}
+}
+&lt;/pre&gt;
+    &lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;&lt;/ol&gt;
+</description>
+        <pubDate>Sun, 06 Dec 2020 00:00:00 +0000</pubDate>
+        <link>https://berkenkamp.me/blog/2020-12-06-mbrl-exploration/</link>
+        <guid isPermaLink="true">https://berkenkamp.me/blog/2020-12-06-mbrl-exploration/</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
