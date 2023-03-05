@@ -33,7 +33,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build
-          branch: master
+          branch: gh_pages
           git-config-name: CI
           git-config-email: fberkenkamp@gmail.com
           commit-message: Upload compiled website from CI
