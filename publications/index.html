@@ -98,35 +98,119 @@ You can find already published work on my <a href="https://scholar.google.ch/cit
 
 
 <h2>2023</h2>
-<ol class="bibliography"><li><div class="reference mb-2" data-key="Bottero2022SafeInformation" id='reference-Bottero2022SafeInformation'>
+<ol class="bibliography"><li><div class="reference mb-2" data-key="Luis2023ValueDistributional" id='reference-Luis2023ValueDistributional'>
   <div class='reference-header'>
-    <span id="Bottero2022SafeInformation"><b> Model-Based Uncertainty in Value Functions </b><div class="csl-block">Carlos E. Luis, G. Alessandro Bottero, Julia Vinogradska, Felix Berkenkamp, Jan Peters</div>in <i>The 25th International Conference on Artificial Intelligence and Statistics (AISTATS)</i>, 2023 </span><br><!-- Add clickable toggles for bonus material -->
+    <span id="Luis2023ValueDistributional"><b>Value-Distributional Model-Based Reinforcement Learning</b><div class="csl-block">Carlos E. Luis, G. Alessandro Bottero, Julia Vinogradska, Felix Berkenkamp, Jan Peters</div>2023 </span><br><!-- Add clickable toggles for bonus material -->
     <div class="links">
       <ul class="nav nav-pills" role="tablist"><li class="nav-item">
-            <a class="nav-link"  id="button-Bottero2022SafeInformation-abstract" href="#Bottero2022SafeInformation-abstract" aria-controls="Bottero2022SafeInformation-abstract"
+            <a class="nav-link"  id="button-Luis2023ValueDistributional-abstract" href="#Luis2023ValueDistributional-abstract" aria-controls="Luis2023ValueDistributional-abstract"
             data-bs-toggle="pill" role="tab" aria-selected="false">Abstract</a>
           </li><li class="nav-item">
-          <a class="nav-link"  id="button-Bottero2022SafeInformation-bibtex" href="#Bottero2022SafeInformation-bibtex" aria-controls="Bottero2022SafeInformation-bibtex"
+          <a class="nav-link"  id="button-Luis2023ValueDistributional-bibtex" href="#Luis2023ValueDistributional-bibtex" aria-controls="Luis2023ValueDistributional-bibtex"
           data-bs-toggle="pill" role="tab" aria-selected="false">Bibtex</a>
         </li><li class="nav-item">
-            <a class="nav-link" href="https://arxiv.org/pdf/2302.12526">PDF</a>
+            <a class="nav-link" href="https://arxiv.org/pdf/2308.06590">PDF</a>
           </li></ul>
     </div>
   </div>
 
   <!-- Add bonus material -->
-  <div class="materials tab-content" id="Bottero2022SafeInformation-material"><!-- fade class? -->
-    <div class="tab-pane tab-abstract" role="tabpanel" id="Bottero2022SafeInformation-abstract" aria-labelledby="button-Bottero2022SafeInformation-abstract">
+  <div class="materials tab-content" id="Luis2023ValueDistributional-material"><!-- fade class? -->
+    <div class="tab-pane tab-abstract" role="tabpanel" id="Luis2023ValueDistributional-abstract" aria-labelledby="button-Luis2023ValueDistributional-abstract">
+      <p class="abstract p-2">
+        Quantifying uncertainty about a policy’s long-term performance is important to solve sequential decision-making tasks. We study the problem from a model-based Bayesian reinforcement learning perspective, where the goal is to learn the posterior distribution over value functions induced by parameter (epistemic) uncertainty of the Markov decision process. Previous work restricts the analysis to a few moments of the distribution over values or imposes a particular distribution shape, e.g., Gaussians. Inspired by distributional reinforcement learning, we introduce a Bellman operator whose fixed-point is the value distribution function. Based on our theory, we propose Epistemic Quantile-Regression (EQR), a model-based algorithm that learns a value distribution function that can be used for policy optimization. Evaluation across several continuous-control tasks shows performance benefits with respect to established model-based and model-free algorithms.
+        <br>
+        <div class="d-sm-none">
+          <a class="duplicate" duplicate-target="#button-Luis2023ValueDistributional-abstract" href="#reference-Luis2023ValueDistributional">Close</a>
+        </div>
+      </p>
+    </div><div class="tab-pane tab-bibtex" role="tabpanel" id="Luis2023ValueDistributional-bibtex" aria-labelledby="button-Luis2023ValueDistributional-bibtex">
+      <pre>@inproceedings{Luis2023ValueDistributional,
+  title = {Value-Distributional Model-Based Reinforcement Learning},
+  publisher = {ArXiv},
+  author = {Luis, Carlos E. and Bottero, G. Alessandro and Vinogradska, Julia and Berkenkamp, Felix and Peters, Jan},
+  year = {2023},
+  eprint = {2308.06590},
+  archiveprefix = {arXiv},
+  primaryclass = {cs.LG},
+  url = {https://arxiv.org/abs/2308.06590}
+}
+</pre>
+    </div></div>
+</div>
+</li>
+<li><div class="reference mb-2" data-key="Pan2023MetaLFBO" id='reference-Pan2023MetaLFBO'>
+  <div class='reference-header'>
+    <span id="Pan2023MetaLFBO"><b>MALIBO: Meta-learning for Likelihood-free Bayesian Optimization</b><div class="csl-block">Jiarong Pan, Stefan Falkner, Felix Berkenkamp, Joaquin Vanschoren</div>2023 </span><br><!-- Add clickable toggles for bonus material -->
+    <div class="links">
+      <ul class="nav nav-pills" role="tablist"><li class="nav-item">
+            <a class="nav-link"  id="button-Pan2023MetaLFBO-abstract" href="#Pan2023MetaLFBO-abstract" aria-controls="Pan2023MetaLFBO-abstract"
+            data-bs-toggle="pill" role="tab" aria-selected="false">Abstract</a>
+          </li><li class="nav-item">
+          <a class="nav-link"  id="button-Pan2023MetaLFBO-bibtex" href="#Pan2023MetaLFBO-bibtex" aria-controls="Pan2023MetaLFBO-bibtex"
+          data-bs-toggle="pill" role="tab" aria-selected="false">Bibtex</a>
+        </li><li class="nav-item">
+            <a class="nav-link" href="https://arxiv.org/pdf/2307.03565">PDF</a>
+          </li></ul>
+    </div>
+  </div>
+
+  <!-- Add bonus material -->
+  <div class="materials tab-content" id="Pan2023MetaLFBO-material"><!-- fade class? -->
+    <div class="tab-pane tab-abstract" role="tabpanel" id="Pan2023MetaLFBO-abstract" aria-labelledby="button-Pan2023MetaLFBO-abstract">
+      <p class="abstract p-2">
+        Bayesian optimization (BO) is a popular method to optimize costly black-box functions. While traditional BO optimizes each new target task from scratch, meta-learning has emerged as a way to leverage knowledge from related tasks to optimize new tasks faster. However, existing meta-learning BO methods rely on surrogate models that suffer from scalability issues and are sensitive to observations with different scales and noise types across tasks. Moreover, they often overlook the uncertainty associated with task similarity. This leads to unreliable task adaptation when only limited observations are obtained or when the new tasks differ significantly from the related tasks. To address these limitations, we propose a novel meta-learning BO approach that bypasses the surrogate model and directly learns the utility of queries across tasks. Our method explicitly models task uncertainty and includes an auxiliary model to enable robust adaptation to new tasks. Extensive experiments show that our method demonstrates strong anytime performance and outperforms state-of-the-art meta-learning BO methods in various benchmarks.
+        <br>
+        <div class="d-sm-none">
+          <a class="duplicate" duplicate-target="#button-Pan2023MetaLFBO-abstract" href="#reference-Pan2023MetaLFBO">Close</a>
+        </div>
+      </p>
+    </div><div class="tab-pane tab-bibtex" role="tabpanel" id="Pan2023MetaLFBO-bibtex" aria-labelledby="button-Pan2023MetaLFBO-bibtex">
+      <pre>@inproceedings{Pan2023MetaLFBO,
+  title = {MALIBO: Meta-learning for Likelihood-free Bayesian Optimization},
+  publisher = {ArXiv},
+  author = {Pan, Jiarong and Falkner, Stefan and Berkenkamp, Felix and Vanschoren, Joaquin},
+  year = {2023},
+  eprint = {2307.03565},
+  archiveprefix = {arXiv},
+  primaryclass = {cs.LG},
+  url = {https://arxiv.org/abs/2307.03565}
+}
+</pre>
+    </div></div>
+</div>
+</li>
+<li><div class="reference mb-2" data-key="Luis2023ModelUncertainty" id='reference-Luis2023ModelUncertainty'>
+  <div class='reference-header'>
+    <span id="Luis2023ModelUncertainty"><b>Model-Based Uncertainty in Value Functions</b><div class="csl-block">Carlos E. Luis, G. Alessandro Bottero, Julia Vinogradska, Felix Berkenkamp, Jan Peters</div>in <i>The 25th International Conference on Artificial Intelligence and Statistics (AISTATS)</i>, 2023 </span><br><!-- Add clickable toggles for bonus material -->
+    <div class="links">
+      <ul class="nav nav-pills" role="tablist"><li class="nav-item">
+            <a class="nav-link"  id="button-Luis2023ModelUncertainty-abstract" href="#Luis2023ModelUncertainty-abstract" aria-controls="Luis2023ModelUncertainty-abstract"
+            data-bs-toggle="pill" role="tab" aria-selected="false">Abstract</a>
+          </li><li class="nav-item">
+          <a class="nav-link"  id="button-Luis2023ModelUncertainty-bibtex" href="#Luis2023ModelUncertainty-bibtex" aria-controls="Luis2023ModelUncertainty-bibtex"
+          data-bs-toggle="pill" role="tab" aria-selected="false">Bibtex</a>
+        </li><li class="nav-item">
+            <a class="nav-link" href="https://arxiv.org/pdf/2302.12526">PDF</a>
+          </li><li class="nav-item">
+            <a class="nav-link" href="https://github.com/boschresearch/ube-mbrl" target="_blank">Code</a>
+          </li></ul>
+    </div>
+  </div>
+
+  <!-- Add bonus material -->
+  <div class="materials tab-content" id="Luis2023ModelUncertainty-material"><!-- fade class? -->
+    <div class="tab-pane tab-abstract" role="tabpanel" id="Luis2023ModelUncertainty-abstract" aria-labelledby="button-Luis2023ModelUncertainty-abstract">
       <p class="abstract p-2">
         We consider the problem of quantifying uncertainty over expected cumulative rewards in model-based reinforcement learning. In particular, we focus on characterizing the variance over values induced by a distribution over MDPs. Previous work upper bounds the posterior variance over values by solving a so-called uncertainty Bellman equation, but the over-approximation may result in inefficient exploration. We propose a new uncertainty Bellman equation whose solution converges to the true posterior variance over values and explicitly characterizes the gap in previous work. Moreover, our uncertainty quantification technique is easily integrated into common exploration strategies and scales naturally beyond the tabular setting by using standard deep reinforcement learning architectures. Experiments in difficult exploration tasks, both in tabular and continuous control settings, show that our sharper uncertainty estimates improve sample-efficiency. 
         <br>
         <div class="d-sm-none">
-          <a class="duplicate" duplicate-target="#button-Bottero2022SafeInformation-abstract" href="#reference-Bottero2022SafeInformation">Close</a>
+          <a class="duplicate" duplicate-target="#button-Luis2023ModelUncertainty-abstract" href="#reference-Luis2023ModelUncertainty">Close</a>
         </div>
       </p>
-    </div><div class="tab-pane tab-bibtex" role="tabpanel" id="Bottero2022SafeInformation-bibtex" aria-labelledby="button-Bottero2022SafeInformation-bibtex">
-      <pre>@inproceedings{Bottero2022SafeInformation,
-  title = { Model-Based Uncertainty in Value Functions },
+    </div><div class="tab-pane tab-bibtex" role="tabpanel" id="Luis2023ModelUncertainty-bibtex" aria-labelledby="button-Luis2023ModelUncertainty-bibtex">
+      <pre>@inproceedings{Luis2023ModelUncertainty,
+  title = {Model-Based Uncertainty in Value Functions},
   booktitle = {The 25th International Conference on Artificial Intelligence and Statistics (AISTATS)},
   author = {Luis, Carlos E. and Bottero, G. Alessandro and Vinogradska, Julia and Berkenkamp, Felix and Peters, Jan},
   year = {2023},
@@ -138,15 +222,15 @@ You can find already published work on my <a href="https://scholar.google.ch/cit
 </li></ol>
 
 <h2>2022</h2>
-<ol class="bibliography"><li><div class="reference mb-2" data-key="Bottero2022SafeInformatioo" id='reference-Bottero2022SafeInformatioo'>
+<ol class="bibliography"><li><div class="reference mb-2" data-key="Bottero2022SafeInformation" id='reference-Bottero2022SafeInformation'>
   <div class='reference-header'>
-    <span id="Bottero2022SafeInformatioo"><b>Information-Theoretic Safe Exploration with Gaussian Processes</b><div class="csl-block">G. Alessandro Bottero, Carlos E. Luis, Julia Vinogradska, Felix Berkenkamp, Jan Peters</div>in <i>Neural Information Processing Systems (NeurIPS)</i>, 2022 </span><br><!-- Add clickable toggles for bonus material -->
+    <span id="Bottero2022SafeInformation"><b>Information-Theoretic Safe Exploration with Gaussian Processes</b><div class="csl-block">G. Alessandro Bottero, Carlos E. Luis, Julia Vinogradska, Felix Berkenkamp, Jan Peters</div>in <i>Neural Information Processing Systems (NeurIPS)</i>, 2022 </span><br><!-- Add clickable toggles for bonus material -->
     <div class="links">
       <ul class="nav nav-pills" role="tablist"><li class="nav-item">
-            <a class="nav-link"  id="button-Bottero2022SafeInformatioo-abstract" href="#Bottero2022SafeInformatioo-abstract" aria-controls="Bottero2022SafeInformatioo-abstract"
+            <a class="nav-link"  id="button-Bottero2022SafeInformation-abstract" href="#Bottero2022SafeInformation-abstract" aria-controls="Bottero2022SafeInformation-abstract"
             data-bs-toggle="pill" role="tab" aria-selected="false">Abstract</a>
           </li><li class="nav-item">
-          <a class="nav-link"  id="button-Bottero2022SafeInformatioo-bibtex" href="#Bottero2022SafeInformatioo-bibtex" aria-controls="Bottero2022SafeInformatioo-bibtex"
+          <a class="nav-link"  id="button-Bottero2022SafeInformation-bibtex" href="#Bottero2022SafeInformation-bibtex" aria-controls="Bottero2022SafeInformation-bibtex"
           data-bs-toggle="pill" role="tab" aria-selected="false">Bibtex</a>
         </li><li class="nav-item">
             <a class="nav-link" href="https://arxiv.org/pdf/2212.04914">PDF</a>
@@ -155,17 +239,17 @@ You can find already published work on my <a href="https://scholar.google.ch/cit
   </div>
 
   <!-- Add bonus material -->
-  <div class="materials tab-content" id="Bottero2022SafeInformatioo-material"><!-- fade class? -->
-    <div class="tab-pane tab-abstract" role="tabpanel" id="Bottero2022SafeInformatioo-abstract" aria-labelledby="button-Bottero2022SafeInformatioo-abstract">
+  <div class="materials tab-content" id="Bottero2022SafeInformation-material"><!-- fade class? -->
+    <div class="tab-pane tab-abstract" role="tabpanel" id="Bottero2022SafeInformation-abstract" aria-labelledby="button-Bottero2022SafeInformation-abstract">
       <p class="abstract p-2">
         We consider a sequential decision making task where we are not allowed to evaluate parameters that violate an a priori unknown (safety) constraint. A common approach is to place a Gaussian process prior on the unknown constraint and allow evaluations only in regions that are safe with high probability. Most current methods rely on a discretization of the domain and cannot be directly extended to the continuous case. Moreover, the way in which they exploit regularity assumptions about the constraint introduces an additional critical hyperparameter. In this paper, we propose an information-theoretic safe exploration criterion that directly exploits the GP posterior to identify the most informative safe parameters to evaluate. Our approach is naturally applicable to continuous domains and does not require additional hyperparameters. We theoretically analyze the method and show that we do not violate the safety constraint with high probability and that we explore by learning about the constraint up to arbitrary precision. Empirical evaluations demonstrate improved data-efficiency and scalability.
         <br>
         <div class="d-sm-none">
-          <a class="duplicate" duplicate-target="#button-Bottero2022SafeInformatioo-abstract" href="#reference-Bottero2022SafeInformatioo">Close</a>
+          <a class="duplicate" duplicate-target="#button-Bottero2022SafeInformation-abstract" href="#reference-Bottero2022SafeInformation">Close</a>
         </div>
       </p>
-    </div><div class="tab-pane tab-bibtex" role="tabpanel" id="Bottero2022SafeInformatioo-bibtex" aria-labelledby="button-Bottero2022SafeInformatioo-bibtex">
-      <pre>@inproceedings{Bottero2022SafeInformatioo,
+    </div><div class="tab-pane tab-bibtex" role="tabpanel" id="Bottero2022SafeInformation-bibtex" aria-labelledby="button-Bottero2022SafeInformation-bibtex">
+      <pre>@inproceedings{Bottero2022SafeInformation,
   title = {Information-Theoretic Safe Exploration with Gaussian Processes},
   booktitle = {Neural Information Processing Systems (NeurIPS)},
   author = {Bottero, G. Alessandro and Luis, Carlos E. and Vinogradska, Julia and Berkenkamp, Felix and Peters, Jan},
