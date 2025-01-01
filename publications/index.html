@@ -32,7 +32,7 @@
   <!-- Import generic javascript libraries -->
   <!-- Load all requested style sheets from page.css -->
   <style>
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"}div.container{max-width:1100px;width:100%}.navbar-brand{color:#5c5c5c !important}.text{max-width:800px}h1{font-size:1.6em}h2{font-size:1.45em}h3{font-size:1.25em}h4{font-size:1.12em}h5{font-size:.83em}h6{font-size:.75em}h1,h2,h3,h4,h5,h6,p,blockquote,pre,ul,ol,dl,figure{margin-bottom:1em}a{text-decoration:none}a>svg{color:#5c5c5c}.icon>svg{display:inline-block;width:16px;height:16px;vertical-align:middle}.icon>svg path{fill:#5c5c5c}ol.bibliography li{display:inline}.comment{color:#828282}.flex-wrap a.nav-link{padding:.5em;padding-top:.4em;padding-bottom:.4em}@media screen and (max-width: 700px){.flex-wrap a.nav-link{padding-top:.1em;padding-bottom:.1em}}div.materials{max-width:800px}.materials div.active{margin-top:.5em}div.tab-abstract{background-color:#f2f2f2;background-color:re;padding:.5em}.materials pre{background-color:#f2f2f2;display:inline-block !important;padding:.5em;max-width:100%}@media screen and (max-width: 700px){ol.bibliography{padding-left:0}}div.reference-header.highlight{background-color:#e6e6ff}</style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"}div.container{max-width:1100px;width:100%}.navbar-brand{color:rgb(91.75,91.75,91.75) !important}.text{max-width:800px}h1{font-size:1.6em}h2{font-size:1.45em}h3{font-size:1.25em}h4{font-size:1.12em}h5{font-size:.83em}h6{font-size:.75em}h1,h2,h3,h4,h5,h6,p,blockquote,pre,ul,ol,dl,figure{margin-bottom:1em}a{text-decoration:none}a>svg{color:rgb(91.75,91.75,91.75)}.icon>svg{display:inline-block;width:16px;height:16px;vertical-align:middle}.icon>svg path{fill:rgb(91.75,91.75,91.75)}ol.bibliography li{display:inline}.comment{color:#828282}.flex-wrap a.nav-link{padding:.5em;padding-top:.4em;padding-bottom:.4em}@media screen and (max-width: 700px){.flex-wrap a.nav-link{padding-top:.1em;padding-bottom:.1em}}div.materials{max-width:800px}.materials div.active{margin-top:.5em}div.tab-abstract{background-color:#f2f2f2;background-color:re;padding:.5em}.materials pre{background-color:#f2f2f2;display:inline-block !important;padding:.5em;max-width:100%}@media screen and (max-width: 700px){ol.bibliography{padding-left:0}}div.reference-header.highlight{background-color:#e6e6ff}</style>
 </head>
 
 
@@ -98,7 +98,45 @@ You can find already published work on my <a href="https://scholar.google.ch/cit
 
 
 <h2>2024</h2>
-<ol class="bibliography"><li><div class="reference mb-2" data-key="tighineanu2023scalable" id='reference-tighineanu2023scalable'>
+<ol class="bibliography"><li><div class="reference mb-2" data-key="luis2024uncertainty" id='reference-luis2024uncertainty'>
+  <div class='reference-header'>
+    <span id="luis2024uncertainty"><b>Uncertainty Representations in State-Space Layers for Deep Reinforcement Learning under Partial Observability</b><div class="csl-block">Carlos E. Luis, Alessandro G Bottero, Julia Vinogradska, Felix Berkenkamp, Jan Peters</div><i>arXiv preprint arXiv:2409.16824</i>, 2024 </span><br><!-- Add clickable toggles for bonus material -->
+    <div class="links">
+      <ul class="nav nav-pills" role="tablist"><li class="nav-item">
+            <a class="nav-link"  id="button-luis2024uncertainty-abstract" href="#luis2024uncertainty-abstract" aria-controls="luis2024uncertainty-abstract"
+            data-bs-toggle="pill" role="tab" aria-selected="false">Abstract</a>
+          </li><li class="nav-item">
+          <a class="nav-link"  id="button-luis2024uncertainty-bibtex" href="#luis2024uncertainty-bibtex" aria-controls="luis2024uncertainty-bibtex"
+          data-bs-toggle="pill" role="tab" aria-selected="false">Bibtex</a>
+        </li><li class="nav-item">
+            <a class="nav-link" href="https://arxiv.org/pdf/2409.16824">PDF</a>
+          </li></ul>
+    </div>
+  </div>
+
+  <!-- Add bonus material -->
+  <div class="materials tab-content" id="luis2024uncertainty-material"><!-- fade class? -->
+    <div class="tab-pane tab-abstract" role="tabpanel" id="luis2024uncertainty-abstract" aria-labelledby="button-luis2024uncertainty-abstract">
+      <p class="abstract p-2">
+        Optimal decision-making under partial observability requires reasoning about the uncertainty of the environment’s hidden state. However, most reinforcement learning architectures handle partial observability with sequence models that have no internal mechanism to incorporate uncertainty in their hidden state representation, such as recurrent neural networks, deterministic state-space models and transformers. Inspired by advances in probabilistic world models for reinforcement learning, we propose a standalone Kalman filter layer that performs closed-form Gaussian inference in linear state-space models and train it end-to-end within a model-free architecture to maximize returns. Similar to efficient linear recurrent layers, the Kalman filter layer processes sequential data using a parallel scan, which scales logarithmically with the sequence length. By design, Kalman filter layers are a drop-in replacement for other recurrent layers in standard model-free architectures, but importantly they include an explicit mechanism for probabilistic filtering of the latent state representation. Experiments in a wide variety of tasks with partial observability show that Kalman filter layers excel in problems where uncertainty reasoning is key for decision-making, outperforming other stateful models.
+        <br>
+        <div class="d-sm-none">
+          <a class="duplicate" duplicate-target="#button-luis2024uncertainty-abstract" href="#reference-luis2024uncertainty">Close</a>
+        </div>
+      </p>
+    </div><div class="tab-pane tab-bibtex" role="tabpanel" id="luis2024uncertainty-bibtex" aria-labelledby="button-luis2024uncertainty-bibtex">
+      <pre>@article{luis2024uncertainty,
+  title = {Uncertainty Representations in State-Space Layers for Deep Reinforcement Learning under Partial Observability},
+  author = {Luis, Carlos E. and Bottero, Alessandro G and Vinogradska, Julia and Berkenkamp, Felix and Peters, Jan},
+  journal = {arXiv preprint arXiv:2409.16824},
+  year = {2024},
+  url = {https://arxiv.org/abs/2409.16824}
+}
+</pre>
+    </div></div>
+</div>
+</li>
+<li><div class="reference mb-2" data-key="tighineanu2023scalable" id='reference-tighineanu2023scalable'>
   <div class='reference-header'>
     <span id="tighineanu2023scalable"><b>Scalable Meta-Learning with Gaussian Processes</b><div class="csl-block">Petru Tighineanu, Lukas Grossberger, Paul Baireuther, Kathrin Skubch, Stefan Falkner, Julia Vinogradska, Felix Berkenkamp</div>in <i>The 25th International Conference on Artificial Intelligence and Statistics (AISTATS)</i>, 2024 </span><br><!-- Add clickable toggles for bonus material -->
     <div class="links">
@@ -175,6 +213,47 @@ You can find already published work on my <a href="https://scholar.google.ch/cit
   archiveprefix = {arXiv},
   primaryclass = {cs.LG},
   url = {https://arxiv.org/abs/2402.15347}
+}
+</pre>
+    </div></div>
+</div>
+</li>
+<li><div class="reference mb-2" data-key="Luis2023ValueDistributional" id='reference-Luis2023ValueDistributional'>
+  <div class='reference-header'>
+    <span id="Luis2023ValueDistributional"><b>Value-Distributional Model-Based Reinforcement Learning</b><div class="csl-block">Carlos E. Luis, G. Alessandro Bottero, Julia Vinogradska, Felix Berkenkamp, Jan Peters</div><i>Journal of Machine Learning Research</i>, vol. 25, no. 298, 2024 </span><br><!-- Add clickable toggles for bonus material -->
+    <div class="links">
+      <ul class="nav nav-pills" role="tablist"><li class="nav-item">
+            <a class="nav-link"  id="button-Luis2023ValueDistributional-abstract" href="#Luis2023ValueDistributional-abstract" aria-controls="Luis2023ValueDistributional-abstract"
+            data-bs-toggle="pill" role="tab" aria-selected="false">Abstract</a>
+          </li><li class="nav-item">
+          <a class="nav-link"  id="button-Luis2023ValueDistributional-bibtex" href="#Luis2023ValueDistributional-bibtex" aria-controls="Luis2023ValueDistributional-bibtex"
+          data-bs-toggle="pill" role="tab" aria-selected="false">Bibtex</a>
+        </li><li class="nav-item">
+            <a class="nav-link" href="https://arxiv.org/pdf/2308.06590">PDF</a>
+          </li></ul>
+    </div>
+  </div>
+
+  <!-- Add bonus material -->
+  <div class="materials tab-content" id="Luis2023ValueDistributional-material"><!-- fade class? -->
+    <div class="tab-pane tab-abstract" role="tabpanel" id="Luis2023ValueDistributional-abstract" aria-labelledby="button-Luis2023ValueDistributional-abstract">
+      <p class="abstract p-2">
+        Quantifying uncertainty about a policy’s long-term performance is important to solve sequential decision-making tasks. We study the problem from a model-based Bayesian reinforcement learning perspective, where the goal is to learn the posterior distribution over value functions induced by parameter (epistemic) uncertainty of the Markov decision process. Previous work restricts the analysis to a few moments of the distribution over values or imposes a particular distribution shape, e.g., Gaussians. Inspired by distributional reinforcement learning, we introduce a Bellman operator whose fixed-point is the value distribution function. Based on our theory, we propose Epistemic Quantile-Regression (EQR), a model-based algorithm that learns a value distribution function. We combine EQR with soft actor-critic (SAC) for policy optimization with an arbitrary differentiable objective function of the learned value distribution. Evaluation across several continuous-control tasks shows performance benefits with respect to both model-based and model-free algorithms. The code is available at https://github.com/boschresearch/dist-mbrl.
+        <br>
+        <div class="d-sm-none">
+          <a class="duplicate" duplicate-target="#button-Luis2023ValueDistributional-abstract" href="#reference-Luis2023ValueDistributional">Close</a>
+        </div>
+      </p>
+    </div><div class="tab-pane tab-bibtex" role="tabpanel" id="Luis2023ValueDistributional-bibtex" aria-labelledby="button-Luis2023ValueDistributional-bibtex">
+      <pre>@article{Luis2023ValueDistributional,
+  title = {Value-Distributional Model-Based Reinforcement Learning},
+  author = {Luis, Carlos E. and Bottero, G. Alessandro and Vinogradska, Julia and Berkenkamp, Felix and Peters, Jan},
+  journal = {Journal of Machine Learning Research},
+  year = {2024},
+  volume = {25},
+  number = {298},
+  pages = {1--42},
+  url = {http://jmlr.org/papers/v25/23-0913.html}
 }
 </pre>
     </div></div>
@@ -338,47 +417,6 @@ You can find already published work on my <a href="https://scholar.google.ch/cit
   archiveprefix = {arXiv},
   primaryclass = {cs.LG},
   url = {https://arxiv.org/abs/2312.17411}
-}
-</pre>
-    </div></div>
-</div>
-</li>
-<li><div class="reference mb-2" data-key="Luis2023ValueDistributional" id='reference-Luis2023ValueDistributional'>
-  <div class='reference-header'>
-    <span id="Luis2023ValueDistributional"><b>Value-Distributional Model-Based Reinforcement Learning</b><div class="csl-block">Carlos E. Luis, G. Alessandro Bottero, Julia Vinogradska, Felix Berkenkamp, Jan Peters</div>Technical report, ArXiv, 2023 </span><br><!-- Add clickable toggles for bonus material -->
-    <div class="links">
-      <ul class="nav nav-pills" role="tablist"><li class="nav-item">
-            <a class="nav-link"  id="button-Luis2023ValueDistributional-abstract" href="#Luis2023ValueDistributional-abstract" aria-controls="Luis2023ValueDistributional-abstract"
-            data-bs-toggle="pill" role="tab" aria-selected="false">Abstract</a>
-          </li><li class="nav-item">
-          <a class="nav-link"  id="button-Luis2023ValueDistributional-bibtex" href="#Luis2023ValueDistributional-bibtex" aria-controls="Luis2023ValueDistributional-bibtex"
-          data-bs-toggle="pill" role="tab" aria-selected="false">Bibtex</a>
-        </li><li class="nav-item">
-            <a class="nav-link" href="https://arxiv.org/pdf/2308.06590">PDF</a>
-          </li></ul>
-    </div>
-  </div>
-
-  <!-- Add bonus material -->
-  <div class="materials tab-content" id="Luis2023ValueDistributional-material"><!-- fade class? -->
-    <div class="tab-pane tab-abstract" role="tabpanel" id="Luis2023ValueDistributional-abstract" aria-labelledby="button-Luis2023ValueDistributional-abstract">
-      <p class="abstract p-2">
-        Quantifying uncertainty about a policy’s long-term performance is important to solve sequential decision-making tasks. We study the problem from a model-based Bayesian reinforcement learning perspective, where the goal is to learn the posterior distribution over value functions induced by parameter (epistemic) uncertainty of the Markov decision process. Previous work restricts the analysis to a few moments of the distribution over values or imposes a particular distribution shape, e.g., Gaussians. Inspired by distributional reinforcement learning, we introduce a Bellman operator whose fixed-point is the value distribution function. Based on our theory, we propose Epistemic Quantile-Regression (EQR), a model-based algorithm that learns a value distribution function that can be used for policy optimization. Evaluation across several continuous-control tasks shows performance benefits with respect to established model-based and model-free algorithms.
-        <br>
-        <div class="d-sm-none">
-          <a class="duplicate" duplicate-target="#button-Luis2023ValueDistributional-abstract" href="#reference-Luis2023ValueDistributional">Close</a>
-        </div>
-      </p>
-    </div><div class="tab-pane tab-bibtex" role="tabpanel" id="Luis2023ValueDistributional-bibtex" aria-labelledby="button-Luis2023ValueDistributional-bibtex">
-      <pre>@misc{Luis2023ValueDistributional,
-  title = {Value-Distributional Model-Based Reinforcement Learning},
-  publisher = {ArXiv},
-  author = {Luis, Carlos E. and Bottero, G. Alessandro and Vinogradska, Julia and Berkenkamp, Felix and Peters, Jan},
-  year = {2023},
-  eprint = {2308.06590},
-  archiveprefix = {arXiv},
-  primaryclass = {cs.LG},
-  url = {https://arxiv.org/abs/2308.06590}
 }
 </pre>
     </div></div>
